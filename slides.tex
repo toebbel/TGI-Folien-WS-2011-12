@@ -1,7 +1,7 @@
 \documentclass{beamer}
 \usetheme[deutsch]{KIT}
 
-\KITfoot{Tutoriumsmaterial von Simon Stroh und Moritz v. Looz}
+\KITfoot{Tutoriumsmaterial von Joachim Priesner, Sebastian Ullrich und Max Wagner \\ Basierend auf den Folien von Simon Stroh und Moritz v. Looz}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{ulem}
@@ -33,7 +33,7 @@
 
 \section{Organisatorisches}
 \begin{frame}
-	\frametitle{Organisatorisches - Zum Übungsbetrieb}
+	\frametitle{Organisatorisches -- Zum Übungsbetrieb}
 	\begin{itemize}
 		\item \textbf{Abgabe:} \emph{Handschriftlich} in Zweiergruppen.
 		\item \textbf{Schein:} 
@@ -42,15 +42,15 @@
 			\item Wahrscheinlich ein Notenschritt
 			\item Ab 50\% der erreichbaren Punkte
 		\end{itemize}
-		\item Tutoriumsmaterial und Aktueller Punktestand online.
+		\item Tutoriumsmaterial und aktueller Punktestand online.
 		\begin{itemize}
 			\item URL wird noch bekanntgegeben
-			\item Wer Punkte online einsehen will, email in Liste eintragen
+			\item Wer Punkte online einsehen will, E-Mail in Liste eintragen
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 \begin{frame}
-	\frametitle{Organisatorisches - Zum Tutorium}
+	\frametitle{Organisatorisches -- Zum Tutorium}
 	\begin{itemize}
 		\item Stoff soll wiederholt werdet
 		\item Dabei Fokus auf Übungsbetrieb
@@ -62,22 +62,22 @@
 \subsection{Formale Sprachen}
 \begin{frame}
 	\frametitle{Kurze Wiederholung: Formale Sprachen}
-	Eine \emph{Formale Sprache} $L$ ist eine Teilmenge aller Wörtern über einem endlichen Alphabet $\Sigma$. Also $L \subseteq \Sigma^*$\\[0.3cm]
+	Eine \emph{formale Sprache} $L$ ist eine Teilmenge aller Wörter über einem endlichen Alphabet $\Sigma$. Also $L \subseteq \Sigma^*$.\\[0.3cm]
 	Beispiele:
 	\KITframe[yes the background would be nice in gray, thanks!]
 		{\parbox{\textwidth}{\begin{itemize}
 			\item $\Sigma = \{ 0, 1 \}, L = \{w11z\,|\,w,z \in \Sigma^*\}$
 			\begin{itemize}
-			\item Die Menge aller Wörter die ''11'' enthalten.
+			\item Die Menge aller Wörter, die ''11'' enthalten.
 			\end{itemize}
 		\end{itemize}}
 	}\\[0.2cm]
-Im Allgemeinen kann man Formale Sprachen sehr frei angeben: 
+Im Allgemeinen kann man formale Sprachen sehr frei angeben: 
 	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
 		{\parbox{\textwidth}{\begin{itemize}
 			\item $\Sigma = \{ 0, 1 \}, L = \{w|\,w \in \Sigma^*, w \mbox{ hat eine gerade Anzahl an $1$en}\}$
 			\begin{itemize}
-			\item Die Menge aller Wörter die eine gerade Anzahl an Einsen enthalten.
+			\item Die Menge aller Wörter, die eine gerade Anzahl an Einsen enthalten.
 			\end{itemize}
 		\end{itemize}}
 	}
@@ -85,14 +85,14 @@ Im Allgemeinen kann man Formale Sprachen sehr frei angeben:
 \subsection{Reguläre Sprachen}
 \begin{frame}
  \frametitle{Wiederholung der Wiederholung: Reguläre Sprachen}
-        Eine Sprache \(L\subseteq\Sigma^*\) heißt regulär, wenn für sie eine der folgenden Punkte gilt:
+        Eine Sprache \(L\subseteq\Sigma^*\) heißt regulär, wenn für sie einer der folgenden Punkte gilt:
 
 \begin{itemize}
 \item \begin{itemize}Verankerung
 \item \(L = {a}\) mit \(a\in\Sigma^*\) oder
 \item \(L = \varnothing \)
 \end{itemize}
-\item \begin{itemize}Induktion: Seien \(L_1\), \(L_2\) reguläre Sprachen
+\item \begin{itemize}Induktion: Seien \(L_1\), \(L_2\) reguläre Sprachen.
       \item \(L = L_1 \cdot L_2\) oder
       \item \(L = L_1 \cup L_2\) oder
       \item \(L = L_1^*\)
@@ -103,7 +103,7 @@ Beispiel:
 \(\Sigma = \{a,b\}\)
 	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
 		{\parbox{\textwidth}{\begin{itemize}
-		\item \(L_1 = \{w| w \in \Sigma^*, w \mbox{w besteht aus einer graden Anzahl $a$s}\)
+		\item \(L_1 = \{w| w \in \Sigma^*, w \mbox{w besteht aus einer geraden Anzahl $a$s}\)
 		\item \(L_2 =\{w| w \in \Sigma^*, w \mbox{w enthält gleich viele $a$s und $b$s.}\)		
 		\end{itemize}}
 	}
@@ -112,7 +112,7 @@ Beispiel:
 
 \subsection{Deterministische endliche Automaten}
 \begin{frame}
-\frametitle{Deterministische Endliche Automaten}
+\frametitle{Deterministische endliche Automaten}
         Ein deterministischer endlicher Automat $M$ ist ein 5-Tupel
         \[
         M= (Q,\Sigma,\delta,S,F).
@@ -172,7 +172,7 @@ Beispiel:
 \begin{frame}
 	\begin{enumerate}
 	\setcounter{enumi}{2}
-	\item Aufgabe: Konstruiere einen DEA der alle durch 5 teilbaren Zahlen akzeptiert. Als Eingabe erhält der Automat dabei die Zahl in ihrer binären Darstellung. Also ist $\Sigma = \{0, 1\}$. Z.B. soll Automat $10_{10} = 1010_{2}$ akzeptieren, aber $7_{10} = 111_{2}$ ablehnen.
+	\item Aufgabe: Konstruiere einen DEA, der alle durch 5 teilbaren Zahlen akzeptiert. Als Eingabe erhält der Automat dabei die Zahl in ihrer binären Darstellung. Also ist $\Sigma = \{0, 1\}$. Z.B. soll Automat $10_{10} = 1010_{2}$ akzeptieren, aber $7_{10} = 111_{2}$ ablehnen.
 	\pause \\[10pt]
 	Tip: Restklassen als Zustände modellieren
 	\end{enumerate}
@@ -193,7 +193,7 @@ Beispiel:
 \end{frame}
 \subsection{Nichtdeterministische endliche Automaten}
 \begin{frame}
-\frametitle{Nichtdeterministische Endliche Automaten}
+\frametitle{Nichtdeterministische endliche Automaten}
         Ein nichtdeterministischer endlicher Automat $M$ ist ein 5-Tupel
         \[
         M= (Q,\Sigma,\delta,S,F).
@@ -250,7 +250,7 @@ Beispiel:
 \subsubsection{Potenzmengenkonstruktion}
 \frame{
 \frametitle{Potenzmengenkonstruktion}
-Jeder nichtdeterministische endliche Automat hat einen äquivalenten deterministischen endlichen Automat.
+Zu jedem nichtdeterministischen endlichen Automaten existiert ein äquivalenter deterministischer endlicher Automat.
  \begin{figure}[H]
  \begin{center}
  \begin{tikzpicture}[node distance=1.7cm]
@@ -319,7 +319,7 @@ Ein \textcolor{red}{neuer Zustand} entsteht, wenn man von einem alten Zustand du
 }
 \frame{
 \frametitle{Potenzmengenkonstruktion}
-Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen die einen Endzustand enthalten, sind wiederum im neuen Automaten Endzustände
+Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen Endzustand enthalten, sind wiederum im neuen Automaten Endzustände.
 \begin{figure}[H]
 \begin{center}
  \begin{tikzpicture}[node distance=1.7cm]
@@ -417,7 +417,7 @@ DEA. Geben Sie hierbei die Übergangsfunktion tabellarisch an.
 \end{frame}
 \begin{frame}	
 \frametitle{Aufgaben zu \(\varepsilon\)-Übergängen}
-Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinführenden und keine von $q_f$ ausgehenden Übergänge gibt. Beschreiben Sie für jede der folgenden Modifikationen von A die akzeptierte Sprache als Modifikation von $L=L(A)$:
+Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart, dass es keine zu $s$ hinführenden und keine von $q_f$ ausgehenden Übergänge gibt. Beschreiben Sie für jede der folgenden Modifikationen von A die akzeptierte Sprache als Modifikation von $L=L(A)$:
 \begin{enumerate}
 \item Der Automat, der aus A konstruiert wird, indem $\varepsilon$-Übergänge von $s$ zu jedem Zustand hinzugefügt werden, der von $s$ aus auf einem Pfad erreichbar ist, dessen Beschriftungen sowohl Symbole aus $\Sigma$ als auch $\varepsilon$ enthalten können.
 \item Der Automat, der aus A konstruiert wird, indem von jedem Zustand $\varepsilon$-Übergänge nach $q_f$ hinzugefügt werden, von dem aus $q_f$ auf irgendeinem Pfad erreichbar ist.
@@ -429,13 +429,13 @@ Sei $A=(Q,\Sigma, \delta, s, \{q_f\})$ ein NEA, derart dass es keine zu $s$ hinf
 \subsection{Konstruktion eines regulären Ausdrucks}
 \begin{frame}
 \frametitle{Konstruktion eines RA aus einem DEA}
-Wir wissen, jeder DEA hat einen Regulären Ausdruck, der genau die Sprache beschreibt, die der Automat akzeptiert, wie konstruiert man nun diesen RA aus dem DEA?\\[0.6cm]
+Wir wissen: Zu jedem DEA gibt es einen regulären Ausdruck, der genau die Sprache beschreibt, die der Automat akzeptiert. Wie konstruiert man nun diesen RA aus dem DEA?\\[0.6cm]
 \textbf{Idee:} Betrachte die Sprachen $L_{q_r,i,q_t}$, definiert als \( w \in \Sigma^*\) mit $w$ überführt $q_r$ in $q_t$ unter Benutzung der Zwischenzustände $\{q_1,\ldots,q_i\}$
 \begin{itemize}
 \item Es ist $L = \cup_{f\in F} L_{s,n,f}$
 \item Es ist weiterhin $L_{q_r,i+1,q_t} = L_{q_r,i,q_t} \cup (L_{q_r,i,q_{i+1}}(L_{q_{i+1},i,q_{i+1}})^*L_{q_{i+1},i,q_t})$
-\item Letztlich ist: $L_{q_r, 0, q_t}$ immer regulär, das sind die Zeichen mit denen man ohne weitere Zustände zu verwenden von $q_r$ nach $q_t$ kommt (sowie $\varepsilon$ falls $r = t$).
-\item Unter Benutzung dieser Punkte, kann man nun einen Regulären Ausdruck zu einem DEA Konstruieren.
+\item Letztlich ist $L_{q_r, 0, q_t}$ immer regulär, das sind die Zeichen mit denen man von $q_r$ nach $q_t$ kommt, ohne weitere Zustände zu verwenden (sowie $\varepsilon$ falls $r = t$).
+\item Unter Benutzung dieser Punkte kann man nun einen Regulären Ausdruck zu einem DEA Konstruieren.
 \end{itemize}
 \end{frame}
 \begin{frame}
@@ -512,19 +512,19 @@ reguläre Sprache, die folgender deterministische endliche Automat erkennt:
 \begin{frame}
 \frametitle{Pumping Lemma}
 \begin{exampleblock}{Pumping Lemma}
-Sei $L$ eine reguläre Sprache, dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx$$ existiert, so dass folgende Eigenschaften erfüllt sind:
+Sei $L$ eine reguläre Sprache. Dann existiert eine Zahl $n \in \mathbb{N}$, so dass für jedes Wort $w \in L$ mit $\left|w \right| > n$ eine Darstellung $$w = uvx$$ existiert, so dass folgende Eigenschaften erfüllt sind:
 
 \begin{enumerate}
 \item $v \neq \varepsilon$ 
 \item $\left|uv\right| \leq n$ 
+\item Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{enumerate}
-So folgt: Für alle $i \in \mathbb{N}_0$ gilt: $uv^ix \in L$
 \end{exampleblock}
 \end{frame}
 \begin{frame}
 \frametitle{Pumping Lemma: Übersicht}
 \begin{itemize}
-\item Für jede Reguläre Sprache gilt das Pumping-Lemma, nicht jede Sprache für die das Pumping-Lemma gilt ist regulär!
+\item Jede reguläre Sprache erfüllt das Pumping Lemma. Aber: Nicht jede Sprache, die das Pumping Lemma erfüllt, ist regulär!
 \item In der Übung wird üblicherweise die Kontraposition des Pumping-Lemmas verwendet. Man zeigt für eine Sprache, dass das Pumping-Lemma \emph{nicht} erfüllt ist, und daraus folgt, dass diese Sprache \emph{nicht} regulär sein kann.
 \begin{itemize}
 \item Konkret: Finden wir für \emph{jedes} $n$ \emph{ein} $w$ mit $\left|w\right| > n$, so dass für \emph{jede} Darstellung $w = uvx$ mit $v \neq \varepsilon$ sowie $\left|uv\right| \leq n$, ein $i \in \mathbb{N}_0$ mit $uv^ix \notin L$, dann ist $L$ nicht regulär.
@@ -629,7 +629,7 @@ Nein!
  \end{block}
 \begin{block}{Vorgehen}
  \begin{enumerate}
-  \item Tiefensuche durchführen um nicht erreichbare Zustände zu finden.
+  \item Tiefensuche durchführen, um nicht erreichbare Zustände zu finden.
   \item Diese entfernen.
   \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden.
  \end{enumerate}
@@ -690,13 +690,13 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
  \frametitle{Konstruktion der Äquivalenzklassen}
  \begin{block}{}
   \begin{enumerate}
-   \item Fasse alle Zustände $q_i \in Q$ in eine Klasse zusammen.
+   \item Fasse alle Zustände $q_i \in Q$ in einer Klasse zusammen.
    \item $\varepsilon$ trennt Zustände aus $F$ von denen aus $Q \backslash F$
    \item Für Zustandspaare $p, q$ in einer Klasse und
    Worte $w\in \Sigma^*$ mit wachsender Länge: 
     \begin{enumerate}
-    \item falls $[\delta(p, w)] != [\delta(q, w)]$ trenne die Zustände $q$ und $p$. (w ist Zeuge)
-    \item breche ab falls sich für eine Wortlänge keine weiteren Zeugen finden.
+    \item Falls $[\delta(p, w)] != [\delta(q, w)]$ trenne die Zustände $q$ und $p$. (w ist Zeuge)
+    \item Breche ab, falls sich für eine Wortlänge keine weiteren Zeugen finden.
     \end{enumerate}
   \end{enumerate}
  \end{block}
@@ -918,13 +918,13 @@ Der Speicher der Registermaschine ist unendlich und eindeutig adressierbar.
 \subsection{Turingmaschine}
 \begin{frame}
 \frametitle{Turingmaschine}
-Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich um damit Beweise zu führen.
-Daher ist ein abstrakteres Modell hilfreich \\
+Eine Registermaschine ist zwar physikalischen Rechnern ähnlich, aber unhandlich, um Beweise zu führen.
+Daher ist ein abstrakteres Modell hilfreich. \\
 $\rightarrow$ Turingmaschine.
 \pause
 \begin{block}{Turingmaschine}
 Die Turingmaschine besteht aus einem beidseitig \emph{unendlichen} Eingabe- und Rechenband
-mit einem freibeweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kontrolle gesteuert wird. 
+mit einem frei beweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kontrolle gesteuert wird. 
 \end{block}
 \end{frame}
 \begin{frame}
@@ -984,7 +984,7 @@ Die Turingmaschine soll folgende Alphabete verwenden: $\Sigma = \{{\tt 1}\},
 \Gamma = \Sigma \cup \{{\tt 0}\}$.  Insbesondere ist also ${\tt 0}$ das
 Blanksymbol.
 
-Welche Konfigurationen durchläuft die Maschine, wenn Sie auf dem leeren Band
+Welche Konfigurationen durchläuft die Maschine, wenn sie auf dem leeren Band
 gestartet wird?  Welche Konfigurationen durchläuft die Maschine bei Eingabe
 des Wortes {\tt 101}?
 \end{frame}
@@ -998,12 +998,12 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
  \frametitle{Definitionen zur TM (Vorlesung)}
  \begin{enumerate}
   \item Eine TM \emph{akzeptiert} eine Eingabe $w \in \Sigma^*$, wenn sie nach Lesen von $w$ in einem Zustand aus $F$ stoppt.
-  \item Sie \emph{akzeptiert} eine Sprache $L \subseteq \Sigma^*$ genau dann, wenn sie ausschließlich Wörter $w$ aus $L$ als Eingabe akzeptiert.
+  \item Sie \emph{akzeptiert} eine Sprache $L \subseteq \Sigma^*$ genau dann, wenn sie genau die Wörter $w$ aus $L$ als Eingabe akzeptiert.
   \item Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv} oder \emph{entscheidbar}, wenn es eine Turingmaschine gibt, die auf allen Eingaben stoppt und
 	ein Wort $w \in \Sigma^*$ genau dann akzeptiert, wenn $w \in L$ gilt.
   \item Eine Sprache $L \subseteq \Sigma^*$ heißt \emph{rekursiv-aufzählbar} oder \emph{semi-entscheidbar}, wenn es eine Turingmaschine gibt, 
 	die genau $w$ genau dann akzeptiert, wenn $w \in L$ gilt. Das Verhalten der Turingmaschine für Eingaben $w \not\in L$ ist damit nicht definiert.
-	Sie stoppt entweder nicht in einem Endzustand oder aber stoppt garnicht.
+	Sie stoppt entweder nicht in einem Endzustand oder aber stoppt gar nicht.
  \end{enumerate}
 \end{frame}
 
@@ -1056,7 +1056,7 @@ getrennte Binärworte aus $\{0,1\}^*$ addiert.
 Jede Turingmaschine lässt sich eindeutig als Zahl kodieren. Eine solche Kodierung einer Turingmaschine nennen wir eine Gödelnummer dieser Turingmaschine. Wir vereinbaren weiterhin, dass alle gemäß unserer Kodierung ungültigen Gödelnummern einer TM zugeordnet werden, die alle Eingaben ablehnt.
 \end{block}
 \begin{block}{Universelle Turingmaschine}
-Es existieren Turingmaschinen, die jede andere Turingmaschine bei Angabe der Entsprechenden Gödelnummer (also einer Kodierung), simulieren können. Diese TM erhält als Eingabe die Kodierung einer TM sowie eine Eingabe für die zu simulierende TM, und gibt die Ausgabe der simulierten TM aus.
+Es existieren Turingmaschinen, die jede andere Turingmaschine bei Angabe der entsprechenden Gödelnummer (also einer Kodierung) simulieren können. Diese TM erhält als Eingabe die Kodierung einer TM sowie eine Eingabe für die zu simulierende TM, und gibt die Ausgabe der simulierten TM aus.
 \end{block}
 \end{frame}
 
@@ -1104,7 +1104,7 @@ dann $L$ entscheidbar ist.
 \begin{frame}
 \frametitle{Erweiterungen von Turingmaschinen}
 \begin{block}{Erweiterungen}
-Es gibt mehrere, zu Turingmaschinen (bzgl. Berechenbarkeit) äquivalente Berechnungsmodelle, die der Turingmaschine sehr ähnlich sind. Man spricht hier von Erweiterungen von Turingmaschinen. Diese verwendet man gerne in z.B. Beweisen, da sie oft Übersichtlicher sind.
+Es gibt mehrere zu Turingmaschinen (bzgl. Berechenbarkeit) äquivalente Berechnungsmodelle, die der Turingmaschine sehr ähnlich sind. Man spricht hier von Erweiterungen von Turingmaschinen. Diese verwendet man gerne in z.B. Beweisen, da sie oft Übersichtlicher sind.
 \end{block}
 \end{frame}
 % Mehrkopf
@@ -1199,7 +1199,7 @@ $$ \delta: Q \times \Gamma \times \{1, \ldots, n\} \rightarrow Q \times \Gamma \
 \end{tikzpicture}
 \end{center}
 \end{figure}
-Eine Mehrdimensionale Turingmaschine hat ein Mehrdimensionales Band, der Kopf kann sich dann in allen verfügbaren Dimensionen bewegen.
+Eine mehrdimensionale Turingmaschine hat ein mehrdimensionales Band, der Kopf kann sich dann in allen verfügbaren Dimensionen bewegen.
 \begin{block}{Änderungen in der Definition (für Dimension 2)}
 $$ \delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \{L,N,R,U,D\}$$
 \end{block}
@@ -1240,15 +1240,15 @@ Turingmaschine mit Zeitaufwand $O(T^2(n))$ simuliert werden kann.\\
 \frametitle{Satz von Rice}
 Der Satz von Rice sagt aus, dass es unmöglich ist, eine nichttriviale Eigenschaft von Turingmaschinen algorithmisch zu entscheiden.
 \begin{block}{Formale Version}
-Es sei R die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
+Es sei $R$ die Klasse aller Turing-berechenbaren Funktionen und $S$ eine beliebige nichttriviale (das bedeutet $S \neq \emptyset$ und $S \neq R$) Teilmenge davon. Dann ist die Sprache
 $$ C_S = \{ i |\text{ die von $M_i$ berechnete Funktion liegt in $S$} \} $$
-Unentscheidbar. 
+unentscheidbar. 
 \end{block}
 \end{frame}
 % Beispiel
 \begin{frame}
 \frametitle{Beispiel}
-Die Klasse aller Programme die etwas auf einem Rechner tun, das der Benutzer nicht möchte (das ist eine Teilmenge der Turingberechenbaren Funktionen) ist unentscheidbar. Daraus folgt, dass es keinen perfekten Virenscanner geben kann!
+Die Klasse aller Programme, die etwas auf einem Rechner tun, das der Benutzer nicht möchte (das ist eine Teilmenge der turing-berechenbaren Funktionen) ist unentscheidbar. Daraus folgt, dass es keinen perfekten Virenscanner geben kann!
 \end{frame}
 
 % Aufgabe
@@ -1256,9 +1256,9 @@ Die Klasse aller Programme die etwas auf einem Rechner tun, das der Benutzer nic
 \frametitle{Aufgabe}
 Kann man die Entscheidbarkeit der folgenden Mengen mithilfe des Satzes von Rice bestimmen?
 \begin{itemize}
-\item Alle Turingmaschinen die nur $0$ aufs Band Schreiben.
-\item Alle Turingmaschinen die im ersten Schritt genau eine $0$ aufs Band Schreiben und im zweiten Schritt anhalten. 
-\item Alle Turingmaschinen die überhaupt etwas auf das Band schreiben.
+\item Alle Turingmaschinen, die nur $0$ aufs Band schreiben.
+\item Alle Turingmaschinen, die im ersten Schritt genau eine $0$ aufs Band schreiben und im zweiten Schritt anhalten. 
+\item Alle Turingmaschinen, die überhaupt etwas auf das Band schreiben.
 \end{itemize}
 \end{frame}
 
@@ -1324,7 +1324,7 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
 \begin{frame}
  \frametitle{Entscheidungsproblem}
  \begin{block}{Definition}
-  Ein Entscheidungsproblem ist ein Problem, bei dem die Lösung aus ``Ja'' oder ``Nein'' besteht. 
+  Ein Entscheidungsproblem ist ein Problem, bei dem die Lösung ``Ja'' oder ``Nein'' lautet. 
   Entscheidungsprobleme lassen sich gut auf Sprachen abbilden.
  \end{block}
 \end{frame}
@@ -1352,7 +1352,7 @@ $ I_1 = $(2,4,3,4,4,2,1,2,4,3,4,3,4,4,3,4,4,2,1,4,\\
   \item Zunächst mit binärer Suche das maximale k herausfinden.
   \item Eine Formplatzierung festlegen, danach vorherigen Schritt wiederholen. Wenn sich das k gesenkt hat, war die Platzierung falsch. 
   Wenn nicht, war sie richtig
-  \item Wiederhole bis alle Formen platziert sind.
+  \item Wiederhole, bis alle Formen platziert sind.
  \end{enumerate}
 \end{block}
 \end{frame}
@@ -1395,7 +1395,7 @@ Formulieren Sie ein zu Ihrem Optimierungsproblem gehörendes Entscheidungsproble
 \begin{frame}
  \frametitle{Kodierungsschemata (VL)}
  \begin{block}{Definition Kodierungsschema}
- Ein \emph{Kodierungsschema} s ordnet jedem Problembeispiel eines Problems eine Zeichenkette oder Kodierung über einem Alphabet $\Sigma$ zu. 
+ Ein \emph{Kodierungsschema} $s$ ordnet jedem Problembeispiel eines Problems eine Zeichenkette oder Kodierung über einem Alphabet $\Sigma$ zu. 
  Die Inputlänge eines Problembeispiels ist die Anzahl der Symbole seiner Kodierung.
  Dabei gibt es natürliche verschiedene Kodierungsschemata für ein bestimmtes Problem.
  \end{block}
@@ -1424,7 +1424,7 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
 \begin{frame}
 \frametitle{Kodierung von TUT}
  \begin{block}{Wiederholung: TUT}
-  Gegeben seien eine Tutoriumsliste mit m Tutorien und Tutoriumswahlen von n Studenten. Jedes Tutorium kann nur l Teilnehmer haben.
+  Gegeben seien eine Tutoriumsliste mit $m$ Tutorien und Tutoriumswahlen von $n$ Studenten. Jedes Tutorium kann nur $l$ Teilnehmer haben.
  Das Entscheidungsproblem \textit{TUT} besteht darin, zu entscheiden, ob alle Studenten ihr Wunschtutorium bekommen können.
  \end{block}
  \begin{block}{Überlegung}
@@ -1432,7 +1432,7 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
  \end{block}
  \pause
  \begin{block}{Mögliche Kodierung}
- $m\#n\#l$ gefolgt von $\#i\#j \mbox{ für } 1 \leq i \leq n$, falls Teilnehmer i Tutorium j gewählt hat.
+ $m\#n\#l$ gefolgt von $\#i\#j \mbox{ für } 1 \leq i \leq n$, falls Teilnehmer $i$ Tutorium $j$ gewählt hat.
  \end{block}
 \end{frame}
 
@@ -1479,7 +1479,7 @@ Die Klasse $\mathcal{P}$ ist definiert als die Menge aller Sprachen, die von ein
 
 \begin{frame}
 \frametitle{Beispiel}
-\textbf{Anmerkung:} Da eine RAM Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.\\[10pt]
+\textbf{Anmerkung:} Da eine RAM-Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.\\[10pt]
 Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\[6pt]
 \textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$
 \end{frame}
@@ -1488,9 +1488,9 @@ Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit 
 \frametitle{Sind folgende Sprachen in $\mathcal{P}$?}
 \begin{itemize}
 \item Die Wörter der deutschen Sprache
-\item Die ungraden Zahlen
+\item Die ungeraden Zahlen
 \item Eine reguläre Sprache $L$
-\item Die PCPs die eine Lösung haben
+\item Die PCPs, die eine Lösung haben
 \item Die unär kodierten Primzahlen
 \item Die binär kodierten Primzahlen
 \end{itemize}
@@ -1513,14 +1513,14 @@ Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer d
  Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt,
  danach verfährt die Maschine wie eine normale TM.
  Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt,
- sodass der deterministische Anteil der Machine das Wort akzeptiert.
+ sodass der deterministische Anteil der Maschine das Wort akzeptiert.
 \end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen: Anmerkung}
 Es gibt weitere dazu äquivalente Definitionen von NDTMs:
- Man kann auch analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren,
- diese akzeptiert dann ebenfalls analog wenn ein akzeptierender Pfad existiert.\\
+ Man kann auch, analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren,
+ diese akzeptiert dann ebenfalls analog, wenn ein akzeptierender Pfad existiert.\\
 \end{frame}
 % NP als Klasse
 
@@ -1531,15 +1531,15 @@ Es gibt weitere dazu äquivalente Definitionen von NDTMs:
 
 $\mathcal{NP}$ ist (analog zu $\mathcal{P}$) die Klasse aller Sprachen die von einer nichtdeterministischen Turingmaschine in Polyzeit erkannt werden.
 \end{block}\vspace{1cm}
-\textbf{Anmerkung}: Die Frage ob $\mathcal{P} = \mathcal{NP}$ oder nicht ist ein großes, offenes Problem.
+\textbf{Anmerkung}: Die Frage, ob $\mathcal{P} = \mathcal{NP}$ gilt oder nicht, ist ein großes, offenes Problem.
 \end{frame}
 
 \begin{frame}
 \frametitle{Grundidee: $\mathcal{NP}$-Entscheider}
-Üblicherweise geht eine TM die ein Problem aus $\mathcal{NP}$ entscheidet folgendermaßen vor: 
+Üblicherweise geht eine TM, die ein Problem aus $\mathcal{NP}$ entscheidet, folgendermaßen vor: 
 \begin{enumerate}
-\item Rate Sogenannten "Zeugen" für $x \in L$ (Nichtdeterministisch)
-\item Überprüfe ob Zeuge korrekt. (in Polyzeit)
+\item Rate sogenannten "Zeugen" für $x \in L$ (nichtdeterministisch)
+\item Überprüfe, ob Zeuge korrekt. (in Polyzeit)
 \item Falls ja, halte mit Ausgabe $x \in L$
 \end{enumerate}
 Man spricht daher auch von den \emph{effizient verifizierbaren} Entscheidungsproblemen.
@@ -1563,21 +1563,21 @@ Ist $L_{10}^c$ in $\mathcal{NP}$? Begründen Sie gegebenenfalls, warum $L_{10}^c
 \begin{block}{Universelle Sprache (Vorlesung)}
 Die Universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
 \end{block}
-Also: Die Menge aller Wörter $wv$ so dass $T_w$ das Wort $v$ akzeptiert und hält.
+Also: Die Menge aller Wörter $wv$, so dass $T_w$ das Wort $v$ akzeptiert und hält.
 \end{frame}
 
 \begin{frame}
 \frametitle{Unentscheidbarkeit ohne Rice}
 \begin{block}{Universelle Sprache (Vorlesung)}
-Die Universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
+Die universelle Sprache ist definiert als: $L_u := \{wv | v \in L(T_w)\}$
 \end{block}
 \begin{block}{Erinnerung: Diagonalsprache}
 Die Diagonalsprache $L_d$ ist definiert als: $L_d := \mathcal{M}_i$ akzeptiert $w_i$ nicht
 \end{block}
 Um zu zeigen, dass $L_u$ unentscheidbar ist, wollen wir wie folgt vorgehen: Wie nehmen an wir könnten $L_u$ entscheiden und zeigen, dass wir unter dieser Voraussetzung auch $L_d^c$ entscheiden können.
 \begin{itemize}
-\item Annahme: Es existierte eine TM $\mathcal{M}$, die $L_u$ Entscheiden kann.
-\item Für eine Instanz aus $L_d^c$, berechne $w_i$ und übergebe $\mathcal{M}$ das Wort: $<M_i>w_i$
+\item Annahme: Es existierte eine TM $\mathcal{M}$, die $L_u$ entscheiden kann.
+\item Für eine Instanz aus $L_d^c$, berechne $w_i$ und übergib $\mathcal{M}$ das Wort: $<M_i>w_i$
 \item Gebe das Ergebnis von $\mathcal{M}$ aus
 \end{itemize}
 \end{frame}
@@ -1589,11 +1589,11 @@ Eine polynomielle Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist e
 $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
 \begin{enumerate}
 \item Es existiert eine deterministische Turing-Maschine, die in polynomieller Zeit $f$ berechnet
-\item für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\item Für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
 \end{enumerate}
-Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomial transformierbar in (reduzierbar auf) $L_2$ ).
+Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
 \end{block}
-\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt kann man sich folgerndermaßen  merken:
+\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt, kann man sich folgerndermaßen  merken:
 $L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
 \end{frame}
 
@@ -1612,9 +1612,9 @@ Eine Sprache $L_1$ ist $\mathcal{NP}$-schwer gdw.
 % Polyreduktion ist Transitiv, daher ist NPC cool
 \begin{frame}
 \frametitle{Transitivität von Polyreduktionen und $\mathcal{NP}$}
-Polynomiale Transformationen sind transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$ dann gilt auch $L_1 \propto L_3$.\\[8pt]
-Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man sprich auch davon, $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert zu haben.\\[8pt]
-Gegeben eine Sprache $L_N$, von der wir wissen das sie $\mathcal{NP}$-schwer ist, was wäre ein möglicher Ansatz um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Schwere zu beweisen?\\
+Polynomielle Transformationen sind transitiv, d.h. wenn $L_1 \propto L_2$ und $L_2 \propto L_3$, dann gilt auch $L_1 \propto L_3$.\\[8pt]
+Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man spricht auch davon, $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert zu haben.\\[8pt]
+Gegeben eine Sprache $L_N$, von der wir wissen, dass sie $\mathcal{NP}$-schwer ist, was wäre ein möglicher Ansatz, um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Schwere zu beweisen?\\
 \pause
 Man zeigt $L_N \propto L_X$
 \end{frame}
@@ -1713,7 +1713,7 @@ und wir suchen nach einer $CLIQUE$ der Größe $n$.\\
 \end{frame}
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
-Wenn also eine $n-CLIQUE$ existiert, so heißt dies, wir haben $n$ erfüllbare Literale, die alle in jeweils unterschiedlichen Formeln stehen (Da ja alle untereinander verbunden sind). Das liefert uns eine erfüllende Wahrheitsbelegung. Eine $n$-$CLIQUE$ existiert also genau dann wenn es für die $3SAT$ Instanz eine erfüllende Wahrheitsbelegung gibt.\\
+Wenn also eine $n-CLIQUE$ existiert, so heißt dies, dass wir $n$ erfüllbare Literale haben, die alle in jeweils unterschiedlichen Formeln stehen (da ja alle in einer Formel untereinander verbunden sind). Das liefert uns eine erfüllende Wahrheitsbelegung. Eine $n$-$CLIQUE$ existiert also genau dann wenn es für die $3SAT$ Instanz eine erfüllende Wahrheitsbelegung gibt.\\
 Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt, ist also $CLIQUE$ $\mathcal{NP}$-Vollständig.
 \end{frame}
 
@@ -1735,7 +1735,7 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung
 \end{block}
 \begin{itemize}
 \item \emph{Das} Standardproblem.
-\item Es gibt viele hochoptimierte "SAT-Solver". Steht man in der Praxis vor einem $\mathcal{NP}$-Problem, kann es sich anbieten die Transformation auf $SAT$ durchzuführen.
+\item Es gibt viele hochoptimierte "SAT-Solver". Steht man in der Praxis vor einem $\mathcal{NP}$-Problem, kann es sich anbieten, die Transformation auf $SAT$ durchzuführen.
 \end{itemize}
 \end{frame}
 \begin{frame}
@@ -1800,7 +1800,7 @@ Betrachte nun die folgende Menge: $U := R \times C \cup R \times V \cup C \times
 Definiere: $S_{ijkl} := \{(r_i,c_j),(r_i,v_l),(c_j,v_l),(b_k,v_l)\} \subset U$.\\[8pt]
 Wird $S_{ijkl}$ in die Lösung aufgenommen, so kodiert dies, dass im Kästchen $s_{ij}$ im Block $b_k$ der Wert $v_l$ steht.\\
 Die Menge $M$ aller $S_{ijkl}$ ist unsere Menge an Teilmengen.\\
-Um zu garantieren das in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v_{l'}$ steht, kann man einfach die $S_{ijkl}$ mit $i = i'$ und $j = j'$ sowie $l \neq l'$ aus $M$ entfernen.
+Um zu garantieren, dass in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v_{l'}$ steht, kann man einfach die $S_{ijkl}$ mit $i = i'$ und $j = j'$ sowie $l \neq l'$ aus $M$ entfernen.
 \end{frame}
 
 \begin{frame}
@@ -1812,7 +1812,7 @@ Um zu garantieren das in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v
  \item Eine Ganzzahl $n$.
 \end{itemize}
 \textbf{Frage:}
-Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente der Teilmenge $n$ ist?
+Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente von $S^*$ gleich $n$ ist?
 \end{block}
 \end{frame}
 %% - PARTITION
@@ -1825,9 +1825,9 @@ Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente der Teilmenge $n$ i
 \end{frame}
 \begin{frame}
 \frametitle{Und viele mehr!}
-Es gibt (sehr) viele Probleme von denen man weiß, dass sie $NP$-Vollständig sind, es gibt ein "Klassisches" Paper von Richard Karp in dem 21 Probleme vorgestellt wurden die großteils recht bekannt sind.\\
+Es gibt (sehr) viele Probleme von denen man weiß, dass sie $NP$-vollständig sind. Es gibt ein "klassisches" Paper von Richard Karp in dem 21 Probleme vorgestellt wurden die großteils recht bekannt sind.\\
 Wer nicht genug bekommen kann, darf in "Introduction to the Theory of Computation" von "Michael Sipser" schauen, dort gibt es sehr viele\\[10pt]
-Es kann durchaus nützlich sein zu wissen, dass ein Problem $\mathcal{NP}$-vollständig ist, dann kann man aufhören nach einem effizienten Algorithmus zu suchen.
+Es kann durchaus nützlich sein zu wissen, dass ein Problem $\mathcal{NP}$-vollständig ist, dann kann man aufhören, nach einem effizienten Algorithmus zu suchen.
 \end{frame}
 
 \begin{frame}
@@ -1854,7 +1854,7 @@ Vollständigkeit des Dreifärbbarkeitsproblems 3-COLOR verwenden.
  \item Eine Anzahl $K$ an Behältern der Größe $b \in \mathbb{N}$ und eine Anzahl $n \in \mathbb{N}$ ''Objekte'' mit den Gewichten $a_1, a_2,\ldots,a_n$.
 \end{itemize}
 \textbf{Frage:}
-Können die Objekte so auf die Behälter verteilt werden, dass keiner der Behälter Objekte enthält deren Gewicht in der Summe $b$ übersteigt?
+Können die Objekte so auf die Behälter verteilt werden, dass keiner der Behälter Objekte enthält, deren Gewicht in der Summe $b$ übersteigt?
 \end{block}
 \end{frame}
 
@@ -1955,10 +1955,10 @@ Für welche $C$ ist $I$ eine Ja-Instanz?
 
 \begin{frame}
 \frametitle{Aufgabe}
-Jedes Jahr in der Vorweihnachtszeit steht die badische Hausfrau vor dem folgenden PLÄTZCHENDOSENPROBLEM(PDP):
+Jedes Jahr in der Vorweihnachtszeit steht die badische Hausfrau vor dem folgenden PLÄTZCHENDOSENPROBLEM (PDP):
 
 \hspace{1cm}\parbox{0.8\textwidth}{Das während der Adventszeit liebevoll hergestellte Weihnachtsgebäck soll bis zum Verzehr in Plätzchendosen gelagert werden.
-Es stehe eine bestimmte Anzahl gleichartiger Dosen mit einem gewissen Fassungsvermögen(Volumen) zur Verfügung, und es sei das Volumen jedes Plätzchens bekannt.
+Es stehe eine bestimmte Anzahl gleichartiger Dosen mit einem gewissen Fassungsvermögen (Volumen) zur Verfügung, und es sei das Volumen jedes Plätzchens bekannt.
 
 Können die Plätzchen so auf die Dosen verteilt werden, dass bei allen Dosen der Deckel noch zugeht?}
 \begin{enumerate}
@@ -1971,7 +1971,7 @@ Können die Plätzchen so auf die Dosen verteilt werden, dass bei allen Dosen de
 Ein Vertex-Cover eines Graphen $G=(V,E)$ ist eine Teilmenge $V'\subseteq V$, so
 dass jede Kante aus $E$ zu mindestens einem Knoten aus $V'$ inzident ist.
 
-Das Problem \textsc{VERTEX COVER} besteht nun darin zu entscheiden, ob es
+Das Problem \textsc{VERTEX COVER} besteht nun darin, zu entscheiden, ob es
 für einen Graphen $G=(V,E)$ und einen Parameter $k \leq |V|$ ein Vertex-Cover
 der Größe höchstens $k$ gibt.
 
@@ -1986,7 +1986,7 @@ Zeige, dass \textsc{VERTEX COVER} $\cal{NP}$-vollständig ist.
 Zu einer Sprache $L \subseteq \Sigma^*$ definieren wir $co-L$ als das Komplement der Sprache, also
 $\mbox{co-}L := \Sigma^*\backslash L$
 \end{block}
-Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "$co$" Klasse (wie z.B. $co-P$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse).\\[8pt]
+Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "$co$"-Klasse (wie z.B. $co-P$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
 Beispiele: $co-3SAT$: Die Aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\
 $co-P = P$\\[8pt]
 Aufgabe: Beschreibe $co$-$SUBSET-SUM$
@@ -2009,7 +2009,7 @@ Aufgabe: Beschreibe $co$-$SUBSET-SUM$
 $\mathcal{NP}$-Intermediate := $\mathcal{NP} \backslash (\mathcal{NPC} \cup \mathcal{P})$
 \end{block}
 $$ $$ % Yes, I am fully aware of the uglyness involved here
-Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{P}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:\\
+Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{NP}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:\\
 Graphisomorphie, Faktorisieren sowie diskrete Logarithmen.\\
 Aufgrund ihrer Eigenschaften sind diese Probleme in der Kryptographie alle von großer Bedeutung.
 \end{frame}
@@ -2027,9 +2027,9 @@ Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. E
 \begin{frame}
 \frametitle{Pseudopolynomielle Algorithmen}
 \begin{block}{Definition}
-Ein Algorithmus wird pseudopolynimiell genannt, wenn seine Laufzeit ein Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
+Ein Algorithmus wird pseudopolyoimiell genannt, wenn seine Laufzeit ein Polynom im numerischen Wert der Eingabe (und eben nicht der Länge der Eingabe) ist.
 \end{block}
-Ein Problem heißt schwach $\mathcal{NP}$-vollständig, wenn es $\mathcal{NP}$-vollständig ist und ein pseudopolynimieller Algorithmus der das Problem entscheidet existiert.\\
+Ein Problem heißt schwach $\mathcal{NP}$-vollständig, wenn es $\mathcal{NP}$-vollständig ist und ein pseudopolynimieller Algorithmus existiert, der das Problem entscheidet.\\
 Existiert ein solcher Algorithmus nicht, so spricht man von einem stark $\mathcal{NP}$-vollständigen Problem.
 \end{frame}
 
@@ -2037,9 +2037,9 @@ Existiert ein solcher Algorithmus nicht, so spricht man von einem stark $\mathca
 \frametitle{Aufgabe}
 Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
 Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl kodiert. 
-Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ darauf hin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
-Zeigen Sie, dass dieser Algorithmus pseudo-polynomial ist 
-(Geben Sie dazu eine Schranke für die Laufzeit an, die polynomial in der Länge der Eingabe und der größten vorkommenden Zahl ist).
+Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ daraufhin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
+Zeigen Sie, dass dieser Algorithmus pseudopolynomiell ist 
+(Geben Sie dazu eine Schranke für die Laufzeit an, die polynomiell in der Länge der Eingabe und der größten vorkommenden Zahl ist).
 \end{frame}
 
 \subsection{Orakelturingmaschinen}
@@ -2053,13 +2053,13 @@ Kommt die Orakel-TM in den Zustand $q_f$, so wird der Inhalt des Orakelbandes vo
 
 \begin{frame}
 \frametitle{Beispiele}
-Sei $\mathcal{P}^L$, die Klasse aller Entscheidungsprobleme die in Polynomieller Zeit von einer deterministischen Orakel-Turingmaschine mit Orakel für die charakteristische Funktion der Sprache $L$ entschieden werden können.\\
+Sei $\mathcal{P}^L$, die Klasse aller Entscheidungsprobleme, die in polynomieller Zeit von einer deterministischen Orakel-Turingmaschine mit Orakel für die charakteristische Funktion der Sprache $L$ entschieden werden können.\\
 Dann ist
 \begin{itemize}
 \item $SAT \in \mathcal{P}^{SAT}$
 \item $TSP \in \mathcal{P}^{SAT}$ 
 \item $H_0 \in \mathcal{P}^{H_0}$
-\item Trotz ähnlicher Bennenung hat eine Nichtdeterministische Turingmaschine nichts mit Orakelturingmaschinen zu tun!
+\item Trotz ähnlicher Bennenung hat eine nichtdeterministische Turingmaschine nichts mit Orakelturingmaschinen zu tun!
 \end{itemize}
 \end{frame}
 
@@ -2104,7 +2104,7 @@ $$f(x) = \begin{cases}
 \epsilon, & \nexists y \in \Sigma^*\backslash\epsilon : (x,y) \in R\\
 y, & \mbox{sonst, mit beliebigem }y:(x,y) \in R
 \end{cases}$$
-Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er eine Funktion berechnet, die $R_\Pi$ relaisiert.
+Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er eine Funktion berechnet, die $R_\Pi$ realisiert.
 \end{frame}
 
 \begin{frame}
@@ -2112,8 +2112,8 @@ Ein Algorithmus löst das durch $R_\Pi$ beschriebene Suchproblem $\Pi$, wenn er 
 \begin{block}{Definition}
 Seien $R, R'$ Relationen über $\Sigma^*$. Eine Turing-Reduktion $\propto_T$ von $R$ auf $R'$, ist eine Orakel-Turing-Maschine $\mathcal{M}$
 \begin{itemize}
-\item deren Orakel die Relation $R'$ realisiert
-\item die selbst in polynomialer Zeit die Funktion $f$ berechnet, die $R$ realisiert. 
+\item deren Orakel die Relation $R'$ realisiert und
+\item die selbst in polynomieller Zeit die Funktion $f$ berechnet, die $R$ realisiert. 
 \end{itemize}
 \end{block}
 \end{frame}
@@ -2150,7 +2150,7 @@ Seien $R, R'$ Relationen über $\Sigma^*$. Eine Turing-Reduktion $\propto_T$ von
   \end{itemize}
   \end{block}
   \begin{block}{Lösung}  
-  Die \emph{Lösung} der Instanz $I$ eines Aufzählungsproblem $\Pi$ besteht in der Angabe der Kardinalität $|S_\Pi(I)|$ von $\Pi$.
+  Die \emph{Lösung} der Instanz $I$ eines Aufzählungsproblems $\Pi$ besteht in der Angabe der Kardinalität $|S_\Pi(I)|$ von $\Pi$.
  \end{block}
 \end{frame}
 
@@ -2250,17 +2250,17 @@ Frage: Welche Sprachen liegen nicht in CH-0 ?
 \frame{
 \frametitle{CH-0}
 \begin{itemize}
-\item Sprachen die von einer Beliebigen Grammatik erzeugt werden.
+\item Sprachen, die von einer beliebigen Grammatik erzeugt werden.
 \item Genau die Sprachen die DTM \& NTM akzeptieren können
 \end{itemize}
 }
 
 \frame{
 \frametitle{CH-1}
-Kontextsensitive / Längenbeschränkte Sprachen
+Kontextsensitive/längenbeschränkte Sprachen
 \begin{itemize}
-\item Sprachen die von Grammatiken erzeugt werden, deren Ableitungen eine kürzere linke als rechte Seite haben. D.h. Produktionen machen das Wort immer länger.
-\item Genau die Sprachen die von linear beschränken Turingmaschinen erkannt werden (Vorgriff?)
+\item Sprachen, die von Grammatiken erzeugt werden, deren Ableitungen eine kürzere linke als rechte Seite haben. D.h. Produktionen machen das Wort immer länger.
+\item Genau die Sprachen, die von linear beschränken Turingmaschinen erkannt werden (Vorgriff?)
 \end{itemize}
 }
 
@@ -2268,15 +2268,15 @@ Kontextsensitive / Längenbeschränkte Sprachen
 \frametitle{CH-2}
 Kontextfreie Sprachen
 \begin{itemize}
-\item Grammatiken deren Ableitungsregeln auf der Linken Seite immer genau ein Nichtterminalsymbol haben.
-\item Genau die Sprachen die von Kellerautomaten erkannt werden (vorgriff)
+\item Grammatiken, deren Ableitungsregeln auf der linken Seite immer genau ein Nichtterminalsymbol haben.
+\item Genau die Sprachen, die von Kellerautomaten erkannt werden (Vorgriff)
 \end{itemize}
 }
 
 \frame{
 \frametitle{CH-3}
 \begin{itemize}
-\item Grammatiken deren Ableitungsregeln ausschließlich die folgende Form haben:
+\item Grammatiken, deren Ableitungsregeln ausschließlich die folgende Form haben:
 $$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder } v = aB \mbox{ mit } a \in \sum \mbox{,} B \in V$$
 \item Genau die regulären Sprachen
 \end{itemize}
@@ -2284,14 +2284,14 @@ $$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder }
 
 \frame{
 \frametitle{Probleme}
-Es gibt einige Interesante Probleme, mit deren Entscheidbarkeit, Komplexität bzw Abgeschlossenheit wir uns noch befassen (jeweils für die Klassen)
+Es gibt einige interessante Probleme, mit deren Entscheidbarkeit, Komplexität bzw. Abgeschlossenheit wir uns noch befassen (jeweils für die Klassen)
 \begin{itemize}
 \item Das Wortproblem
 \item Vereinigung
 \item Schnitt
 \item Komplement
 \item Konkatenation
-\item Kleenscher Abschluss (* Operator)
+\item Kleenscher Abschluss (*-Operator)
 \end{itemize}
 }
 
@@ -2309,7 +2309,7 @@ Eine CH-2-Grammatik \textit{G} $= \mathcal{(T,V,S,P) }$ ist in Chomsky-Normalfor
 \item  $A \rightarrow a$
 \end{itemize}
 Wobei gilt $A,B,C\in\mathcal{V}$ und $a \in \mathcal{T}$.
-Um das Leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht mit neuem Startsymbol$S'$ ergänzen mit der Regel $$ S' \rightarrow S \mid \varepsilon $$
+Um das leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht mit neuem Startsymbol$S'$ ergänzen mit der Regel $$ S' \rightarrow S \mid \varepsilon $$
 \end{exampleblock}
 }
 
@@ -2318,7 +2318,7 @@ Um das Leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht m
 \frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
-\item Für alle $\textcolor{red}{a} \in \mathcal{T}$ und für alle Produktionen auf deren rechter Seite $\textcolor{red}{a}$ vorkommt 
+\item Für alle $\textcolor{red}{a} \in \mathcal{T}$ und für alle Produktionen, auf deren rechter Seite $\textcolor{red}{a}$ vorkommt 
 (außer für $V  \rightarrow \textcolor{red}{a}$, mit $V \in\mathcal{V}$),
 wird jedes Vorkommen von $\textcolor{red}{a}$ durch ein \emph{neues} Nichtterminalsymbol $\textcolor{blue}{A}$ ersetzt
 %(und $A$ in die Variablenmenge aufgenommen)
@@ -2456,7 +2456,7 @@ C &\rightarrow c\\
 \setcounter{enumi}{3}
 \item
 Für Produktionen mit einer Variablen rechts werden Zyklen gesucht, 
-für gefundene Zyklen werden alle vorkomnisse aller Variablen des Zykluses durch einen Repräsentanten ausgetauscht. Danach werden triviale Produktionen entfernt.
+für gefundene Zyklen werden alle Vorkommnisse aller Variablen des Zyklus durch einen Repräsentanten ausgetauscht. Danach werden triviale Produktionen entfernt.
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 4a von 4)}
@@ -2502,7 +2502,7 @@ C &\rightarrow c\\
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item
-Sind alle Zyklen beseitigt, werden im letzen schritt alle Regeln die rechts eine einzelne Variable haben durch ``Vorziehen'' der Regeln eliminiert. (Sollte $\varepsilon$ produktion Fehlen, wird diese nun eingefügt.
+Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts eine einzelne Variable haben, durch ``Vorziehen'' der Regeln eliminiert. (Sollte die $\varepsilon$-Produktion fehlen, wird diese nun eingefügt.
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 4b von 4)}
@@ -2556,13 +2556,13 @@ Bestimme eine Grammatik $G'$ für $L(G)$ in Chomsky-Normalform.
 
 \frame{
 \frametitle{CYK Überblick}
-CYK ist ein Algorithmus um das Wortproblem in CH-2 zu lösen. Um den Algorithmus anzuwenden, muss eine Grammatik in Chomsky-Normalform vorliegen.\\
-Grundidee zur Überprüfungen von einem Wort der Länge $n$:
+CYK ist ein Algorithmus, um das Wortproblem in CH-2 zu lösen. Um den Algorithmus anzuwenden, muss eine Grammatik in Chomsky-Normalform vorliegen.\\
+Grundidee zur Überprüfungen eines Wortes der Länge $n$:
 \begin{itemize}
-\item Wir betrachen $V_{i,j} = $ Menge der Nichtterminale aus denen das Teilwort der Position $i$ bis $j$ abgeleitet werden kann
-\item Die Lösung ob $V_{i,j}$ ableitbar ist lässt sich entscheiden durch betrachen aller möglichen $V_{i,k}$ und $V_{k+1,j}$
+\item Wir betrachen $V_{i,j} = $ Menge der Nichtterminale, aus denen das Teilwort der Position $i$ bis $j$ abgeleitet werden kann
+\item Die Lösung ob $V_{i,j}$ ableitbar ist, lässt sich entscheiden durch Betrachten aller möglichen $V_{i,k}$ und $V_{k+1,j}$
 \item $V_{i,i}$ sind trivial
-\item Bottom up lässt sich dadurch $V_{1,n}$ berechnen
+\item Bottom-up lässt sich dadurch $V_{1,n}$ berechnen
 \item Ist $S \in V_{i,n}$, so lässt sich das Wort ableiten.
 \end{itemize}
 }
@@ -2635,8 +2635,8 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 \item Jeder Knoten im Ableitungsbaum (wie wir ihn in CYK sehen) steht für ein Nichtterminalsymbol
 \item Ab einer gewissen Höhe des Baumes (bzw. Länge des Wortes) muss ein Nichtterminal im Baum mehrmals in einer Reihe vorkommen
 \item Man kann also aus einem Nichtterminalsymbol dasselbe Symbol wieder ableiten
-\item Da das Wort durch jede Ableitung (außer zu Terminalsymbolen) länger wird, gibt es eine ``schleife'' beim Ableiten
-\item Diese Schleife kann man also ``Pumpen'', also beliebig oft (oder auch garnicht) durchlaufen
+\item Da das Wort durch jede Ableitung (außer zu Terminalsymbolen) länger wird, gibt es eine ``Schleife'' beim Ableiten
+\item Diese Schleife kann man also ``pumpen'', also beliebig oft (oder auch gar nicht) durchlaufen
 \end{itemize}
 \end{frame}
 
@@ -2644,8 +2644,8 @@ Wenn wir in $z$ mindestens $n$ Buchstaben markieren, so lässt sich $z$ so als $
 \frametitle{Zu Ogden und Pumping ...}
 \begin{itemize}
 \item Anwendung genau wie ``altes'' Pumping Lemma
-\item Wird verwendet um zu zeigen das eine Sprache nicht kontextfrei ist
-\item Dazu: Kontraposition bilden und folgern das Sprache nicht kontextfrei
+\item Wird verwendet, um zu zeigen das eine Sprache nicht kontextfrei ist
+\item Dazu: Kontraposition bilden und folgern, dass Sprache nicht kontextfrei
 \end{itemize}
 \end{frame}
 
@@ -2684,7 +2684,7 @@ Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
 \begin{frame}
 \frametitle{Fallunterscheidung für Teilaufgabe b}
 \begin{itemize}
-        \item Fall 1: $vx$ enthält mindestens einen Buchstaben aus dem ersten $b$ Block. 
+        \item Fall 1: $vx$ enthält mindestens einen Buchstaben aus dem ersten $b$-Block. 
               Dann kann $vx$ keinen Buchstaben aus dem letzten $b$ Block enthalten. 
               Zeige jetzt, dass $uv^0wx^0y$ nicht in $L$ ist: 
               \begin{itemize}
@@ -2693,7 +2693,7 @@ Zeigen Sie, dass folgende Sprachen nicht kontextfrei sind:
                 \item Da $vx$ fehlt, gibt es aber keinen zweiten Block der Form $b^n$ in $uwy$, damit kann $t$ nicht nochmal in $uwy$ vorkommen.
                       Also ist $uwy$ nicht in $L$.
               \end{itemize}
-        \item Fall 2: $vx$ enthält mindestens einen Buchstaben aus dem zweiten $a$ Block. 
+        \item Fall 2: $vx$ enthält mindestens einen Buchstaben aus dem zweiten $a$-Block. 
               Dann kann analog zu Fall 1 argumentiert werden. 
        \end{itemize}
 \end{frame}
@@ -2712,9 +2712,9 @@ sind.
 \begin{frame}
 \frametitle{Zur Greibach-Normalform}
 \begin{itemize}
-\item Weitere Normalform für CH-2 Grammatiken, d.h. jede Grammatik kann in Greibachnormalform gebracht werden
+\item Weitere Normalform für CH-2 Grammatiken, d.h. jede Grammatik kann in Greibach-Normalform gebracht werden
 \item Zur Konstruktion von Kellerautomaten aus Grammatiken
-\item Es kann stärker aber äquivalent verlangt werden, dass auf der rechten Seite höchstens zwei Variablen vorkommen.
+\item Es kann stärker, aber äquivalent, verlangt werden, dass auf der rechten Seite höchstens zwei Variablen vorkommen.
 \end{itemize}
 \end{frame}
 
@@ -2723,14 +2723,14 @@ sind.
 \begin{exampleblock}{Nebenbemerkung}
 Im folgenden stehen Kleinbuchstaben für Terminale, Großbuchstaben für einzelne Nichtterminale und griechische Buchstaben für (eventuell) mehrere Nichtterminale 
 \end{exampleblock}
-Die Grammatik sei zunächst in Chomsky Normalform.
+Die Grammatik sei zunächst in Chomsky-Normalform.
 \end{frame}
 
 \begin{frame}
 \frametitle{Annahmen}
 \begin{block}{Annahmen}
 \begin{itemize}
- \item Wir gehen davon aus, dass Grammatik $G$ in Chomsky-Normalform ist, mit $V = \{A_1 ... A_m \}$ und $\Sigma = \{\alpha_1 ... \alpha_n\}$
+ \item Wir gehen davon aus, dass die Grammatik $G$ in Chomsky-Normalform ist, mit $V = \{A_1 ... A_m \}$ und $\Sigma = \{\alpha_1 ... \alpha_n\}$
  \item Folglich sind alle Regeln von der Form $A_i \rightarrow A_jA_k$ oder $A_i \rightarrow \alpha_j$
 \end{itemize}
 \end{block}
@@ -2745,7 +2745,7 @@ Es gebe die Nichtterminale $\{A_0, \ldots, A_N\}$
 \item für alle $j$ in $1, \ldots, i$
 \begin{enumerate}
 \item Simuliere alle Regeln für $A_j$ bei Produktionen der Form $A_i \rightarrow A_j\alpha$ mit $j < i$ auf der rechten Seite.
-\item für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein (wie siehe nächste Folie).
+\item für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein (wie: siehe nächste Folie).
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
@@ -2767,7 +2767,7 @@ $$B \rightarrow \alpha_1B \mid \ldots \mid \alpha_rB$$
 \begin{frame}
  \frametitle{Schritt 2}
 Gehen nun die Produktionen absteigend nach $k$ sortiert durch und simuliere bei alle Regeln mit $A_k \rightarrow A_j\alpha$ die Produktionen für $A_j$ auf der rechten Seite.\\
-Da alle Regeln die mit einem $A_i$ anfangen der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
+Da alle Regeln, die mit einem $A_i$ anfangen, der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
 \end{frame}
 
 \begin{frame}
@@ -2808,9 +2808,9 @@ Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Auto
 \begin{frame}
 \frametitle{Zu Kellerautomaten}
 \begin{itemize}
-\item Akzeptieren wenn \emph{entweder} der Stack leer ist, \emph{oder} wenn der Automat in einen akzeptierenden Zustand kommt
-\item Sind im allgemeinen Nichtdeterministisch
-\item Man kann Endzustände auch aus der Definition weglassen und alternativ verlangen der Automat akzeptiert genau bei leerem Keller
+\item Akzeptieren, wenn \emph{entweder} der Stack leer ist \emph{oder} wenn der Automat in einen akzeptierenden Zustand kommt
+\item Sind im allgemeinen nichtdeterministisch
+\item Man kann Endzustände auch aus der Definition weglassen und alternativ verlangen, dass der Automat genau bei leerem Keller akzeptiert.
 \item Man kann sogar alle Zustände bis auf einen weglassen und alles in die Kellerbelegung kodieren
 \end{itemize}
 \end{frame}
@@ -2853,13 +2853,13 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 \subsection{Kellerautomat aus Greibach-Normalform}
 \begin{frame}
  \frametitle{Kellerautomat aus Greibach-Normalform}
- \begin{block}{Erinnerung Greibach-Normalform}
+ \begin{block}{Erinnerung: Greibach-Normalform}
   Eine kontextfreie Grammatik ist in \textbf{Greibach-Normalform}, wenn alle Ableitungsregeln von der Form   
   \[ A \rightarrow a\alpha \text{ mit } A \in V\text{,} a\in \Sigma \text{ und } \alpha \in V^*\]
   sind.
  \end{block}
  \pause
- \begin{block}{Erinnerung Übergangsfunktion des Kellerautomaten}
+ \begin{block}{Erinnerung: Übergangsfunktion des Kellerautomaten}
  Die Eingabe enthält einen Zustand, ein $a \in \Sigma \cup \{\varepsilon\}$ und ein Zeichen des Stacks.
  \[\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma \rightarrow 2^{Q \times \Gamma^*}\]
  \vspace{-0.5cm}

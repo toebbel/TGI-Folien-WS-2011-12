@@ -16,7 +16,7 @@
 \subtitle{Tutorium}
 \author{Moritz von Looz, Simon Stroh}
 
-\institute[ITI]{Intitute für Theoretische Informatik}
+\institute[ITI]{Institut für Theoretische Informatik}
 
 \TitleImage[height=\titleimageht]{images/tmaschine.png}
 
@@ -52,7 +52,7 @@
 \begin{frame}
 	\frametitle{Organisatorisches -- Zum Tutorium}
 	\begin{itemize}
-		\item Stoff soll wiederholt werdet
+		\item Stoff soll wiederholt werden
 		\item Dabei Fokus auf Übungsbetrieb
 		\item Fragen/Vorschläge/Anmerkungen willkommen!
 		%\item Wer Tee möchte darf sich bedienen :)
@@ -106,8 +106,8 @@ Beispiel:
 \(\Sigma = \{a,b\}\)
 	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
 		{\parbox{\textwidth}{\begin{itemize}
-		\item \(L_1 = \{w| w \in \Sigma^*, w \mbox{w besteht aus einer geraden Anzahl $a$s}\)
-		\item \(L_2 =\{w| w \in \Sigma^*, w \mbox{w enthält gleich viele $a$s und $b$s.}\)		
+		\item \(L_1 = \{w| w \in \Sigma^*, w \mbox{w besteht aus einer geraden Anzahl $a$s}\}\)
+		\item \(L_2 =\{w| w \in \Sigma^*, w \mbox{w enthält gleich viele $a$s und $b$s.}\}\)		
 		\end{itemize}}
 	}
 	\(L_1\) ist regulär, \(L_2\) nicht.
@@ -188,7 +188,7 @@ Beispiel:
 		\begin{itemize}
 		\item $Q = (q_0, q_1, q_2, q_3, q_4)$\\
 		\item $\Sigma = \{0,1\}$
-		\item $\delta(q_n, c) \rightarrow q_{n \cdot 2 + c\mbox{ mod }5}$ mit $c\in\Sigma$\\
+		\item $\delta(q_n, c) = q_{n \cdot 2 + c\mbox{ mod }5}$ mit $c\in\Sigma$\\
 		\item $S = q_0$\\
 		\item $F = \{q_0\}$
 		\end{itemize}

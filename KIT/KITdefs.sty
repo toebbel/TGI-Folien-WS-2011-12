@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Copyright (C) 2008, 2010,2011 by Klaus Braune <klaus.braune@kit.edu>,
 %% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
 %% 
 %% 
@@ -24,25 +24,68 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \RequirePackage{rcs}
-\RCS $Date: 2010/03/31 15:52:05 $
-\RCS $Revision: 1.0 $
+\RCS $Date: 2011/04/20 11:45:50 $
+\RCS $Revision: 1.2 $
 \ProvidesPackage{KITdefs}
     [\RCSRawDate\space v\RCSRevision\space Common KIT specific definitions]
-
 \RequirePackage{tikz}
-\newcommand{\KIT@name@D}{Karlsruher Institut f\"ur Technologie (KIT)}
-\newcommand{\KIT@name@E}{Karlsruhe Institute of Technology (KIT)}
-\newcommand{\KIT@text@D}{KIT -- Universit\"at des Landes Baden-W\"urttemberg
+\newcommand{\KIT@Name@D}{Karlsruher Institut f\"ur Technologie (KIT)}
+\newcommand{\KIT@Name@E}{Karlsruhe Institute of Technology (KIT)}
+\newcommand{\KIT@Text@D}{KIT -- Universit\"at des Landes Baden-W\"urttemberg
   und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
-\newcommand{\KIT@text@E}{KIT -- University of the State of Baden-Wuerttemberg
-  and National Laboratory of the Helmholtz Association}
+\newcommand{\KIT@Text@E}{KIT -- University of the State of Baden-Wuerttemberg
+  and National Research Center of the Helmholtz Association}
+\gdef\KIT@Street{Kaiserstra\ss{}e 12}
+\gdef\KIT@Place{76131 Karlsruhe}
+\gdef\KIT@CntryD{Deutschland}
+\gdef\KIT@CntryE{Germany}
+\let\KIT@Cntry=\KIT@CntryD
+\let\KIT@Str=\relax
+\expandafter\ifx\csname KIT@State\endcsname\relax\else
+  \newcommand{\Street}[1]{\gdef\KIT@Str{{#1}}}
+\fi
+\let\Strasse=\Street
+\let\KIT@Ort=\relax
+\expandafter\ifx\csname KIT@State\endcsname\relax\else
+  \newcommand{\Place}[1]{\gdef\KIT@Ort{{#1}}}
+\fi
+\let\place=\Place
+\let\Ort=\Place
 \gdef\KIT@Web{www.kit.edu}
 \let\KIT@www=\KIT@Web
 \newcommand{\KITURL}[1]{\gdef\KIT@Web{{#1}}}
-\let\KITWWW=\KITURL
 \let\KIT@WebTxt=\relax
 \gdef\KIT@wtext@D{Web}
 \gdef\KIT@wtext@E{Web}
+\expandafter\ifx\csname KIT@State\endcsname\relax\else
+  \newcommand{\WWW}[1]{\gdef\KIT@PWWW{{#1}}}
+\fi
+\let\KIT@PWWW=\KIT@Web
+\gdef\KIT@EmlDomain{@kit.edu}
+\expandafter\ifx\csname KIT@State\endcsname\relax\else
+  \newcommand{\EmailDomain}[1]{\gdef\KIT@EmlDomain{{#1}}}
+\fi
+\expandafter\ifx\csname KIT@State\endcsname\relax\else
+  \newcommand{\EmailName}[1]{\gdef\KIT@EmlName{{#1}}}
+\fi
+\let\KIT@EmlTxt=\relax
+\AtBeginDocument{%
+  \expandafter\ifx\csname labelitemi\endcsname\relax\else
+    \expandafter\ifx\csname KIT@State\endcsname\relax\else
+      \let\labelitemiv=\labelitemiii
+      \let\labelitemiii=\labelitemii
+      \let\labelitemii=\labelitemi
+      \ifKIT@bw
+        \def\labelitemi{\resizebox{1ex}{1ex}{\KIT@marksymbol[KITblack]}}
+      \else
+        \def\labelitemi{\makebox[.65em][l]{\KIT@mark}}
+      \fi
+      \addtolength{\leftmargini}{.1em}
+      \addtolength{\leftmarginii}{.2em}
+      \addtolength{\leftmarginiii}{.3em}
+      \addtolength{\leftmarginiv}{.4em}
+    \fi
+  \fi}
 \newsavebox{\KIT@titimg}
 \newlength{\KIT@titimgwd}
 \newcommand{\KIT@pgftext}[5][KITblack]{%
@@ -62,30 +105,6 @@
   \else
     \sbox{\KIT@titimg}{\includegraphics[#1]{#2}}
   \fi}
-\gdef\KIT@logo@clrD{kit_logo_de_4c_positiv}
-\gdef\KIT@logo@bwD{kit_logo_de_1c_schwarz}
-\gdef\KIT@logo@iclrD{kit_logo_de_4c_negativ}
-\gdef\KIT@logo@ibwD{kit_logo_de_1c_weiss}
-\gdef\KIT@logo@clrE{kit_logo_en_4c_positiv}
-\gdef\KIT@logo@bwE{kit_logo_en_1c_schwarz}
-\gdef\KIT@logo@iclrE{kit_logo_en_4c_negativ}
-\gdef\KIT@logo@ibwE{kit_logo_en_1c_weiss}
-\gdef\KIT@logo{KITlogo_RGB_frutiger_RGB}
-\gdef\KIT@logos{KITlogo_sw_frutiger_CMYK}
-\gdef\KIT@logow{KITlogo_weiss_frutiger_CMYK}
-\gdef\KIT@logowg{KITlogo_weiss_gruen_frutiger_CMYK}
-\gdef\KIT@logo@clrOZ{KITlogo_4c_frutiger_CMYK-OZ}
-\let\KIT@logoOZ=\KIT@logo@clrOZ
-\gdef\KIT@logo@bwOZ{KITlogo_sw_frutiger_CMYK-OZ}
-\let\KIT@logoOZs=\KIT@logo@bwOZ
-\gdef\KIT@logo@iclrOZ{KITlogo_4c_weiss_frutiger_CMYK-OZ}
-\gdef\KIT@logo@ibwOZ{KITlogo_weiss_frutiger_CMYK-OZ}
-\let\KIT@logoOZw=\KIT@logo@ibwOZ
-\gdef\FZK@logo{FZK-logo-re-SW}
-\gdef\UKA@logo{Wortbildmarke_schwarz}
-\let\FZKlogo=\FZK@logo
-\let\KITlogo=\KIT@logo
-\let\UKAlogo=\UKA@logo
 \gdef\KIT@today@TD{\number\day.\space\ifcase\month\or Januar\or Februar\or
   {M\"arz}\or April\or Mai\or Juni\or Juli\or August\or September\or Oktober\or
   November\or Dezember\fi\space\number\year}
@@ -110,15 +129,21 @@
 \gdef\date#1{\gdef\KIT@date{#1}}
 \let\Datum=\date
 \newcommand{\KIT@German}{%
-  \let\KIT@name=\KIT@name@D
-  \let\KIT@text=\KIT@text@D
+  \let\KIT@Cntry=\KIT@CntryD
+  \let\KIT@Name=\KIT@Name@D
+  \let\KIT@name=\KIT@Name@D
+  \let\KIT@Text=\KIT@Text@D
+  \let\KIT@text=\KIT@Text@D
   \let\KIT@WebTxt=\KIT@wtext@D
   \let\ntoday=\KIT@today@ND
   \let\ttoday=\KIT@today@TD
   }
 \newcommand{\KIT@English}{%
-  \let\KIT@name=\KIT@name@E
-  \let\KIT@text=\KIT@text@E
+  \let\KIT@Cntry=\KIT@CntryE
+  \let\KIT@Name=\KIT@Name@E
+  \let\KIT@name=\KIT@Name@E
+  \let\KIT@Text=\KIT@Text@E
+  \let\KIT@text=\KIT@Text@E
   \let\KIT@WebTxt=\KIT@wtext@E
   \let\ntoday=\KIT@today@NE
   \let\ttoday=\KIT@today@TE
@@ -175,7 +200,7 @@
     -- (0cm,2cm) arc(180:270:2cm) -- (7cm,0cm)
     -- (7cm,5cm) arc(  0: 90:2cm) -- cycle;}
 \let\KITmark=\KIT@marksymbol
-\newcommand{\KIT@mark}{\resizebox{1ex}{1ex}{\KIT@marksymbol}}
+\newcommand{\KIT@mark}[1][KITgreen]{\resizebox{1ex}{1ex}{\KIT@marksymbol[#1]}}
 \newsavebox{\KIT@sbx}
 \newlength{\vgdist}
 \setlength{\vgdist}{0mm}

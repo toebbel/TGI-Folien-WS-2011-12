@@ -9,7 +9,7 @@
 %% This is a generated file.
 %% 
 %% 
-%% Copyright (C) 2010 by Klaus Braune <klaus.braune@kit.edu>,
+%% Copyright (C) 2010, 2011 by Klaus Braune <klaus.braune@kit.edu>,
 %% Steinbuch Centre for Computing (SCC) at Karlsruhe Institute of Technology (KIT)
 %% 
 %% 
@@ -25,45 +25,41 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \RequirePackage{rcs}
-\RCS $Date: 2010/07/07 14:35:17 $
-\RCS $Revision: 1.0 $
+\RCS $Date: 2011/06/20 14:22:46 $
+\RCS $Revision: 1.1 $
 \ProvidesPackage{beamerinnerthemeKIT}
     [\RCSRawDate\space v\RCSRevision\space Inner part of the beamer theme KIT]
 
-\newif\ifKIT@top\KIT@topfalse
-\DeclareOption{t}{\KIT@toptrue}
-\ProcessOptions
 \mode<presentation>
 \newlength{\KIT@tmplen}
-\newcommand{\KIT@GetHt}[6][194\K@mm]{%
-  \sbox{\KIT@sbx}{\parbox[b]{#1}{\raggedright#5#6\vphantom{g}}}%
+\newcommand{\KIT@GetHt}[6][194\KIT@mm]{%
+  \sbox{\KIT@sbx}{\parbox{#1}{\raggedright#5#6}}%
   \setlength{\KIT@tmplen}{\ht\KIT@sbx}%
-  \addtolength{\KIT@tmplen}{#3}
-  \ifdim\KIT@tmplen<0pt\setlength{\KIT@tmplen}{0pt}\fi
- }
+  \ifdim\KIT@tmplen>#2\addtolength{\KIT@tmplen}{#3}%
+    \else\setlength{\KIT@tmplen}{#4}\fi}
 \let\KIT@frametitle@org=\frametitle
 \def\frametitle{\@ifnextchar<\KIT@fr@titB\KIT@fr@titA}
 \def\KIT@fr@titA{\@ifnextchar[\KIT@fr@titAB\KIT@fr@titAA}
 \def\KIT@fr@titAA#1{%
-  \KIT@GetHt{8\K@mm}{-8.5742pt}{0\K@mm}{\KIT@fnt@framtitl}{#1}%
+  \KIT@GetHt{8\KIT@mm}{0\KIT@mm}{0\KIT@mm}{\KIT@fnt@framtitl}{#1}%
   \vspace*{\KIT@tmplen}\KIT@frametitle@org{#1}}
 \def\KIT@fr@titAB[#1]#2{%
-  \KIT@GetHt{8\K@mm}{-8.5742pt}{0\K@mm}{\KIT@fnt@framtitl}{#1}%
+  \KIT@GetHt{8\KIT@mm}{0\KIT@mm}{0\KIT@mm}{\KIT@fnt@framtitl}{#2}%
   \vspace*{\KIT@tmplen}\KIT@frametitle@org[#1]{#2}}
 \def\KIT@fr@titB<#1>{\@ifnextchar[{\KIT@fr@titBB<#1>}{\KIT@fr@titBA<#1>}}
 \def\KIT@fr@titBA<#1>#2{%
-  \KIT@GetHt{8\K@mm}{-8.5742pt}{0\K@mm}{\KIT@fnt@framtitl}{#1}%
+  \KIT@GetHt{8\KIT@mm}{0\KIT@mm}{0\KIT@mm}{\KIT@fnt@framtitl}{#2}%
   \vspace*{\KIT@tmplen}\KIT@frametitle@org<#1>{#2}}
 \def\KIT@fr@titBB<#1>[#2]#3{%
-  \KIT@GetHt{8\K@mm}{-8.5742pt}{0\K@mm}{\KIT@fnt@framtitl}{#1}%
+  \KIT@GetHt{8\KIT@mm}{0\KIT@mm}{0\KIT@mm}{\KIT@fnt@framtitl}{#3}%
   \vspace*{\KIT@tmplen}\KIT@frametitle@org<#1>[#2]{#3}}
 \let\KIT@framesubtitle@org=\framesubtitle
 \def\framesubtitle{\@ifnextchar<\KIT@fr@stitB\KIT@fr@stitA}
 \def\KIT@fr@stitA#1{%
-  \KIT@GetHt{6.5\K@mm}{4\K@mm}{0\K@mm}{\KIT@fnt@framsubtit}{#1}%
+  \KIT@GetHt{6.5\KIT@mm}{8.5\KIT@mm}{10\KIT@mm}{\KIT@fnt@framsubtit}{#1}%
   \vspace*{\KIT@tmplen}\KIT@framesubtitle@org{#1}}
 \def\KIT@fr@stitB<#1>#2{%
-  \KIT@GetHt{6.5\K@mm}{4\K@mm}{0\K@mm}{\KIT@fnt@framsubtit}{#1}%
+  \KIT@GetHt{6.5\KIT@mm}{8.5\KIT@mm}{10\KIT@mm}{\KIT@fnt@framsubtit}{#2}%
   \vspace*{\KIT@tmplen}\KIT@framesubtitle@org{#1}}
 \newcommand{\max@itemdepth}{6}
 \newcommand{\max@enumdepth}{6}
@@ -71,7 +67,7 @@
   \beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}%
   \ifnum \@itemdepth >\max@itemdepth\relax\@toodeep\else
     \advance\@itemdepth\@ne
-    \beamer@computepref\@itemdepth%
+    \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
     \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
     \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
     \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
@@ -85,9 +81,9 @@
           }%
         }%
        \expandafter\setlength{\labelsep}%
-   {\csname labelsep@item\romannumeral\the\@itemdepth\endcsname}
+           {\csname labelsep@item\romannumeral\the\@itemdepth\endcsname}
        \expandafter\setlength{\itemindent}%
-   {\csname item@indent\romannumeral\the\@itemdepth\endcsname}
+           {\csname item@indent\romannumeral\the\@itemdepth\endcsname}
       }
   \fi%
   \beamer@cramped%
@@ -139,11 +135,11 @@
     \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
     \advance\@itemdepth\@ne%
   \fi%
-  \beamer@computepref\@enumdepth%
+  \beamer@computepref\@enumdepth% sets \beameritemnestingprefix
   \edef\beamer@enumtempl{enumerate \beameritemnestingprefix item}%
   \@ifnextchar[{\beamer@@enum@}{\beamer@enum@}}
 \def\beamer@enum@{%
-  \beamer@computepref\@itemdepth%
+  \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
   \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
   \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
   \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
@@ -155,9 +151,9 @@
                 \usebeamerfont*{enumerate \beameritemnestingprefix item}%
                 \usebeamercolor[fg]{enumerate \beameritemnestingprefix item}##1}}}}%
        \expandafter\setlength{\labelsep}%
-   {\csname labelsep@enum\romannumeral\the\@itemdepth\endcsname}
+           {\csname labelsep@enum\romannumeral\the\@itemdepth\endcsname}
        \expandafter\setlength{\itemindent}%
-   {\csname enum@indent\romannumeral\the\@itemdepth\endcsname}
+           {\csname enum@indent\romannumeral\the\@itemdepth\endcsname}
       }%
   \beamer@cramped%
   \raggedright%
@@ -202,35 +198,89 @@
       \insertsubsubsubsubsubenumlabel}
   \end{pgfpicture}%
 }
+\defbeamertemplate{section in toc}{KIT}
+  {\leavevmode\leftskip=1.75ex%
+   \llap{%
+     \usebeamerfont*{section number projected}%
+     \usebeamercolor[bg]{section number projected}%
+     \scalebox{1.2}{\protect\KIT@mark}
+     \hskip-2.25ex%
+     }
+  \kern2.25ex\inserttocsection\par}
+\defbeamertemplate{subsection in toc}{KIT}
+  {\leavevmode\leftskip=5ex%
+   \llap{%
+     \usebeamercolor[bg]{subsection number projected}%
+     \KIT@mark
+     }
+  \kern.75ex\inserttocsubsection\par}
+\defbeamertemplate{subsubsection in toc}{KIT}
+  {\leavevmode\normalsize%
+   \usebeamerfont{subsection in toc}
+   \leftskip=7ex
+   \usebeamerfont{subsubsection in toc}%
+   \llap{%
+     \usebeamercolor[bg]{subsubsection number projected}%
+     \KIT@mark
+     \kern1ex}%
+   \inserttocsubsubsection\par}
 \setbeamertemplate{title page}{%
-  \rule{0pt}{0pt}
-  \vfill
+  \ifbeamer@centered
+    \vspace*{-.351truemm}%
+  \else
+    \vspace*{-2.36675truemm}%
+  \fi
+  \vspace*{-23\KIT@mm}%
   \begin{tikzpicture}
-    \ifKIT@top
-      \useasboundingbox (.558,-1.8210) rectangle (13.358,7.7790);
-    \else
-      \useasboundingbox (.558,-1.6210) rectangle (13.358,7.9790);
-    \fi
-    \fill[white] (0\K@mm,0\K@mm) rectangle (254\K@mm,93.0\K@mm);
-    \pgftext[at=\pgfpoint{3\K@mm}{15\K@mm},left,bottom]
+   %%\useasboundingbox (7.6mm,0mm) rectangle (135.6mm,95.649mm);
+   % \useasboundingbox (7.6mm,-\headsep) rectangle (135.6mm,95.649mm-\headsep);
+    \useasboundingbox (5.584252mm,.015mm) rectangle (133.584252mm,96.015mm);
+    \fill[white] (0\KIT@mm,0\KIT@mm) rectangle (254\KIT@mm,93.0\KIT@mm);
+    \pgftext[at=\pgfpoint{3\KIT@mm}{15\KIT@mm},left,bottom]
       {\usebox{\KIT@titimg}}
-    \fill[white] (3\K@mm,89\K@mm) rectangle (251\K@mm,89.5\K@mm);
-    \fill[KITblack50] (3\K@mm,89.5\K@mm) rectangle (251\K@mm,101.5\K@mm);
-    \pgftext[at=\pgfpoint{11.0\K@mm}{95.5\K@mm},left]
-      {\textcolor{white}{\KIT@fnt@inst\insertinstitute}}
-    \fill[white] (0\K@mm,101.5\K@mm) rectangle (254\K@mm,190.5\K@mm);
+    % Line above the title image:
+    \fill[white] (3\KIT@mm,89\KIT@mm) rectangle (251\KIT@mm,89.5\KIT@mm);
+    \fill[KITblack50] (3\KIT@mm,89.5\KIT@mm) rectangle (251\KIT@mm,101.5\KIT@mm);
+    \pgftext[at=\pgfpoint{11.0\KIT@mm}{95.5\KIT@mm},left]
+      {\textcolor{white}{\KIT@fnt@inst \insertinstitute}}
+    \fill[white] (0\KIT@mm,101.5\KIT@mm) rectangle (254\KIT@mm,190.5\KIT@mm);
     \KIT@MFrame[\KIT@MFbadd]
-    \pgftext[at=\pgfpoint{11\K@mm}{180.5\K@mm},left,top]
-      {\pgfimage[interpolate=true,width=45\K@mm]{\KIT@logo}}
-    \pgftext[at=\pgfpoint{11.0\K@mm}{128\K@mm},left,base]
-      {\parbox[t]{226\K@mm}{\raggedright\KIT@fnt@titl\inserttitle\\[3\K@mm]
-        \KIT@fnt@subtit\insertsubtitle}}
-    \pgftext[at=\pgfpoint{11\K@mm}{4.5\K@mm},left,base]{%
+    \pgftext[at=\pgfpoint{11\KIT@mm}{180.5\KIT@mm},left,top]
+      {\pgfimage[interpolate=true,width=45\KIT@mm]{\KIT@logo}}
+    \pgftext[at=\pgfpoint{243\KIT@mm}{180.5\KIT@mm},right,top]{\KIT@ologo}
+%%   \pgftext[at=\pgfpoint{19.0\KIT@mm}{133\KIT@mm},left,base]
+%%      {\parbox[b]{226\KIT@mm}{%
+%%%       \raggedright\fontsize{32\KIT@pt}{36\KIT@pt}\bfseries\inserttitle}}
+%%        \raggedright\KIT@fnt@titl\inserttitle}}
+%%       \KIT@tlenA=\dp\KIT@sbx%
+%%       \addtolength{\KIT@tlen}{\KIT@tlenA}%
+%%       \settoheight{\KIT@tlenA}{\KIT@fnt@titl\inserttitle}%
+%%       \ifdim\KIT@tlen>30\KIT@pt
+%%   \pgftext[at=\pgfpoint{19.0\KIT@mm}{127\KIT@mm},left,top]
+%%       \raggedright\fontsize{16\KIT@pt}{18\KIT@pt}\selectfont\insertsubtitle}}
+    \pgftext[at=\pgfpoint{11.0\KIT@mm}{130\KIT@mm},left]
+      {\settoheight{\KIT@tlen}{\parbox{226\KIT@mm}{%
+           \raggedright\KIT@fnt@titl\KIT@title%
+           \global\KIT@tlenA=\baselineskip}}%
+       \parbox{226\KIT@mm}{\raggedright
+         \ifdim\KIT@tlen>\KIT@tlenA\KIT@fnt@tits\else\KIT@fnt@titl\fi
+         \KIT@title\\[6.1\KIT@mm]
+         \KIT@fnt@subtit\insertsubtitle
+       }}
+    \pgftext[at=\pgfpoint{11\KIT@mm}{5.6\KIT@mm},left,base]{%
       \settowidth{\KIT@tlen}{{\KIT@fnt@foot nationales
           Forschungszentrum in der Helmholtz-Gemeinschaft}}%
-      \parbox[b]{\KIT@tlen}{\KIT@fnt@foot\raggedright\KIT@text}}
-    \pgftext[at=\pgfpoint{251\K@mm}{4.5\K@mm},base,right]
-       {{\fontsize{16\K@pt}{19\K@pt}\selectfont\bfseries\color{white}\KIT@Web}}
+      \parbox{\KIT@tlen}{\KIT@fnt@foot\raggedright\KIT@text}}
+    \pgftext[at=\pgfpoint{251\KIT@mm}{7.5\KIT@mm},right]
+       {{\fontsize{16\KIT@pt}{18\KIT@pt}\selectfont\bfseries\color{white}\KIT@Web}}
+\ifKIT@grid
+    \draw[step=1\KIT@mm,style=help lines]
+      (0\KIT@mm,0\KIT@mm) grid (254\KIT@mm,190.5\KIT@mm);
+    \draw[step=10\KIT@mm,red,very thin]
+      (0\KIT@mm,0\KIT@mm) grid (254\KIT@mm,190.5\KIT@mm);
+    \draw[blue,thin]
+      (0\KIT@mm,0\KIT@mm) rectangle (254\KIT@mm,190.5\KIT@mm);
+\fi
   \end{tikzpicture}%
   \ifKIT@titlepage@z\setcounter{framenumber}{0}\fi
 }

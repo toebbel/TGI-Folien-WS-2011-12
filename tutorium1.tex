@@ -240,6 +240,18 @@ Beispiel ($\Sigma = \{a,b\}$):
 \end{tikzpicture}
 \end{center}
 \end{frame}
+\begin{frame}
+  \frametitle{NEA: Aufgabe}
+  Über dem Alphabet $\Sigma = \{a,b\}$ sei der reguläre
+  Ausdruck
+  $r := {(a \cup (ab (b)^* ba))^*}$
+  gegeben.
+  
+  Geben Sie einen NEA an, der $L(r)$ erkennt. Begründen Sie
+    kurz die Korrektheit Ihres Automaten, ein formaler
+    Korrektheitsbeweis ist jedoch nicht erforderlich.\\
+    (Hinweis: Es gibt einen NEA mit 3 Zuständen.)
+\end{frame}
 
 \subsubsection{Potenzmengenkonstruktion}
 \frame{
@@ -339,20 +351,6 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 }
 \subsection{Konstruktion eines DEA aus einem NEA}
 \begin{frame}
-  \frametitle{NEA2DEA: Aufgaben}
-  Über dem Alphabet $\Sigma = \{a,b\}$ sei der reguläre
-  Ausdruck
-  $r := {(a \cup (ab (b)^* ba))^*}$
-  gegeben.
-  
-  Geben Sie einen NEA an, der $L(r)$ erkennt. Begründen Sie
-    kurz die Korrektheit Ihres Automaten, ein formaler
-    Korrektheitsbeweis ist jedoch nicht erforderlich.\\
-    (Hinweis: Es gibt einen NEA mit 3 Zuständen.)
-\end{frame}
-
-
-\begin{frame}
 	\frametitle{Eliminierung von $\varepsilon$-Übergängen}
 	\begin{block}{Satz 2.13 (Skript)}
 	\begin{itemize}
@@ -388,7 +386,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 
 \end{frame}
 \begin{frame}
-	\frametitle{NEA2DEA: Aufgaben}
+	\frametitle{NEA2DEA: Aufgabe}
 Gegeben sei der NEA ${\cal A}=(\{s,q,f\},\{a,b,c\},\delta,s,\{f\})$, wobei
 die Übergangsfunktion $\delta$ gegeben ist durch:
 \begin{center}

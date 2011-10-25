@@ -105,13 +105,13 @@ Beispiel ($\Sigma = \{a,b\}$):
 \frametitle{Deterministische endliche Automaten}
         Ein deterministischer endlicher Automat $M$ ist ein 5-Tupel
         \[
-        M= (Q,\Sigma,\delta,S,F).
+        M= (Q,\Sigma,\delta,s,F).
         \]
         \begin{itemize}
         \item $Q$:  endliche Zustandsmenge
         \item $\Sigma$:    endliches Alphabet
         \item $\delta$:   Zustandsübergangsfunktion $Q\times \Sigma \rightarrow Q$
-        \item $S$:   Startzustand $\in Q$
+        \item $s$:   Startzustand $\in Q$
         \item $F$:   Endzustandsmenge $\subseteq Q$
         \end{itemize}
 \end{frame}
@@ -176,7 +176,7 @@ Beispiel ($\Sigma = \{a,b\}$):
 %		\item $Q = (q_0, q_1, q_2, q_3, q_4)$\\
 %		\item $\Sigma = \{0,1\}$
 %		\item $\delta(q_n, c) = q_{n \cdot 2 + c\mbox{ mod }5}$ mit $c\in\Sigma$\\
-%		\item $S = q_0$\\
+%		\item $s = q_0$\\
 %		\item $F = \{q_0\}$
 %		\end{itemize}
 %	\end{enumerate}
@@ -186,13 +186,13 @@ Beispiel ($\Sigma = \{a,b\}$):
 \frametitle{Nichtdeterministische endliche Automaten}
         Ein nichtdeterministischer endlicher Automat $M$ ist ein 5-Tupel
         \[
-        M= (Q,\Sigma,\delta,S,F).
+        M= (Q,\Sigma,\delta,s,F).
         \]
         \begin{itemize}
         \item $Q$:  endliche Zustandsmenge
         \item $\Sigma$:    endliches Alphabet
         \item \textcolor{red}{$\delta$:   Zustandsübergangsfunktion $Q\times (\Sigma \cup \varepsilon) \rightarrow 2^Q$}
-        \item $S$:   Startzustand $\in Q$
+        \item $s$:   Startzustand $\in Q$
         \item $F$:   Endzustandsmenge $\subseteq Q$
         \end{itemize}
 	Damit der NEA ein Wort akzeptiert, muss es \emph{einen} akzeptierenden Weg geben.

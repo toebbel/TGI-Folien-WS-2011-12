@@ -370,7 +370,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 	Zu einem NEA \(A := (Q, \Sigma, \delta, s, F)\) mit \(\varepsilon\)-Übergängen konstruieren wir einen 
 	  äquivalenten NEA \(\tilde{A} := (\tilde{Q}, \Sigma, \tilde{\delta}, \tilde{s}, \tilde{F})\) mit
 	 \begin{itemize}
-	 \item \(\tilde{Q} := Q\)
+	 \item \(\tilde{Q} := \left(Q\backslash F\right)\cup\tilde{F}\)
 	 \item \(\tilde{s} := s\)
 	 \item \(\tilde{F} := \{q|E(q)\cap F \neq \emptyset\}\)
 	 \item $\tilde{\delta}(q,a) := 

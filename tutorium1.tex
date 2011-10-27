@@ -499,6 +499,10 @@ Wir wissen: Zu jedem DEA gibt es einen regulären Ausdruck, der genau die Sprach
 \item Unter Benutzung dieser Punkte kann man nun zu einem DEA einen Regulären Ausdruck konstruieren.
 \end{itemize}
 \end{frame}
+
+% Lösungen nicht vorher anzeigen
+\setbeamercovered{invisible}
+
 \begin{frame}
 \frametitle{Beispiele zum Verständnis}
 \begin{figure}[H]
@@ -512,7 +516,9 @@ Wir wissen: Zu jedem DEA gibt es einen regulären Ausdruck, der genau die Sprach
 \end{tikzpicture}
 \end{center}
 \end{figure}
+
 Was sind hier jeweils:
+
 \begin{itemize}
 \item $L_{q_1,0,q_1}$\pause $ = (1\cup\varepsilon)$
 \item $L_{q_1,0,q_2}$\pause $ = (0)$
@@ -523,9 +529,10 @@ Was sind hier jeweils:
 \end{itemize}
 \end{frame}
 
+\setbeamercovered{transparent}
+
 \begin{frame}
 \frametitle{Ausführliche Konstruktion}
-\vspace{-1cm}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
@@ -546,7 +553,7 @@ Was sind hier jeweils:
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[t]
+\begin{frame}
 \frametitle{Aufgabe}
 Bestimmen Sie  mit dem im Beweis von Satz 2.14 verwendeten Verfahren die 
 reguläre Sprache, die folgender deterministische endliche Automat erkennt:

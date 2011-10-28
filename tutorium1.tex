@@ -194,6 +194,8 @@ Beispiel ($\Sigma = \{a,b\}$):
 \subsection{Nichtdeterministische endliche Automaten}
 \begin{frame}
 \frametitle{Nichtdeterministische endliche Automaten}
+
+	\begin{minipage}{0.6 \textwidth}
         Ein nichtdeterministischer endlicher Automat $M$ ist ein 5-Tupel
         \[
         M= (Q,\Sigma,\delta,s,F).
@@ -201,12 +203,20 @@ Beispiel ($\Sigma = \{a,b\}$):
         \begin{itemize}
         \item $Q$:  endliche Zustandsmenge
         \item $\Sigma$:    endliches Alphabet
-        \item \textcolor{red}{$\delta$:   Zustandsübergangsfunktion $Q\times (\Sigma \cup \varepsilon) \rightarrow 2^Q$}
+        \item \textcolor{red}{$\delta$:   Zustandsübergangsfunktion $Q\times (\Sigma \cup \varepsilon) \rightarrow \pot(Q)$}
         \item $s$:   Startzustand $\in Q$
         \item $F$:   Endzustandsmenge $\subseteq Q$
         \end{itemize}
 \vspace{0.5cm}
 	Damit der NEA ein Wort akzeptiert, muss es \emph{einen} akzeptierenden Weg geben.
+	
+	\end{minipage}
+	\hfill
+    \begin{minipage}{0.35 \textwidth}        
+        \begin{center}
+        	\includegraphics[scale=1]{images/beispielNEA.pdf}
+        \end{center}
+    \end{minipage}
 \end{frame}
 \begin{frame}
 	\frametitle{NEA: Beispiel}
@@ -255,7 +265,7 @@ Beispiel ($\Sigma = \{a,b\}$):
   \frametitle{NEA: Aufgabe}
   Über dem Alphabet $\Sigma = \{a,b\}$ sei der reguläre
   Ausdruck
-  $r := {(a \cup (ab (b)^* ba))^*}$
+  	$$r := {(a \cup (ab (b)^* ba))^*}$$
   gegeben.
   
   Geben Sie einen NEA an, der $L(r)$ erkennt. Begründen Sie
@@ -380,10 +390,10 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 	Zu einem NEA \(A := (Q, \Sigma, \delta, s, F)\) mit \(\varepsilon\)-Übergängen konstruieren wir einen 
 	  äquivalenten NEA \(\tilde{A} := (\tilde{Q}, \Sigma, \tilde{\delta}, \tilde{s}, \tilde{F})\) mit
 	 \begin{itemize}
-	 \item \(\tilde{Q} := \left(Q\backslash F\right)\cup\tilde{F}\)
-	 \item \(\tilde{s} := s\)
-	 \item \(\tilde{F} := \{q|E(q)\cap F \neq \emptyset\}\)
-	 \item $\tilde{\delta}(q,a) := 
+	 \item gleicher Zustandsmenge \(\tilde{Q} := Q\)
+	 \item gleichem Startzustand \(\tilde{s} := s\)
+	 \item neuer Endzustandsmenge \(\tilde{F} := \menge{q \in Q}{E(q)\cap F \neq \emptyset}\)
+	 \item neuer Übergangsfunktion $\tilde{\delta}(q,a) := 
 	 \begin{cases}
 	  \{q\}			& \text{falls $a = \varepsilon$} \\
 	 \delta(E(q),a)	& \text{sonst}
@@ -391,7 +401,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 	 \end{itemize}
 	\end{block}
 	\begin{block}{Eigenschaften von \(\tilde{A}\)}
-	 \(L(\tilde{A}) = L(A)\), und \(|\tilde{Q}| = |Q|\).
+	 \(L(\tilde{A}) = L(A)\) und \(|\tilde{Q}| = |Q|\).
 	\end{block}
 
 \end{frame}
@@ -495,8 +505,8 @@ Wir wissen: Zu jedem DEA gibt es einen regulären Ausdruck, der genau die Sprach
 \begin{itemize}
 \item Es ist $L = \cup_{f\in F} L_{s,n,f}$
 \item Es ist weiterhin $L_{q_r,i+1,q_t} = L_{q_r,i,q_t} \cup (L_{q_r,i,q_{i+1}}(L_{q_{i+1},i,q_{i+1}})^*L_{q_{i+1},i,q_t})$
-\item Letztlich ist $L_{q_r, 0, q_t}$ immer regulär, denn das sind die Zeichen, mit denen man von $q_r$ nach $q_t$ kommt, ohne weitere Zustände zu verwenden (sowie $\varepsilon$ falls $r = t$).
-\item Unter Benutzung dieser Punkte kann man nun zu einem DEA einen Regulären Ausdruck konstruieren.
+\item Letztlich ist $L_{q_r, 0, q_t}$ immer regulär, denn das sind die Zeichen, mit denen man von $q_r$ nach $q_t$ kommt, ohne weitere Zustände zu verwenden (sowie $\varepsilon$, falls $r = t$).
+\item Unter Benutzung dieser Punkte kann man nun zu einem DEA einen regulären Ausdruck konstruieren.
 \end{itemize}
 \end{frame}
 

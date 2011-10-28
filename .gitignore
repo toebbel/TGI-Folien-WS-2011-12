@@ -1,4 +1,5 @@
 slides.pdf
+/tutorium*.pdf
 *.aux
 *.log
 *.nav
@@ -10,3 +11,5 @@ slides.pdf
 *~
 *.backup
 *.make
+*.d
+*.fls

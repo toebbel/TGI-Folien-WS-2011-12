@@ -29,6 +29,21 @@
 \RCS $Revision: 1.1 $
 \ProvidesPackage{beamerouterthemeKIT}
     [\RCSRawDate\space v\RCSRevision\space Outer part of the beamer theme KIT]
+    
+\def\insertnavigation#1{%
+\vbox{{%
+\usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in
+head/foot}%
+\beamer@xpos=0\relax%
+\beamer@ypos=1\relax%
+\hbox to #1{\hskip.0cm\setbox\beamer@sectionbox=\hbox{\kern1sp}%
+\ht\beamer@sectionbox=1.875ex%
+\dp\beamer@sectionbox=0.75ex%
+\hskip-1.875ex plus-1fill\dohead%
+\box\beamer@sectionbox\hfil\hskip.3cm}%
+}}}
+
+
 
 \mode<presentation>
 \setbeamertemplate{navigation symbols}{}
@@ -109,8 +124,8 @@
           \pgftext[at=\pgfpoint{17\KIT@mm}{9.75\KIT@mm},left,base]
             {\KIT@fnt@foot\vphantom{0}\parbox[t]{226\KIT@mm}{\KIT@foot}}
             
-          \pgftext[at=\pgfpoint{11\KIT@mm}{5.75\KIT@mm},left,base]  
-            {\KIT@fnt@foot\vphantom{0}\parbox[t]{226\KIT@mm}{\insertnavigation{0.9\paperwidth}}}
+          \pgftext[at=\pgfpoint{17\KIT@mm}{5.75\KIT@mm},left,base]  
+            {\KIT@fnt@foot\vphantom{0}\parbox[t]{226\KIT@mm}{\insertnavigation{226\KIT@mm}}}
         \fi
       \fi
       \ifx\KIT@nav@syms\relax \relax

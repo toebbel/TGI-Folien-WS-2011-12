@@ -54,16 +54,16 @@
 		{\parbox{\textwidth}{\begin{itemize}
 			\item $\Sigma = \{ 0, 1 \}, L = \{w11z\,|\,w,z \in \Sigma^*\}$
 			\begin{itemize}
-			\item Die Menge aller Wörter, die ''11'' enthalten.
+			\item Die Menge aller Wörter über $\left\lbrace 0,1 \right\rbrace^*$, die ''11'' enthalten.
 			\end{itemize}
 		\end{itemize}}
 	}\\[0.2cm]
 Im Allgemeinen kann man formale Sprachen sehr frei angeben: 
 	\KITframe[Yeah, I think I'll stick to gray as a background color. Thanks again!]
 		{\parbox{\textwidth}{\begin{itemize}
-			\item $\Sigma = \{ 0, 1 \}, L = \{w|\,w \in \Sigma^*, w \mbox{ hat eine gerade Anzahl an $1$en}\}$
+			\item $\Sigma = \{ 0, 1 \}, L = \menge{w \in \Sigma^*}{w \mbox{ hat eine gerade Anzahl an $1$en}}$
 			\begin{itemize}
-			\item Die Menge aller Wörter, die eine gerade Anzahl an Einsen enthalten.
+			\item Die Menge aller Wörter über $\left\lbrace 0,1 \right\rbrace^*$, die eine gerade Anzahl an Einsen enthalten.
 			\end{itemize}
 		\end{itemize}}
 	}
@@ -77,8 +77,8 @@ Im Allgemeinen kann man formale Sprachen sehr frei angeben:
 \begin{itemize}
 \item Verankerung
       \begin{itemize}
-      \item \(L = {a}\) mit \(a\in\Sigma^*\) oder
-      \item \(L = \varnothing \)
+      \item $L = \left\lbrace a \right\rbrace$ mit $a\in\Sigma^*$ oder
+      \item $L = \varnothing$
       \end{itemize}
 \item Induktion: Seien \(L_1\), \(L_2\) reguläre Sprachen.
       \begin{itemize}
@@ -271,9 +271,10 @@ Beispiel ($\Sigma = \{a,b\}$):
   	$$r := {(a \cup (ab (b)^* ba))^*}$$
   gegeben.
   
-  Geben Sie einen NEA an, der $L(r)$ erkennt. Begründen Sie
-    kurz die Korrektheit Ihres Automaten, ein formaler
-    Korrektheitsbeweis ist jedoch nicht erforderlich.\\
+  Gib einen NEA an, der $L(r)$ erkennt. Begründe
+    kurz die Korrektheit deines Automaten, ein formaler
+    Korrektheitsbeweis ist jedoch nicht erforderlich.
+    
     (Hinweis: Es gibt einen NEA mit 3 Zuständen.)
 \end{frame}
 
@@ -373,7 +374,7 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 \end{figure}
 
 }
-\subsection{Konstruktion eines DEA aus einem NEA}
+\subsection{Eliminierung von $\varepsilon$-Übergängen}
 \begin{frame}
 	\frametitle{Eliminierung von $\varepsilon$-Übergängen}
 	\begin{block}{Satz 2.13 (Skript)}
@@ -396,6 +397,9 @@ Die Einträge der ersten Spalte sind die neuen Zustände. Alle Mengen, die einen
 	 \item gleicher Zustandsmenge \(\tilde{Q} := Q\)
 	 \item gleichem Startzustand \(\tilde{s} := s\)
 	 \item neuer Endzustandsmenge \(\tilde{F} := \menge{q \in Q}{E(q)\cap F \neq \emptyset}\)
+	 \begin{itemize}
+	 	\item ``alle Zustände, in deren $\varepsilon$-Abschluss ein Endzustand liegt''
+	 \end{itemize}
 	 \item neuer Übergangsfunktion $\tilde{\delta}(q,a) := 
 	 \begin{cases}
 	  \{q\}			& \text{falls $a = \varepsilon$} \\
@@ -480,8 +484,8 @@ Sei $L$ eine reguläre Sprache. Dann existiert eine Zahl $n \in \mathbb{N}$, sod
 \frametitle{Beispiel}
 Sei $\Sigma = \{a, b\}$ und $L = \{a^nb^n\,|\,n\geq0\}$. (Also $L = \{\varepsilon,ab, aabb, aaabbb, \ldots\}$)
 \begin{enumerate}[<+->]
-\item Angenommen, $L$ sei regulär. Sei dann $n$ wie im Pumping Lemma.
-\item Wähle das Wort $w = a^nb^n$.
+\item Sei $n \in \N$ beliebig, aber fest.
+\item Wähle $w = a^nb^n$.
 \item Es ist also $\left|w\right| > n$.
 \item Nun ist aber für \emph{jede} Darstellung $w = uvx$ mit $\left|uv\right| \leq n$ und $v \neq \varepsilon$ $v = a^m$ mit $m \geq 1$. Demnach ist $uv^0x = a^lb^n \neq L$, da $l < n$.
 \item Daher kann $L$ nicht regulär sein.

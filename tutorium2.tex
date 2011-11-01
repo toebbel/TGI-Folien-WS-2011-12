@@ -161,22 +161,17 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
   \frametitle{Automaten-Minimierung: Beispiel}
   \begin{figure}[H]
   \begin{center}
-  \begin{tikzpicture}[node distance=1.8cm]
-  \tikzstyle{every node}=[circle,thick,minimum size=7mm]
+  \begin{tikzpicture}[node distance=2.3cm]
   \tikzstyle{normal}=[draw]
 
 
-  \node[normal,double]  (q0)                      {$q_0$};
-  \node[normal]         (q1)  [above right of=q0] {$q_1$};
-  \node[normal]         (q2)  [right of=q1]       {$q_2$};
-  \node[normal]         (q3)  [below right of=q0] {$q_3$};
-  \node[normal]         (q4)  [right of=q3]       {$q_4$};
-  \node[normal]         (q5)  [above right of=q4] {$q_5$};
+  \node[state,accepting,initial]  (q0)                      {$q_0$};
+  \node[state]         (q1)  [above right of=q0] {$q_1$};
+  \node[state]         (q2)  [right of=q1]       {$q_2$};
+  \node[state]         (q3)  [below right of=q0] {$q_3$};
+  \node[state]         (q4)  [right of=q3]       {$q_4$};
+  \node[state]         (q5)  [above right of=q4] {$q_5$};
   
-  \node (start) [left of=q0,xshift=0.5cm] {};
-  
-  \draw[->] (start) to (q0);
-
   \draw[->,bend left] (q0)  to node[above] {1} (q1);
   \draw[->,loop below] (q0)  to node [below] {0} (q0);
 
@@ -202,9 +197,38 @@ Hier sind $q_2$ und $q_3$ äquivalent. Warum?
  \frametitle{Automaten-Minimierung: Aufgabe}
 Konstruiere zu folgendem DEA den Äquivalenzklassenautomaten:
 
- \begin{center}
-   \includegraphics[scale=1.5]{images/Minimierung}
- \end{center}
+ \begin{figure}[H]
+  \begin{center}
+  \begin{tikzpicture}[node distance=2cm]
+  \tikzstyle{normal}=[draw]
+
+
+  \node[state,initial]         (q0)                      {$q_0$};
+  \node[state]         (q1)  [right of=q0] {$q_1$};
+  \node[state]         (q2)  [below of=q0]       {$q_2$};
+  \node[state]         (q3)  [right of=q2] {$q_3$};
+  \node[state]         (q4)  [right of=q3]       {$q_4$};
+  \node[state,accepting]         (q5)  [right of=q4] {$q_5$};
+
+  \draw[->] (q0)  to node[above] {1} (q1);
+  \draw[->] (q0)  to node [left] {0} (q2);
+
+  \draw[->,loop right] (q1)  to node[right] {0} (q0);
+  \draw[->] (q1)  to node[right] {1} (q3);
+
+  \draw[->] (q2) to node[below] {1} (q3);
+  \draw[->,loop left] (q2) to node[below] {0} (q2);
+
+  \draw[->] (q3)  to node[above] {1} (q4);
+  \draw[->] (q3)  to node[above] {0} (q0);
+  
+  \draw[->,loop above] (q4)  to node[right] {0} (q4);
+  \draw[->] (q4)  to node[above] {1} (q5);
+
+  \draw[->,loop above] (q5)  to node[right] {0, 1} (q2);
+  \end{tikzpicture}
+  \end{center}
+  \end{figure}
 \end{frame}
 \begin{frame}
 \frametitle{Aufgabe zu DEAs}
@@ -218,20 +242,22 @@ Schreibe einen Algorithmus, der entscheidet, ob die zugehörige Sprache unendlic
 
 \begin{frame}
 \frametitle{Aufgabe: Regularität}
+
+\begin{block}{Definition}
 Ein Wort $w$ ist \emph{Präfix} eines anderen Wortes
 $w'$, falls ein Wort $v$ mit $wv = w'$ existiert. Gilt darüber hinaus
 noch $w\neq w'$, so ist $w$ ein \emph{echtes Präfix} von $w'$.
+\end{block}
 
-Sei $L$ eine reguläre Sprache. Betrachte die folgenden beiden abgeleiteten
-Sprachen.
+\begin{block}{Aufgabe}
+Sei $L$ eine reguläre Sprache. Zeige, dass dann auch die folgenden beiden Sprachen regulär sind:
 \begin{enumerate}
-\item NOPREFIX$(L):=\{w\in L\mid\mbox{kein $w'\in L$ ist echtes Präfix
-    von $w$}\}.$
-\item NOEXTEND$(L):= \{w\in L\mid \mbox{$w$ ist kein echtes Präfix eines
-    Wortes $w'\in L$}\}.$
-\end{enumerate} 
-Zeige, dass auch NOPREFIX$(L)$ und NOEXTEND$(L)$
-regulär sind.
+\item NOPREFIX$(L):=\menge{w\in L}{\mbox{kein $w'\in L$ ist echtes Präfix
+    von $w$}}.$
+\item NOEXTEND$(L):= \menge{w\in L}{\mbox{$w$ ist kein echtes Präfix eines
+    Wortes $w'\in L$}}.$
+\end{enumerate}
+\end{block}
 \end{frame}
 \begin{frame}
  \frametitle{Aufgabe: Regularität}

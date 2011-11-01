@@ -11,5 +11,6 @@ slides.pdf
 *~
 *.backup
 *.make
+*.make.temp
 *.d
 *.fls

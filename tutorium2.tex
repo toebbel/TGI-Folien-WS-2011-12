@@ -72,7 +72,7 @@ Nein!
  \end{block}
 \begin{block}{Vorgehen}
  \begin{enumerate}
-  \item Tiefensuche durchführen, um nicht erreichbare Zustände zu finden.
+  \item Tiefensuche durchführen, um überflüssige Zustände zu finden.
   \item Diese entfernen.
   \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden.
  \end{enumerate}
@@ -248,6 +248,8 @@ $w'$, falls ein Wort $v$ mit $wv = w'$ existiert. Gilt darüber hinaus
 noch $w\neq w'$, so ist $w$ ein \emph{echtes Präfix} von $w'$.
 \end{block}
 
+\pause
+
 \begin{block}{Aufgabe}
 Sei $L$ eine reguläre Sprache. Zeige, dass dann auch die folgenden beiden Sprachen regulär sind:
 \begin{enumerate}
@@ -257,6 +259,15 @@ Sei $L$ eine reguläre Sprache. Zeige, dass dann auch die folgenden beiden Sprac
     Wortes $w'\in L$}}.$
 \end{enumerate}
 \end{block}
+
+\pause
+
+\begin{block}{Zur Veranschaulichung}
+$ L = \left\lbrace \text{ Katze, Kater, Katzenpfote, Katzenfutter } \right\rbrace $
+
+Was sind hier NOPREFIX$(L)$ und NOEXTEND$(L)$?
+\end{block}
+
 \end{frame}
 \begin{frame}
  \frametitle{Aufgabe: Regularität}

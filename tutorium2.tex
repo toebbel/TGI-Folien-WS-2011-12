@@ -47,6 +47,7 @@ $q_4$ ist nicht vom Startzustand aus erreichbar
 Schon minimal?
 \end{frame}
 \begin{frame}
+ \frametitle{Minimierung von DEAs}
 Nein!
 \begin{block}{Automat \(A'' = (Q'', \Sigma, \delta'', s, F'')\)}
  \begin{figure}[H]
@@ -74,7 +75,7 @@ Nein!
  \begin{enumerate}
   \item Tiefensuche durchführen, um überflüssige Zustände zu finden.
   \item Diese entfernen.
-  \item Aus den restlichen Zuständen den Äquivalenzklassenautomaten bilden.
+  \item Aus restlichen Zuständen den Äquivalenzklassenautomaten bilden.
  \end{enumerate}
 \end{block}
 \end{frame}
@@ -229,13 +230,17 @@ Konstruiere zu folgendem DEA den Äquivalenzklassenautomaten:
   \end{center}
   \end{figure}
 \end{frame}
+
+\section{Wiederholung}
+\subsection{DEAs}
+
 \begin{frame}
 \frametitle{Aufgabe zu DEAs}
 Gegeben sei ein DEA (als Graph mit beschrifteten Knoten und Kanten) ohne überflüssige Zustände.
 Schreibe einen Algorithmus, der entscheidet, ob die zugehörige Sprache unendlich viele Wörter hat. Hinweis: Siehe Beweis zur Korrektheit des Pumping-Lemmas.
 \end{frame}
 
-\section{Wiederholung}
+
 
 \subsection{Reguläre Sprachen}
 
@@ -243,9 +248,8 @@ Schreibe einen Algorithmus, der entscheidet, ob die zugehörige Sprache unendlic
 \frametitle{Aufgabe: Regularität}
 
 \begin{block}{Definition}
-Ein Wort $w$ ist \emph{Präfix} eines anderen Wortes
-$w'$, falls ein Wort $v$ mit $wv = w'$ existiert. Gilt darüber hinaus
-noch $w\neq w'$, so ist $w$ ein \emph{echtes Präfix} von $w'$.
+Ein Wort $w$ ist \emph{Präfix} eines Wortes
+$w'$, falls ein Wort $v$ mit $wv = w'$ existiert. Gilt zusätzlich $w\neq w'$, so ist $w$ ein \emph{echtes Präfix} von $w'$.
 \end{block}
 
 \pause
@@ -255,8 +259,7 @@ Sei $L$ eine reguläre Sprache. Zeige, dass dann auch die folgenden beiden Sprac
 \begin{enumerate}
 \item NOPREFIX$(L):=\menge{w\in L}{\mbox{kein $w'\in L$ ist echtes Präfix
     von $w$}}.$
-\item NOEXTEND$(L):= \menge{w\in L}{\mbox{$w$ ist kein echtes Präfix eines
-    Wortes $w'\in L$}}.$
+\item NOEXTEND$(L):=$ \\ \raggedleft{ $ \menge{w\in L}{\mbox{$w$ ist kein echtes Präfix eines Wortes $w'\in L$}}.$ }
 \end{enumerate}
 \end{block}
 

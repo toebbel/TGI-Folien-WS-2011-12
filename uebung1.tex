@@ -75,9 +75,10 @@
 		\item Verbesserte Methode:
 		
 		\end{itemize}
-	
+
 	\begin{minipage}{0.3 \textwidth}
-		\begin{tabular}{l|l|l}
+		\vspace{0.4cm}
+        \begin{tabular}{l|l|l}
 		  & 0 & 1 \\
 		\hline
 		 $s$ & $\{s,q_1\}$ & $\{s\}$ \\
@@ -86,25 +87,24 @@
 		 $\mathbf{f_1}$ & $\emptyset$ &  $\emptyset$ \\
 		 $\mathbf{f_2}$ & $\emptyset$ & $\emptyset$ \\
 		\end{tabular}
+	
 	\end{minipage}
-	
 	\setbeamercovered{invisible}
-	
-	\pause  \hfill
-	
-	\begin{minipage}{0.45 \textwidth}	
-		\begin{tabular}{l|l|l}
+	\pause \hfill
+    \begin{minipage}{0.6 \textwidth}        
+        \begin{tabular}{l|l|l}
 		  & 0 & 1 \\
 		\hline
 		 $\{s\}$ & \alert<3>{$\{s,q_1\}$} & $\{s\}$ \pause \pause \\
-		 \alert<4>{$\mathbf{\{s,q_1\}}$} &	 \alert<5>{$\{s,q_1,q_2,f_1\}$}	&	\alert<7>{$\{s,f_2\}$} \pause \pause \\
+		 \alert<4>{$\{s,q_1\}$} &	 \alert<5>{$\{s,q_1,q_2,f_1\}$}	&	\alert<7>{$\{s,f_2\}$} \pause \pause \\
 		 \alert<6>{$\mathbf{\{s,q_1,q_2,f_1\}}$}	&	$\{s,q_1,q_2,f_1\}$	&	$\{s,f_2\}$ \pause \pause \\
 		 \alert<8>{$\mathbf{\{s,f_2\}}$}  & $\{s,q_1\}$ &  $\{s\}$ \pause\\
 		\end{tabular}
+    \end{minipage}		
 	
-	\end{minipage}
+	\hfill
 	
-		\setbeamercovered{transparent}
+	\setbeamercovered{transparent}
 \end{frame}
 
 \begin{frame}

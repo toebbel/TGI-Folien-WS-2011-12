@@ -1,5 +1,6 @@
 \include{includes/common_start}
 \tutnr{3}
+\section{Nerode-Relation}
 \subsection{Nerode-Relation}
 \begin{frame}
  \frametitle{Nerode-Relation}
@@ -24,7 +25,7 @@ Gib für die folgenden Sprachen jeweils die Äquivalenzklassen bezüglich der Ne
 \end{itemize}
 \end{frame}
 
-\section{Turingmaschinen und Berechenbarkeit}
+\section{Turingmaschinen}
 \subsection{Registermaschine}
 \begin{frame}
 \frametitle{Registermaschine}
@@ -109,7 +110,7 @@ Eine Turingmaschine wird definiert als:
 					\end{tikzpicture}
 					\end{center}
 
-					Dabei steht die Kantenbeschriftung ``$a|b,L$'' für den Übergang $\delta(q_0,a) =
+					Dabei steht die Kantenbeschriftung "`$a|b,L$"' für den Übergang $\delta(q_0,a) =
 					(q_1,b,L)$.
 
 					\vspace{2mm}
@@ -117,7 +118,7 @@ Eine Turingmaschine wird definiert als:
 					Symbol keinen Zustandsübergang gibt, bricht die Maschine die Berechnung ab. 
 }
 \begin{frame}
-\frametitle{Aufgabe: Turingmaschine}
+\frametitle{Konfigurationen}
 Oft wird die Situation, in der sich eine Turingmaschine $\mathcal{M} =(Q,\Sigma,\Gamma,\delta,s,F)$ befindet, durch die Angabe der
 \emph{Konfiguration} in der Form $w(q)av$ codiert, wobei $w,v \in \Gamma^*, a
 \in \Gamma$ und $q\in Q$ sind. Dies bedeutet, dass sich $\mathcal{M}$ gerade im
@@ -144,7 +145,7 @@ steht das Wort $w$ und rechts davon das Wort $v$ auf dem Rechenband.
 \end{frame}
 \begin{frame}
 \frametitle{Aufgabe: Turingmaschine}
-Entwirf eine deterministische Turing-Maschine $\mathcal M := (Q, \Sigma, \Gamma, \delta, s, F)$, die genau die folgende Sprache akzeptiert: $$L:=\menge{ww^R}{ w \in \{a, b\}^*}$$ wobei $w^R$ das \glqq Spiegelwort\grqq~zu $w$ ist.
+Entwirf eine deterministische Turing-Maschine $\mathcal M := (Q, \Sigma, \Gamma, \delta, s, F)$, die genau die folgende Sprache akzeptiert: $$L:=\menge{ww^R}{ w \in \{a, b\}^*}$$ wobei $w^R$ das "`Spiegelwort"'~zu $w$ ist.
 Dies ist die Sprache der Palindrome gerader Länge.  Beschreibe zunächst kurz in Worten, wie deine Turing-Maschine arbeitet. 
 Spezifiziere $\mathcal M$ dann explizit durch Angabe eines Zustandsdiagramms oder einer formalen Spezifikation.
 \end{frame}
@@ -166,13 +167,18 @@ Welche Konfigurationen durchläuft die Maschine, wenn sie auf dem leeren Band
 gestartet wird?  Welche Konfigurationen durchläuft die Maschine bei Eingabe
 des Wortes {\tt 101}?
 \end{frame}
+
+\section{Schluss}
+\subsection{Schluss}
+
 \begin{frame}
 \frametitle{Bis zum nächsten Mal!}
 \begin{center}
-  \includegraphics[width=0.9 \textwidth]{images/xkcd_205.png}
+  \includegraphics[height=0.8 \textheight]{images/xkcd_205.png} 
+\end{center}
+
 \begin{quote}\tiny{Nonrewritable tape?}
 \end{quote}
-\end{center}
 \end{frame}
 
 \include{includes/common_end}

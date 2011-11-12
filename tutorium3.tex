@@ -75,6 +75,10 @@ $\rightarrow$ Turingmaschine.
 Die Turingmaschine besteht aus einem beidseitig \emph{unendlichen} Eingabe- und Rechenband
 mit einem frei beweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kontrolle gesteuert wird. 
 \end{block}
+
+\begin{center}
+	\only<2->{\includegraphics[scale=0.5]{images/tmaschine.png}}
+\end{center}
 \end{frame}
 \begin{frame}
 \frametitle{Turingmaschine}
@@ -119,11 +123,21 @@ Eine Turingmaschine wird definiert als ein 7-Tupel bestehend aus:
 }
 \begin{frame}
 \frametitle{Konfigurationen}
-Oft wird die Situation, in der sich eine Turingmaschine $\mathcal{M} =(Q,\Sigma,\Gamma,\delta,s,F)$ befindet, durch die Angabe der
-\emph{Konfiguration} in der Form $w(q)av$ codiert, wobei $w,v \in \Gamma^*, a
-\in \Gamma$ und $q\in Q$ sind. Dies bedeutet, dass sich $\mathcal{M}$ gerade im
-Zustand $q$ befindet; der Lesekopf steht auf dem Zeichen $a$; links davon
-steht das Wort $w$ und rechts davon das Wort $v$ auf dem Rechenband.
+Sei $\mathcal{M} =(Q,\Sigma, \sqcup, \Gamma,\delta,s,F)$ eine Turingmaschine.
+
+Angabe des aktuellen Berechnungszustandes: \emph{Konfiguration}
+
+$$w(q)av$$ 
+
+wobei $w,v \in \Gamma^*, a \in \Gamma$ und $q\in Q$. \\
+
+Dies bedeutet:
+
+\begin{itemize}
+	\item $\mathcal{M}$ befindet sich im Zustand $q$.
+	\item Der Lesekopf steht auf dem Zeichen $a$.
+	\item Links vom Lesekopf steht das Wort $w$ und rechts davon das Wort $v$ auf dem Rechenband.
+\end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Aufgabe: Turingmaschine}

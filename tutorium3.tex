@@ -79,14 +79,14 @@ mit einem frei beweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kon
 \begin{frame}
 \frametitle{Turingmaschine}
 \begin{block}{Definiton}
-Eine Turingmaschine wird definiert als:
+Eine Turingmaschine wird definiert als ein 7-Tupel bestehend aus:
  \begin{itemize}
- \item $Q$, eine endliche Zustandsmenge
+ \item $Q$, einer endliche Zustandsmenge
  \item $\Sigma$, einem endlichen Eingabealphabet
  \item $\sqcup$, einem Blanksymbol mit $\sqcup \notin \Sigma$
  \item $\Gamma$, einem endlichen Bandalphabet mit $\Sigma \cup\{\sqcup\} \subseteq \Gamma$
  \item $s \in Q$, einem Startzustand
- \item $\delta: Q\times\Gamma \rightarrow Q\times\Gamma\times\{L, R, N\}$
+ \item $\delta$, einer Übergangsfunktion $\delta: Q\times\Gamma \rightarrow Q\times\Gamma\times\{L, R, N\}$
  \item $F \subseteq Q$, einer Menge an Endzuständen
  \end{itemize}
 \end{block}

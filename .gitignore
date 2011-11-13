@@ -1,6 +1,7 @@
 slides.pdf
 /tutorium*.pdf
 /uebung*.pdf
+/rest.pdf
 *.aux
 *.log
 *.nav

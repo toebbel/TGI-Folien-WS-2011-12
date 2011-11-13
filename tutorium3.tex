@@ -84,7 +84,7 @@ mit einem frei beweglichen Lese-/Schreibkopf, der von einer \emph{endlichen} Kon
 \begin{block}{Definiton}
 Eine Turingmaschine wird definiert als ein 7-Tupel bestehend aus:
  \begin{itemize}
- \item $Q$, einer endliche Zustandsmenge
+ \item $Q$, einer endlichen Zustandsmenge
  \item $\Sigma$, einem endlichen Eingabealphabet
  \item $\sqcup$, einem Blanksymbol mit $\sqcup \notin \Sigma$
  \item $\Gamma$, einem endlichen Bandalphabet mit $\Sigma \cup\{\sqcup\} \subseteq \Gamma$
@@ -120,6 +120,32 @@ Eine Turingmaschine wird definiert als ein 7-Tupel bestehend aus:
 					Falls es für einen gegebenen Zustand und ein gegebenes
 					Symbol keinen Zustandsübergang gibt, bricht die Maschine die Berechnung ab. 
 }
+
+\begin{frame}
+	\frametitle{Turingmaschine: Beispiel}
+	
+	Seien $\Sigma = \{0,1\}$, $\Gamma = \{0,1,\sqcup\}$ und die Turingmaschine $\M =(\{q_0, q_1\},\Sigma, \sqcup, \Gamma,\delta,q_0,\{q_1\})$ mit folgender Überführungsfunktion gegeben:
+	
+	\begin{center}
+	\begin{tikzpicture}[node distance=2.25cm,auto]
+	\node(q0)[state,initial]{$q_0$};
+	\node(q1)[state,right of=q0]{$q_1$};	
+	\node(q2)[state,accepting,right of=q1]{$q_2$};	
+
+	\path[->]       (q0) edge node{$0|1,R$} (q1)
+					(q1) edge node{$1|0,R$} (q2)
+	                (q1) edge[loop above] node{$0|1,R$} (q1)	                
+			        (q2) edge[loop above] node{$1|0,R$} (q2);
+					\end{tikzpicture}
+					\end{center} 
+					
+	\begin{itemize}
+		\item Welche Wörter akzeptiert \M{}?
+		\item Wie verändert \M{} die Eingabe?
+	\end{itemize}			
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Konfigurationen}
 Sei $\mathcal{M} =(Q,\Sigma, \sqcup, \Gamma,\delta,s,F)$ eine Turingmaschine.
@@ -138,6 +164,9 @@ Dies bedeutet:
 	\item Links vom Lesekopf steht das Wort $w$ und rechts davon das Wort $v$ auf dem Rechenband.
 \end{itemize}
 \end{frame}
+
+\subsection{Aufgaben}
+
 \begin{frame}
 \frametitle{Aufgabe: Turingmaschine}
 \vspace{-1cm}
@@ -156,6 +185,7 @@ Dies bedeutet:
 
 \end{enumerate}
 \end{frame}
+
 \begin{frame}
 \frametitle{Aufgabe: Turingmaschine}
 Entwirf eine deterministische Turing-Maschine $\mathcal M := (Q, \Sigma, \Gamma, \delta, s, F)$, die genau die folgende Sprache akzeptiert: $$L:=\menge{ww^R}{ w \in \{a, b\}^*}$$ wobei $w^R$ das "`Spiegelwort"'~zu $w$ ist.
@@ -170,7 +200,7 @@ Dies ist die Sprache der Palindrome gerader Länge.
 \frametitle{Aufgabe: Turingmaschine}
  \label{sec:busy_beaver}
 
-Konstruiere eine Turingmaschine, die aus drei Zuständen (plus einem
+Entwirf eine Turingmaschine, die aus drei Zuständen (plus einem
 weiteren Haltezustand $q_f$) besteht und folgendes Verhalten hat:
 \begin{quote}
   Angesetzt auf ein leeres Band schreibt sie möglichst viele ${\tt 1}$

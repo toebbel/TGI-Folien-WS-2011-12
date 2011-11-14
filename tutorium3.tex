@@ -124,18 +124,20 @@ Eine Turingmaschine wird definiert als ein 7-Tupel bestehend aus:
 \begin{frame}
 	\frametitle{Turingmaschine: Beispiel}
 	
-	Seien $\Sigma = \{0,1\}$, $\Gamma = \{0,1,\sqcup\}$ und die Turingmaschine $\M =(\{q_0, q_1\},\Sigma, \sqcup, \Gamma,\delta,q_0,\{q_1\})$ mit folgender Überführungsfunktion gegeben:
+	Seien $\Sigma = \{0,1\}$, $\Gamma = \{0,1,\sqcup\}$ und die Turingmaschine $\M =(\{q_0, q_1,q_2,q_f\},\Sigma, \sqcup, \Gamma,\delta,q_0,\{q_f\})$ mit folgender Überführungsfunktion gegeben:
 	
 	\begin{center}
 	\begin{tikzpicture}[node distance=2.25cm,auto]
 	\node(q0)[state,initial]{$q_0$};
 	\node(q1)[state,right of=q0]{$q_1$};	
-	\node(q2)[state,accepting,right of=q1]{$q_2$};	
+	\node(q2)[state,right of=q1]{$q_2$};	
+	\node(qf)[state,accepting,right of=q2]{$q_f$};	
 
 	\path[->]       (q0) edge node{$0|1,R$} (q1)
 					(q1) edge node{$1|0,R$} (q2)
 	                (q1) edge[loop above] node{$0|1,R$} (q1)	                
-			        (q2) edge[loop above] node{$1|0,R$} (q2);
+			        (q2) edge[loop above] node{$1|0,R$} (q2)
+			        (q2) edge node{$\sqcup|\sqcup,N$} (qf);
 					\end{tikzpicture}
 					\end{center} 
 					

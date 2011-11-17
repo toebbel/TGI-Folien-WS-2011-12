@@ -70,19 +70,20 @@ Zeigen Sie mit Hilfe der Nerode-Relation die Nichtregularit\"at der Sprache $L$:
   \item $abb$ nicht.
   \item Die akzeptierte Sprache ist $L(TM) := \menge{a^kb^l}{k \geq l}$
  
-  \invincible
-  \pause
-  \item Die Sprache ist offensichtlich semi-entscheidbar.
-  \item Ist sie auch entscheidbar?
-  \vincible
- \end{itemize}
- 
- \ducttape{-1cm} 
 
  \hfill 
  \resizebox{8cm}{!} {%
   \thetm
  }
+  \invincible
+  \pause
+ \ducttape{-6cm} 
+  \item ist diese Sprache semi-entscheidbar?
+  \pause
+  \item Ist sie auch entscheidbar?
+  \vincible
+ \end{itemize}
+ 
 \end{frame}
 
 
@@ -112,19 +113,11 @@ Zeigen Sie mit Hilfe der Nerode-Relation die Nichtregularit\"at der Sprache $L$:
 \end{block}
 \end{frame}
 
-\begin{frame}
- \frametitle{Nicht entscheidbare Sprache}
- \begin{block}{Beispiel}
- \begin{itemize}
-  \item Die Sprache aller "`Busy-Beaver"'-Turingmaschinen mit 15 Zuständen ist nicht entscheidbar.
-  \item Warum nicht?
- \end{itemize}
- \end{block}
-\end{frame}
 
 \begin{frame}
 \frametitle{Aufgaben zur Entscheidbarkeit}
- Seien $L_1$ und $L_2$ zwei Sprachen über einem Alphabet $\Sigma$.
+\begin{itemize}
+\item Seien $L_1$ und $L_2$ zwei Sprachen über einem Alphabet $\Sigma$.
 Beweisen Sie:
 \begin{enumerate}
 \item Ist $L_1$ entscheidbar, so ist auch $L_1^c$ entscheidbar.
@@ -134,12 +127,14 @@ Beweisen Sie:
 $$\min(L_1):=\menge{x\in L_1}{\text{kein echtes Präfix von $x$ ist in }L_1}$$
 entscheidbar.
 \end{enumerate}
+\item Ist die Sprache der Busy-Beaver-Turingmaschinen mit maximal 42 Zuständen entscheidbar?
+\end{itemize}
 \end{frame}
 
 \begin{frame}
  \frametitle{Aufgabe zur Semi-Entscheidbarkeit}
 Sei $L$ eine semi-entscheidbare Sprache, die nicht entscheidbar ist. Ist die
-Sprache $L'=\{0w:w \in L\} \cup \{1w: w \not\in L\}$ entscheidbar,
+Sprache $L'=\{0w \mid w \in L\} \cup \{1w \mid w \not\in L\}$ entscheidbar,
 semi-entscheidbar oder keins von beiden?
 
 Hinweis: Nimm an, $L'$ sei semi-entscheidbar, und folgere daraus, dass
@@ -246,7 +241,7 @@ $$ \delta: Q \times \Gamma \times \{1, \ldots, n\} \rightarrow Q \times \Gamma \
 \end{frame}
 % Mehrdim
 \begin{frame}
-\frametitle{Mehrkopf-Turingmaschinen}
+\frametitle{Mehrdimensionale Turingmaschinen}
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[scale=0.2]

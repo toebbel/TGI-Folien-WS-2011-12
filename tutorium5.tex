@@ -1,0 +1,225 @@
+\include{includes/common_start}
+\tutnr{5}
+
+\begin{frame}
+	\frametitle{Aufgabe zur Entscheidbarkeit}
+	
+	Sei $L$ eine nicht entscheidbare Sprache \"uber dem Alphabet $\Sigma=\{0,1\}$ und sei $(01)^k \not\in L$ f\"ur jedes $k\in \mathbb N_{>0}$.
+	
+Zeige: Die Sprache \[L' = \{w_1\#w_2\mid (w_1 \in L \wedge w_2 \not\in L) \text{ oder } (w_1 \not\in L \wedge w_2 \in L) \}\]
+\"uber dem Alphabet $\Sigma'=\{0, 1, \#\}$ ist nicht entscheidbar.
+
+	\invincible \pause
+	
+	\ducttape{1cm}	
+	
+Annahme: $L'$ ist entscheidbar. Sei $M'$ dann eine Turingmaschine, die $L'$ entscheidet. $M'$ entscheidet also zun\"achst, ob der erste Teil des Wortes in $L$ liegt und dann, ob der zweite Teil des Wortes nicht in $L$ liegt.
+Sei $M$ eine Turingmaschine, die die erste Phase von $M'$ simuliert. Dann entscheidet $M$ die Sprache $L$, was ein Widerspruch zur Annahme ist.
+
+	\pause
+	
+	\ducttape{1cm}
+	\textbf{Nope!}
+	
+	\vincible
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe zur Entscheidbarkeit}
+	Sei $L$ eine nicht entscheidbare Sprache \"uber dem Alphabet $\Sigma=\{0,1\}$ und sei $(01)^k \not\in L$ f\"ur jedes $k\in \mathbb N_{>0}$.
+	
+Zeige: Die Sprache \[L' = \{w_1\#w_2\mid (w_1 \in L \wedge w_2 \not\in L) \text{ oder } (w_1 \not\in L \wedge w_2 \in L) \}\]
+\"uber dem Alphabet $\Sigma'=\{0, 1, \#\}$ ist nicht entscheidbar.
+
+	\ducttape{1cm}	
+	
+	Annahme: $L'$ sei entscheidbar. 
+Sei $M'$ eine TM, die $L'$ entscheidet.
+F\"ur ein Wort $w \in \Sigma^*$ konstruiere das Wort $w'=w\#01$. 
+Dann gilt $w' \in L' \Leftrightarrow w \in L$. 
+Damit kann man $L$ wie folgt entscheiden, im Widerspruch zur Nichtentscheidbarkeit von $L$:\\
+F\"ur $w \in \Sigma^*$ konstruiere $w'=w\#01$. Simuliere dann die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \in L'$ akzeptiert.
+	
+\end{frame}
+
+\section{Probleme}
+\subsection{Probleme}
+\begin{frame}
+ \frametitle{Probleme}
+ \begin{block}{Definition (Skript)}
+ Ein \emph{Problem $\Pi$} ist gegeben durch:
+ \begin{enumerate}
+  \item eine allgemeine Beschreibung aller vorkommenden Parameter;
+  \item eine genaue Beschreibung der Eigenschaften, welche die Lösung haben soll
+ \end{enumerate}
+ \end{block}
+ Ein \emph{Problembeispiel} \textit{I} \emph{(Instanz)} von $\Pi$ erhalten wir, indem wir die Parameter von $\Pi$ festlegen.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Entscheidungsproblem}
+ \begin{block}{Definition}
+  Ein Entscheidungsproblem ist ein Problem, bei dem die Lösung "`Ja"' oder "`Nein"' lautet. 
+  Entscheidungsprobleme lassen sich gut auf Sprachen abbilden.
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Optimierungsproblem und Entscheidungsproblem}
+ \begin{block}{Beispiel}
+  \begin{enumerate}
+   \item Die Aufgabe, aus einem gegebenen Blech möglichst viele sternförmige Weihnachtsplätzchen zu gewinnen, ist ein Optimierungsproblem.
+   \item Die Frage, ob aus diesem Blech mindestens $k$ Plätzchen gewonnen werden können, ist ein zugehöriges Entscheidungsproblem.
+  \end{enumerate}
+ \end{block}
+ \begin{block}{Überlegung}
+  Wie kann man mit einer Turingmaschine, welche das Entscheidungsproblem löst, das Optimierungsproblem lösen?
+ \end{block}
+ Hinweis: Nimm an, dass es nur endlich viele mögliche Kekskonfigurationen auf einem Backblech gibt.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Optimierungsproblem und Entscheidungsproblem}
+ \begin{block}{Überlegung}
+  Wie kann man mit einer Turingmaschine, welche das Entscheidungsproblem löst, das Optimierungsproblem lösen?
+ \end{block}
+\begin{block}{Strategie}
+ \begin{enumerate}
+  \item Zunächst mit binärer Suche das maximale $k$ herausfinden.
+  \item Eine Formplatzierung festlegen, danach vorherigen Schritt wiederholen. Wenn sich das $k$ gesenkt hat, war die Platzierung falsch. 
+  Wenn nicht, war sie richtig
+  \item Wiederhole, bis alle Formen platziert sind.
+ \end{enumerate}
+\end{block}
+\end{frame}
+
+
+%TODO: Grafik
+
+\begin{frame}
+ \frametitle{Entscheidungsproblem}
+  Gegeben seien ein gerichteter Graph $G = (V, E)$ und zwei Knoten $v, w \in V$.
+  
+  \begin{enumerate}
+  	\item Betrachte die Menge der Wege von $v$ nach $w$ in $G$ und formuliere ein naheliegendes Optimierungsproblem.
+  	\item Formuliere ein zu deinem Optimierungsproblem gehörendes Optimalwertproblem.
+  	\item Formuliere ein zu deinem Optimierungsproblem gehörendes Entscheidungsproblem.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Kodierungsschemata}
+\begin{frame}
+ \frametitle{Kodierungsschemata (VL)}
+ \begin{block}{Definition Kodierungsschema}
+ Ein \emph{Kodierungsschema} $s$ ordnet jedem Problembeispiel eines Problems eine Zeichenkette oder Kodierung über einem Alphabet $\Sigma$ zu. 
+ Die Eingabelänge eines Problembeispiels ist die Anzahl der Symbole seiner Kodierung.
+ Dabei gibt es natürliche verschiedene Kodierungsschemata für ein bestimmtes Problem.
+ \end{block}
+ \begin{block}{Äquivalenz}
+  Zwei Kodierungsschemata $s_1$, $s_2$ heißen \emph{äquivalent} bezüglich eines Problems $\Pi$, falls es Polynome $p_1$, $p_2$ gibt, sodass gilt:
+  \[
+   (|s_1(I)| = n \Rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } (|s_2(I)| = m \Rightarrow |s_1(I)| \leq p_1(m))
+  \]
+für alle Problembeispiele I von $\Pi$.
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Kodierungsschemata}
+ Das Entscheidungsproblem \textit{PRIMES} besteht darin, zu entscheiden, ob es sich bei einer gegebenen natürlichen Zahl $p>1$ um eine Primzahl handelt. 
+Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl kodiert. 
+Für $b\in \mathbb{N}$ bezeichne $s_b$ das Kodierungsschema, welches Zahlen zur Basis $b$ darstellt.
+
+Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
+
+\begin{block}{Überlegung}
+ Welches Kodierungsschema c wäre zu a, b nicht äquivalent? Warum nicht?
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kodierung von SHORTEST-PATH}
+ \begin{block}{Wiederholung: SHORTEST-PATH}
+  Gegeben seien ein gerichteter Graph $G = (V, E)$ und zwei Knoten $v, w \in V$.
+  
+  Das Entscheidungsproblem SHORTEST-PATH besteht darin, zu entscheiden, ob es einen Pfad der Länge $\leq k$ von $v$ nach $w$ gibt.
+ \end{block}
+ \begin{block}{Überlegung}
+ Wie sähe ein mögliches Kodierungsschema auf dem Alphabet $\Sigma = \{0,1,\#\}$ aus?
+ \end{block}
+ \invincible \pause
+ \begin{block}{Mögliche Kodierung}
+ $\abs{V}\#k\#v\#w$ gefolgt von $\#i\#j \text{ für } 1 \leq i,j \leq \abs{V}$, falls $(i, j) \in E$.
+ \end{block}
+ 
+ \vincible
+\end{frame}
+
+\section{Die Klasse \classP}
+\subsection{Die Klasse \classP}
+\begin{frame}
+\frametitle{Die Klasse \classP}
+Die Klasse \classP{} ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine entschieden werden können, deren Zeitkomplexität höchstens polynomiell ist.
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiel}
+\textbf{Anmerkung:} Da eine RAM-Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.~A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.\\[10pt]
+Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\[6pt]
+\textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$
+\end{frame}
+
+\begin{frame}
+\frametitle{Sind folgende Sprachen in $\mathcal{P}$?}
+\begin{itemize}
+\item Die Wörter der deutschen Sprache
+\item Die ungeraden Zahlen
+\item Eine reguläre Sprache $L$
+\item Die Instanzen von PKP, die eine Lösung haben
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Laufzeitbetrachtung}
+ Betrachten Sie $L_1 := L[\text{\textit{PRIMES}},s_1]$. 
+Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ darauf hin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
+Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen} Turing-Maschine, die diesen Algorithmus implementiert und damit $L_1$ entscheidet. 
+Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
+\end{frame}
+
+\section{Nichtdeterministische Turingmaschinen}
+\subsection{Nichtdeterministische Turingmaschinen}
+\begin{frame}
+\frametitle{Nichtdeterministische Turingmaschinen}
+
+\begin{block}{Version aus der Vorlesung}
+Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen.
+ Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt,
+ danach verfährt die Maschine wie eine normale TM.
+ Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt,
+ sodass der deterministische Anteil der Maschine das Wort akzeptiert.
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Nichtdeterministische Turingmaschinen: Anmerkung}
+Es gibt weitere dazu äquivalente Definitionen von NDTMs:
+ Man kann auch, analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren,
+ diese akzeptiert dann ebenfalls analog, wenn ein akzeptierender Pfad existiert.\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Polyreduktionen}
+\begin{block}{Definition (Vorlesung)}
+Eine polynomielle Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion
+$f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+\begin{enumerate}
+\item Es existiert eine deterministische Turing-Maschine, die in polynomieller Zeit $f$ berechnet
+\item Für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\end{enumerate}
+Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
+\end{block}
+\textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt, kann man sich folgerndermaßen  merken:
+$L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+\end{frame}
+
+\include{includes/common_end}

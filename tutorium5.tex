@@ -1,6 +1,8 @@
 \include{includes/common_start}
 \tutnr{5}
 
+\section{Wdh. Entscheidbarkeit}
+\subsection{Wdh. Entscheidbarkeit}
 \begin{frame}
 	\frametitle{Aufgabe zur Entscheidbarkeit}
 	
@@ -130,10 +132,10 @@ für alle Problembeispiele I von $\Pi$.
 Eine Probleminstanz von \textit{PRIMES} wird also durch eine natürliche Zahl kodiert. 
 Für $b\in \mathbb{N}$ bezeichne $s_b$ das Kodierungsschema, welches Zahlen zur Basis $b$ darstellt.
 
-Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
+Zeige, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \textit{PRIMES} äquivalent sind.
 
 \begin{block}{Überlegung}
- Welches Kodierungsschema c wäre zu a, b nicht äquivalent? Warum nicht?
+ Welches Kodierungsschema $s_c$ wäre zu $s_a$, $s_b$ nicht äquivalent? Warum nicht?
 \end{block}
 \end{frame}
 
@@ -155,6 +157,14 @@ Zeigen Sie, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich 
  \vincible
 \end{frame}
 
+\begin{frame}
+	\frametitle{Zeitkomplexität}
+	
+	Die Zeitkomplexität einer deterministischen Turingmaschine $\M$ ist definiert als:
+	
+	$$T_\M(n) = max \menge{\vphantom{1cm} \text{\# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
+\end{frame}
+
 \section{Die Klasse \classP}
 \subsection{Die Klasse \classP}
 \begin{frame}
@@ -166,7 +176,7 @@ Die Klasse \classP{} ist definiert als die Menge aller Sprachen, die von einer (
 \frametitle{Beispiel}
 \textbf{Anmerkung:} Da eine RAM-Maschine in Polyzeit von einer TM simuliert werden kann, kann man (auf einer abstrakteren Ebene) i.~A. Komplexitäten von bekannten Algorithmen in Beweisen verwenden.\\[10pt]
 Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit einem Start- und einem Endknoten, so dass der Endknoten vom Startknoten aus über die Kanten erreichbar ist.\\[6pt]
-\textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$
+\textbf{Grober Beweis:}	Tiefensuche ist in $\mathcal{O}(|V| + |V|)$
 \end{frame}
 
 \begin{frame}
@@ -181,10 +191,13 @@ Die folgende Sprache ist in $\mathcal{P}$: Die gerichteten Graphen zusammen mit 
 
 \begin{frame}
  \frametitle{Laufzeitbetrachtung}
- Betrachten Sie $L_1 := L[\text{\textit{PRIMES}},s_1]$. 
-Ein naiver Algorithmus für \textit{PRIMES} könnte alle Zahlen $2,3,\ldots,p-1$ darauf hin überprüfen, ob sie die gegebene Zahl $p$ teilen. 
-Beschreiben Sie kurz in Worten die Arbeitsweise einer \textbf{deterministischen} Turing-Maschine, die diesen Algorithmus implementiert und damit $L_1$ entscheidet. 
-Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal{P}$? Begründen Sie gegebenenfalls, warum $L_1$ in $\mathcal{P}$ ist.
+ In dieser Aufgabe bezeichne $s_1$ die un\"are Kodierung und $s_k$, $k >1$, die $k$-\"are Kodierung.
+Das Entscheidungsproblem \textit{PRIMES} fragt, ob eine gegebene Zahl $q \in \mathbb N$ eine Primzahl ist.
+
+\begin{enumerate}
+\item Betrachte $L_1 := L[\text{\textit{PRIMES}},s_1]$. Ein naiver Algorithmus f\"ur \textit{PRIMES} k\"onnte alle Zahlen $2,3,\ldots,p-1$ daraufhin \"uberpr\"ufen, ob sie die gegebene Zahl $p$ teilen. Beschreibe kurz in Worten die Arbeitsweise einer \textbf{deterministischen} Turing-Maschine, die diesen Algorithmus implementiert und damit $L_1$ entscheidet. Gib die Laufzeit deiner Turing-Maschine asymptotisch an. Ist $L_1$ in $\mathcal P$? Begr\"unde gegebenenfalls, warum $L_1$ in $\mathcal P$ ist.
+\item Erst 2002 konnte gezeigt werden, dass das Problem \textit{PRIMES} in der Klasse $\mathcal P$ liegt. Weshalb folgt \textit{PRIMES} $\in \mathcal P$ nicht aus 1.?
+\end{enumerate}
 \end{frame}
 
 \section{Nichtdeterministische Turingmaschinen}
@@ -194,8 +207,8 @@ Geben Sie die Laufzeit Ihrer Turing-Maschine asymptotisch an. Ist $L_1$ in $\mat
 
 \begin{block}{Version aus der Vorlesung}
 Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen.
- Wir erweiteren die TM um ein \emph{Orakelmodul}, das bevor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt,
- danach verfährt die Maschine wie eine normale TM.
+ Wir erweiteren die TM um ein \emph{Orakelmodul}, das vor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt. Danach verfährt die Maschine wie eine normale TM.
+ 
  Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt,
  sodass der deterministische Anteil der Maschine das Wort akzeptiert.
 \end{block}
@@ -206,6 +219,14 @@ Es gibt weitere dazu äquivalente Definitionen von NDTMs:
  Man kann auch, analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren,
  diese akzeptiert dann ebenfalls analog, wenn ein akzeptierender Pfad existiert.\\
 \end{frame}
+
+\begin{frame}
+\frametitle{Nichtdeterministische Turingmaschinen: Zeitkomplexität}
+	Die Zeitkomplexität einer nichtdeterministischen Turingmaschine $\M$ ist definiert als:
+	
+	$$T_\M(n) = max \menge{\vphantom{1cm} \text{\textbf{min.} \# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Polyreduktionen}
@@ -219,7 +240,16 @@ $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
 Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
 \end{block}
 \textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt, kann man sich folgerndermaßen  merken:
-$L_2$ ist das "schwerere" Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+$L_2$ ist das "`schwerere"' Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
+\end{frame}
+\end{frame}
+
+\section{Schluss}
+\subsection{Schluss}
+\begin{frame}
+	\frametitle{Bis zum nächsten Mal!}
+	
+	% TODO Schluss
 \end{frame}
 
 \include{includes/common_end}

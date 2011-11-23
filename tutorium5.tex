@@ -15,32 +15,29 @@ Zeige: Die Sprache \[L' = \{w_1\#w_2\mid (w_1 \in L \wedge w_2 \not\in L) \text{
 	
 	\ducttape{1cm}	
 	
-Annahme: $L'$ ist entscheidbar. Sei $M'$ dann eine Turingmaschine, die $L'$ entscheidet. $M'$ entscheidet also zun\"achst, ob der erste Teil des Wortes in $L$ liegt und dann, ob der zweite Teil des Wortes nicht in $L$ liegt.
+	\only<2-3>{
+Annahme: $L'$ ist entscheidbar. Sei $M'$ dann eine Turingmaschine, die $L'$ entscheidet. $M'$ entscheidet also zun\"achst, ob der erste Teil des Wortes in $L$ liegt, und dann, ob der zweite Teil des Wortes nicht in $L$ liegt.
+
 Sei $M$ eine Turingmaschine, die die erste Phase von $M'$ simuliert. Dann entscheidet $M$ die Sprache $L$, was ein Widerspruch zur Annahme ist.
 
 	\pause
 	
 	\ducttape{1cm}
 	\textbf{Nope!}
-	
-	\vincible
-\end{frame}
 
-\begin{frame}
-	\frametitle{Aufgabe zur Entscheidbarkeit}
-	Sei $L$ eine nicht entscheidbare Sprache \"uber dem Alphabet $\Sigma=\{0,1\}$ und sei $(01)^k \not\in L$ f\"ur jedes $k\in \mathbb N_{>0}$.
-	
-Zeige: Die Sprache \[L' = \{w_1\#w_2\mid (w_1 \in L \wedge w_2 \not\in L) \text{ oder } (w_1 \not\in L \wedge w_2 \in L) \}\]
-\"uber dem Alphabet $\Sigma'=\{0, 1, \#\}$ ist nicht entscheidbar.
+	}
 
-	\ducttape{1cm}	
-	
-	Annahme: $L'$ sei entscheidbar. 
+	\only<4>{	
+	Annahme: $L'$ ist entscheidbar. 
 Sei $M'$ eine TM, die $L'$ entscheidet.
 F\"ur ein Wort $w \in \Sigma^*$ konstruiere das Wort $w'=w\#01$. 
-Dann gilt $w' \in L' \Leftrightarrow w \in L$. 
+Dann gilt: $w' \in L' \Leftrightarrow w \in L$. 
+
 Damit kann man $L$ wie folgt entscheiden, im Widerspruch zur Nichtentscheidbarkeit von $L$:\\
 F\"ur $w \in \Sigma^*$ konstruiere $w'=w\#01$. Simuliere dann die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \in L'$ akzeptiert.
+	}
+
+	\vincible
 	
 \end{frame}
 
@@ -157,16 +154,16 @@ Zeige, dass die Kodierungsschemata $s_a$ und $s_b$ für $a,b>1$ bezüglich \text
  \vincible
 \end{frame}
 
+\section{Die Klasse \classP}
+\subsection{Die Klasse \classP}
 \begin{frame}
 	\frametitle{Zeitkomplexität}
 	
 	Die Zeitkomplexität einer deterministischen Turingmaschine $\M$ ist definiert als:
 	
-	$$T_\M(n) = max \menge{\vphantom{1cm} \text{\# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
+	$$T_\M(n) = max \menge{\vphantom{x^j_j} \text{\# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
 \end{frame}
 
-\section{Die Klasse \classP}
-\subsection{Die Klasse \classP}
 \begin{frame}
 \frametitle{Die Klasse \classP}
 Die Klasse \classP{} ist definiert als die Menge aller Sprachen, die von einer (deterministischen) Turingmaschine entschieden werden können, deren Zeitkomplexität höchstens polynomiell ist.
@@ -206,28 +203,40 @@ Das Entscheidungsproblem \textit{PRIMES} fragt, ob eine gegebene Zahl $q \in \ma
 \frametitle{Nichtdeterministische Turingmaschinen}
 
 \begin{block}{Version aus der Vorlesung}
-Wir definieren eine nichtdeterministische Turingmaschine als Erweiterung einer deterministischen.
- Wir erweiteren die TM um ein \emph{Orakelmodul}, das vor der deterministischen Berechnung Zeichen auf das Band links von der Eingabe schreibt. Danach verfährt die Maschine wie eine normale TM.
- 
- Die NDTM akzeptiert genau die Wörter, für die es eine Ausgabe des Orakelmoduls gibt,
- sodass der deterministische Anteil der Maschine das Wort akzeptiert.
+\begin{itemize}
+\item Erweiterung der deterministischen Turingmaschine.
+\item Neu: \emph{Orakelmodul} (Black Box)
+\item Ablauf einer Berechnung:
+\begin{itemize}
+	\item Zuerst: Orakelmodul schreibt Zeichen auf das Band links von der Eingabe.
+	\item Dann: Normale deterministische Berechnung
+ \end{itemize}
+\item NTM akzeptiert $\Leftrightarrow$ Es gibt eine Ausgabe des Orakelmoduls, sodass der deterministische Anteil der Maschine das Wort akzeptiert.
+\end{itemize}
 \end{block}
-\end{frame}
-\begin{frame}
-\frametitle{Nichtdeterministische Turingmaschinen: Anmerkung}
-Es gibt weitere dazu äquivalente Definitionen von NDTMs:
- Man kann auch, analog zu nichtdeterministischen endlichen Automaten, die NDTM als normale Turingmaschinen mit nicht eindeutiger Übergangsfunktion definieren,
- diese akzeptiert dann ebenfalls analog, wenn ein akzeptierender Pfad existiert.\\
+
+\pause
+
+\begin{block}{Äquivalente Definition}
+Analog zu nichtdeterministischen endlichen Automaten:
+\begin{itemize}
+\item Normale Turingmaschine mit nicht eindeutiger Übergangsfunktion
+\item NTM akzeptiert $\Leftrightarrow$ Es existiert ein akzeptierender Berechnungspfad
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{Nichtdeterministische Turingmaschinen: Zeitkomplexität}
 	Die Zeitkomplexität einer nichtdeterministischen Turingmaschine $\M$ ist definiert als:
 	
-	$$T_\M(n) = max \menge{\vphantom{1cm} \text{\textbf{min.} \# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
+	$$T_\M(n) = max \menge{\vphantom{x^j_j}\text{\textbf{min.} \# Berechnungsschritte bei Eingabe $x$}}{x \in \Sigma^*, \abs{x} = n}$$
+	
+	
 \end{frame}
 
-
+\section{Polyreduktionen}
+\subsection{Polyreduktionen}
 \begin{frame}
 \frametitle{Polyreduktionen}
 \begin{block}{Definition (Vorlesung)}
@@ -237,19 +246,23 @@ $f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
 \item Es existiert eine deterministische Turing-Maschine, die in polynomieller Zeit $f$ berechnet
 \item Für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
 \end{enumerate}
-Wir schreiben dann $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
+Wir schreiben dann: $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
 \end{block}
 \textbf{Anmerkung}: In welche Richtung das $\propto$ Symbol zeigt, kann man sich folgerndermaßen  merken:
 $L_2$ ist das "`schwerere"' Problem. Kann man $L_2$ entscheiden, so kann man mit polynomiellen Aufwand auch $L_1$ entscheiden.
-\end{frame}
 \end{frame}
 
 \section{Schluss}
 \subsection{Schluss}
 \begin{frame}
 	\frametitle{Bis zum nächsten Mal!}
-	
-	% TODO Schluss
+	\begin{center}
+		\includegraphics[scale=0.5]{images/xkcd-403.png}
+	\end{center}
+
+	\begin{quote}
+		\scriptsize{Check it out; I've had sex with someone who's had sex with someone who's written a paper with Paul Erdős!}
+	\end{quote}
 \end{frame}
 
 \include{includes/common_end}

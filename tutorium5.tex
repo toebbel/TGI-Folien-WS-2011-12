@@ -86,9 +86,8 @@ Simuliere die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \i
 \begin{block}{Strategie}
  \begin{enumerate}
   \item Zunächst mit binärer Suche das maximale $k$ herausfinden.
-  \item Eine Formplatzierung festlegen, danach vorherigen Schritt wiederholen. Wenn sich das $k$ gesenkt hat, war die Platzierung falsch. 
-  Wenn nicht, war sie richtig
-  \item Wiederhole, bis alle Formen platziert sind.
+  \item Die $n$-te Formplatzierung beliebig festlegen. Wenn das Problem für $k-n$ Plätzchen noch lösbar ist, war die Platzierung richtig, sonst nimm sie zurück.
+  \item Wiederhole Schritt 2, bis alle Formen platziert sind.
  \end{enumerate}
 \end{block}
 \end{frame}

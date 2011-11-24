@@ -21,7 +21,6 @@ Annahme: $L'$ ist entscheidbar. Sei $M'$ dann eine Turingmaschine, die $L'$ ents
 Sei $M$ eine Turingmaschine, die die erste Phase von $M'$ simuliert. Dann entscheidet $M$ die Sprache $L$, was ein Widerspruch zur Annahme ist.
 
 	\pause
-	
 	\begin{center}
         \Huge{\textbf{\color{red}NOPE}}
     \end{center}
@@ -38,7 +37,8 @@ F\"ur ein Wort $w \in \Sigma^*$ konstruiere das Wort $w'=w\#01$.
 Dann gilt: $w' \in L' \Leftrightarrow w \in L$. 
 
 Damit kann man $L$ wie folgt entscheiden, im Widerspruch zur Nichtentscheidbarkeit von $L$:\\
-F\"ur $w \in \Sigma^*$ konstruiere $w'=w\#01$. Simuliere dann die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \in L'$ akzeptiert.
+%F\"ur $w \in \Sigma^*$ konstruiere $w'=w\#01$.
+Simuliere die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \in L'$ akzeptiert.
 	}
 
 	\vincible

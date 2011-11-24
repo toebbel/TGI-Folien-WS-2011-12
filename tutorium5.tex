@@ -117,7 +117,7 @@ Simuliere die TM $M'$ auf Eingabe $w'$ und akzeptiere $w \in L$ gdw. $M'$ $w' \i
  \begin{block}{Äquivalenz}
   Zwei Kodierungsschemata $s_1$, $s_2$ heißen \emph{äquivalent} bezüglich eines Problems $\Pi$, falls es Polynome $p_1$, $p_2$ gibt, sodass gilt:
   \[
-   (|s_1(I)| = n \Rightarrow |s_2(I)| \leq p_2(n))\mbox{ und } (|s_2(I)| = m \Rightarrow |s_1(I)| \leq p_1(m))
+   |s_2(I)| \leq p_2(|s_1(I)|) \text{ und } |s_1(I)| \leq p_1(|s_2(I)|)
   \]
 für alle Problembeispiele I von $\Pi$.
  \end{block}

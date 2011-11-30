@@ -54,11 +54,12 @@ Ist diese Formulierung so korrekt?
 	Baue TM, die $L(\mathcal{M})$ entscheidet, wie folgt: \\ Sei $x$ die Eingabe und $n := \abs{x}$.
 	
 	\begin{itemize}
+		\item Berechne $f(n)$
 		\item Für alle Orakelwörter bis Länge $f(n)$:
 		\begin{itemize}
 		\item Simuliere $\mathcal{M}$ mit aktuellem Orakelwort
 		\item Falls $\mathcal{M}$ akzeptiert, akzeptiere
-		\item Falls $\mathcal{M}$ mehr als $f(n)$ Schritte braucht, probiere nächstes Orakelwort
+		\item Falls $\mathcal{M}$ ablehnt oder mehr als $f(n)$ Schritte braucht, probiere nächstes Orakelwort
 		\end{itemize}
 		\item Falls $\mathcal{M}$ für kein Orakelwort akzeptiert, lehne ab.
 	\end{itemize}
@@ -95,7 +96,7 @@ Eine Sprache $L$ ist $\mathcal{NP}$-vollständig genau dann, wenn
 $$L \in \mathcal{NP}$$ sowie $$L\mbox{ ist $\mathcal{NP}$-schwer}$$
 Damit sind die $\mathcal{NP}$-vollständigen Probleme die "`schwersten"' Probleme aus $\mathcal{NP}$.\\
 Interessant ist $\mathcal{NP}$-Vollständigkeit vor allem, da man aus Aussagen über diese Probleme viel über alle Probleme aus $\mathcal{NP}$ aussagen kann.
-Ist etwa $SAT \in \mathcal{P}$, so wäre $\mathcal{P} = \mathcal{NP}$. (Warum?)
+Wäre etwa $SAT \in \mathcal{P}$, so wäre $\mathcal{P} = \mathcal{NP}$. (Warum?)
 \end{frame}
 
 \begin{frame}
@@ -160,7 +161,7 @@ Eine Clique ist ein vollständig verbundener Teilgraph, also eine Menge $V' \sub
 \frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
 \begin{itemize}
  \item $CLIQUE \in \mathcal{NP}$: Übungsblatt\\
- \item $CLIQUE\mbox{ } \mathcal{NP}$ schwer: Wir zeigen $3SAT \propto CLIQUE$. (Warum?)\\\invincible\pause
+ \item $CLIQUE\mbox{ } \mathcal{NP}$-schwer: Wir zeigen $3SAT \propto CLIQUE$. (Warum?)\\\invincible\pause
  Wir müssen eine polynomielle Transformation von $3SAT$-Instanzen in $CLIQUE$-Instanzen angeben. (Warum?)\\ \vincible
 \end{itemize}
 \end{frame}
@@ -168,39 +169,69 @@ Eine Clique ist ein vollständig verbundener Teilgraph, also eine Menge $V' \sub
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
 Sei $C = \{c_1, \ldots, c_n\}$ eine $3SAT$-Instanz mit 
-$$ c_i = x_{i1} \vee x_{i2} \vee x_{i3} \mbox{ mit } x_{ij} \in \{u_1,\ldots,u_m,\bar{u_1},\ldots,\bar{u_m}\} $$
-Konstruiere eine CLIQUE-Instanz $(G = (V, E), K)$ folgendermaßen:
-$$V = (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1},\ldots,v_{n,1},v_{n,2},v_{n,3})$$
-$$E = {(v_{i,j},v_{k,m})| (i \neq k \wedge x_{i,j} \neq \bar{x}_{k,m} )}$$%TODO Bar sucks, \lineover or smth?
-$$K = n$$
+$$ c_i = x_{i,1} \vee x_{i,2} \vee x_{i,3} \mbox{ mit } x_{i,j} \in \{u_1,\ldots,u_m,\neglit{u_1},\ldots,\neglit{u_m}\} $$
+
+\pause
+
+Konstruiere eine $CLIQUE$-Instanz $(G = (\alert<3>{V}, \alert<4>{E}), \alert<5>{K})$ folgendermaßen:
+
+\pause
+
+$$\alert<3>{V} := (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1},\ldots,v_{n,1},v_{n,2},v_{n,3})$$
+
+Jeder Knoten steht also für ein Literal in der $3SAT$-Instanz. 
+
+\pause
+
+$$\alert<4>{E} := \menge{(v_{i,j},v_{k,m})}{x_{i,j} \neq \neglit{x_{k,m}} \wedge i \neq k}$$%TODO Bar sucks, \lineover or smth?
+Zwei Knoten sind verbunden, wenn sie gleichzeitig erfüllbar sind und nicht in der gleichen Klausel stehen. 
+
+\pause 
+$$\alert<5>{K} := n$$
+Wir suchen nach einer Clique der Größe $n$.\\
+
 \end{frame}
 
-\begin{frame}
-\frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
-$$V = (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1},\ldots,v_{n,1},v_{n,2},v_{n,3})$$
-Jeder Knoten steht also für ein Literal in der $3SAT$ Instanz. 
-$$E = {(v_{i,j},v_{k,m})| (i \neq k \wedge x_{i,j} \neq \bar{x}_{k,m} )}$$%TODO Bar sucks, \lineover or smth?
-Zwei Knoten sind verbunden, wenn sie gleichzeitig erfüllbar sind und nicht in der gleichen Klausel stehen. 
-$$K = n$$
-Wir suchen nach einer $CLIQUE$ der Größe $n$.\\
-\end{frame}
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
 \begin{itemize}
 \item Wenn eine $n$-Clique existiert:
 \begin{itemize}
 	\item $n$ erfüllbare Literale
-	\item Alle in jeweils unterschiedlichen Formeln \\ \small{(da ja alle in einer Formel untereinander verbunden sind)}
+	\item Alle in jeweils unterschiedlichen Klauseln \\ \small{(da Literalknoten in derselben Klausel nicht verbunden sind)}
 	\item $\leadsto$ erfüllende Wahrheitsbelegung
 \end{itemize}
 \pause \item Wenn eine erfüllende Wahrheitsbelegung existiert:
 \begin{itemize}
 	\item In jeder Klausel mindestens ein Literal erfüllt
 	\item Nimm aus jeder Klausel ein erfülltes Literal
-	\item Bilden eine Clique nach Definition des Graphen \\ \small{"`Zwei Knoten sind verbunden, wenn sie gleichzeitig erfüllbar sind und nicht in der gleichen Klausel stehen."'}
+	\item Diese bilden zusammen eine Clique nach Definition des Graphen: \\ \small{"`Zwei Knoten sind verbunden, wenn sie gleichzeitig erfüllbar sind und nicht in der gleichen Klausel stehen."'}
 \end{itemize}
 \end{itemize}
-\pause Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt, ist also $CLIQUE$ $\mathcal{NP}$-vollständig.
+
+\pause
+
+Also: $C$ ist Ja-Instanz von $3SAT$ $\Leftrightarrow$ $(G,K)$ ist Ja-Instanz von $CLIQUE$.
+
+\pause
+
+\ducttape{.3cm}
+
+Transformation ist außerdem in Polyzeit machbar $\Rightarrow$ $3SAT \propto CLIQUE$ $\Rightarrow$ $CLIQUE$ ist \classNP{}-schwer.
+
+\pause
+
+\ducttape{.3cm}
+
+Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt $\Rightarrow$ $CLIQUE$~$\mathcal{NP}$-vollständig.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beispiel}
+	
+	Reduktion folgender $3SAT$-Instanz auf eine $CLIQUE$-Instanz:
+	
+	$$C = \{ (x_1 \vee x_2 \vee x_3), (x_1 \vee \neglit{x_2} \vee \neglit{x_3}), (\neglit{x_1} \vee x_2 \vee x_3) \}$$
 \end{frame}
 
 \begin{frame}
@@ -208,6 +239,9 @@ Wir suchen nach einer $CLIQUE$ der Größe $n$.\\
 In der Regel ist es schwer zu zeigen, dass ein Problem $\mathcal{NP}$-schwer ist, aber leicht zu zeigen, dass ein Problem in $\mathcal{NP}$ liegt.\\[8pt]
 Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung für die Reduktion benötigt (Ausnahme: Satz von Cook), lohnt es sich einige kennen zu lernen.
 \end{frame}
+
+\section{Schluss}
+\subsection{Ham}
 
 \begin{frame}
 	\frametitle{Bis zum nächsten Mal!}

@@ -104,6 +104,7 @@ Polynomielle Transformationen sind transitiv, d.h. wenn $L_1 \propto L_2$ und $L
 Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathcal{NP}$, man spricht auch davon, $L_1$ und $L_2$ auf $L_3$ polynomiell reduziert zu haben.\\[8pt]
 Gegeben eine Sprache $L_N$, von der wir wissen, dass sie $\mathcal{NP}$-schwer ist, was wäre ein möglicher Ansatz, um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Schwere zu beweisen?\\
 \invincible\pause
+\ducttape{1.5cm}
 Man zeigt $L_N \propto L_X$
 \vincible
 \end{frame}
@@ -129,7 +130,7 @@ Eine Clique ist ein vollständig verbundener Teilgraph, also eine Menge $V' \sub
 \textit{Dieses Problem ist $\mathcal{NP}$-vollständig.}
 \end{frame}
 
-\begin{frame}
+\frame[label=graph]{
 \frametitle{CLIQUE-Beispiel}
 
 \begin{figure}[H]
@@ -173,7 +174,7 @@ Eine Clique ist ein vollständig verbundener Teilgraph, also eine Menge $V' \sub
 \item Hat dieser Graph eine 4-CLIQUE?
 \vincible
 \end{itemize}
-\end{frame}
+}
 
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Vollständigkeitsbeweis}
@@ -251,6 +252,8 @@ Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt $\Rightarrow$ 
 	
 	$$C = \{ (x_1 \vee x_2 \vee x_3), (x_1 \vee \neglit{x_2} \vee \neglit{x_3}), (\neglit{x_1} \vee x_2 \vee x_3) \}$$
 \end{frame}
+
+\againframe{graph}
 
 \begin{frame}
 \frametitle{Allgemeines zu $\classNP$-Vollständigkeitsbeweisen}

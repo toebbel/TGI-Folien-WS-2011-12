@@ -40,6 +40,31 @@ Ist diese Formulierung so korrekt?
 \end{frame}
 
 \begin{frame}
+	\frametitle{\recipe Zeigen, dass ein Problem in \classNP{} liegt}
+	
+	\textbf{Gegeben:} Entscheidungsproblem $\Pi$
+	
+	\textbf{Aufgabe:} Zeige, dass $\Pi \in \classNP$ gilt.
+	
+	\ducttape{.5cm}
+
+	\begin{block}{Lösung}	
+	\begin{enumerate}
+		\item Gib an, was das NTM-Orakel als \textbf{Zeugen} für die Lösung auf das Band schreiben könnte.
+		\item Zeige, dass solch ein Zeuge in \textbf{polynomieller Zeit} von einer \textbf{DTM} verifiziert werden kann.
+	\end{enumerate}
+		
+	\end{block}
+	
+	\begin{block}{Beispiel}
+	Zeige: $SAT \in \classNP$.
+	
+	"`$SAT \in \classNP$ gilt, da für eine gegebene Variablenbelegung in polynomieller Zeit von einer DTM überprüft werden kann, ob sie erfüllend ist."'
+	\end{block}
+		
+\end{frame}
+
+\begin{frame}
 
 \frametitle{Zeitkomplexität}
 \begin{block}{Definition aus der Übung}
@@ -55,7 +80,6 @@ Ist diese Formulierung so korrekt?
 \end{block}
 
 \end{frame}
-
 
 \begin{frame}
 	\frametitle{Aufgabe}
@@ -88,13 +112,32 @@ Ist diese Formulierung so korrekt?
 % NP vollständigkeit
 \section{\classNP{}-Vollständigkeit}
 \subsection{Eggs}
+
+\begin{frame}
+\frametitle{Wiederholung: Polynomielle Transformation}
+\begin{block}{Definition (Vorlesung)}
+Eine polynomielle Transformation einer Sprache $L_1$ in eine Sprache $L_2$ ist eine Funktion
+$f: \Sigma^*_1 \rightarrow \Sigma^*_2$ mit den Eigenschaften:
+\begin{enumerate}
+\item $f$ ist in polynomieller Zeit von einer deterministischen TM berechenbar.
+\item Für alle $x$ gilt: $x \in L_1 \iff f(x) \in  L_2$
+\end{enumerate}
+Wir schreiben dann: $L_1 \propto L_2$ ($L_1$ ist polynomiell transformierbar in (reduzierbar auf) $L_2$ ).
+\end{block}
+
+\begin{itemize}
+	\item $L_2$ ist das "`schwerere"' Problem.
+	\item Kann man $L_2$ entscheiden, so kann man mit polynomiellem Aufwand auch $L_1$ entscheiden.
+\end{itemize}
+\end{frame}
+
 \begin{frame}
 \frametitle{$\mathcal{NP}$-Schwere}
 \begin{block}{$\mathcal{NP}$-Schwere}
 Eine Sprache $L_1$ ist $\mathcal{NP}$-schwer gdw. 
 \[\forall L_2 \in \mathcal{NP} \,\, : \,\, L_2 \propto L_1\]
 \end{block}
-\textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-schweren Probleme schwerer oder mindestens so schwer zu lösen wie alle Probleme in $\mathcal{NP}$.
+\textbf{Anmerkung}: In diesem Sinne sind die $\mathcal{NP}$-schweren Probleme mindestens so schwer zu lösen wie alle Probleme in $\mathcal{NP}$.
 \end{frame}
 
 % Polyreduktion ist Transitiv, daher ist NPC cool
@@ -105,7 +148,7 @@ Ist $L_3 \in \mathcal{NP}$, so wissen wir, dass auch $L_1$ sowie $L_2 \in \mathc
 Gegeben eine Sprache $L_N$, von der wir wissen, dass sie $\mathcal{NP}$-schwer ist, was wäre ein möglicher Ansatz, um für eine weitere Sprache $L_X$ die $\mathcal{NP}$-Schwere zu beweisen?\\[8pt]
 \invincible\pause
 \ducttape{1.5cm}
-Man zeigt $L_N \propto L_X$
+Man zeigt $L_N \propto L_X$.
 \vincible
 \end{frame}
 
@@ -113,9 +156,14 @@ Man zeigt $L_N \propto L_X$
 \frametitle{$\mathcal{NP}$-Vollständigkeit}
 Eine Sprache $L$ ist $\mathcal{NP}$-vollständig genau dann, wenn
 $$L \in \mathcal{NP}$$ sowie $$L\mbox{ ist $\mathcal{NP}$-schwer}$$
-Damit sind die $\mathcal{NP}$-vollständigen Probleme die "`schwersten"' Probleme aus $\mathcal{NP}$.\\
-Interessant ist $\mathcal{NP}$-Vollständigkeit vor allem, da man aus Aussagen über diese Probleme viel über alle Probleme aus $\mathcal{NP}$ aussagen kann.
-Wäre etwa $SAT \in \mathcal{P}$, so wäre $\mathcal{P} = \mathcal{NP}$. (Warum?)
+
+\begin{itemize}
+	\item $\Rightarrow \mathcal{NP}$-vollständige Probleme sind die "`schwersten"' Probleme aus $\mathcal{NP}$.\\
+	\item Interessant vor allem, da man aus Aussagen über \classNP{}-vollständige Probleme viel über alle Probleme aus $\mathcal{NP}$ schließen kann.
+	\item Wäre etwa $SAT \in \mathcal{P}$, so wäre $\mathcal{P} = \mathcal{NP}$. (Warum?)
+\end{itemize}
+
+% NP-schweres Problem, das nicht in NP liegt: z.B. Halteproblem (Reduktion von SAT auf TM, die alle Belegungen durchprobiert und in Endlosschleife übergeht, falls keine Belegung erfüllend ist.)
 \end{frame}
 
 \begin{frame}
@@ -254,6 +302,28 @@ Da $CLIQUE$ $\mathcal{NP}$-schwer ist und in $\mathcal{NP}$ liegt $\Rightarrow$ 
 \end{frame}
 
 \againframe{graph}
+
+\begin{frame}
+	\frametitle{\recipe \classNP{}-Vollständigkeit eines Problems zeigen}
+	
+	\textbf{Gegeben:} Entscheidungsproblem $\Pi$
+	
+	\textbf{Aufgabe:} Zeige, dass $\Pi$ \classNP{}-vollständig ist. [evtl: Benutze hierzu die \classNP{}-Vollständigkeit von $X$.]
+	
+	\ducttape{.5cm}
+
+	\begin{block}{Lösung}	
+	\begin{enumerate}
+		\item Zeige: $\Pi \in \classNP$ (!)
+		\item Finde ein passendes \classNP{}-vollständiges Problem $X$ bzw. wähle das $X$ aus der Aufgabenstellung.
+		\item "`Sei eine Instanz $I$ von $X$ gegeben. Konstruiere daraus eine Instanz $I'$ von $\Pi$ wie folgt: …"' $\rightarrow$ Konstruktion beschreiben
+		\item Zeige, dass Ja-Instanzen genau auf Ja-Instanzen abgebildet werden.
+		\item Erwähne, dass die Konstruktion in \textbf{polynomieller Zeit} geht.
+	\end{enumerate}
+		
+	\end{block}
+	
+\end{frame}
 
 \begin{frame}
 \frametitle{Allgemeines zu $\classNP$-Vollständigkeitsbeweisen}

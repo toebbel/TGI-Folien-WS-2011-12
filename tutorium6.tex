@@ -40,6 +40,24 @@ Ist diese Formulierung so korrekt?
 \end{frame}
 
 \begin{frame}
+
+\frametitle{Zeitkomplexität}
+\begin{block}{Definition aus der Übung}
+    Berechnungszeit für NTM $\mathcal{M}$ mit Eingabe $x \in \Sigma^*$: \\
+    $$t(x) := \begin{cases}
+                \text{\# Schritte der \emph{schnellsten} akzeptierenden} \\ \hspace{0.5cm}\text{Berechnung, falls  } x \in L(\mathcal{M})\\ 
+                1 \text{, sonst}
+             \end{cases} $$
+ 
+    Zeitkomplexitätsfunktion $T_\mathcal{M} : \mathbb{N}_0 \rightarrow \mathbb{N}$ \\
+    $$T_\mathcal{M}(n) := \text{max}\left\{t(x) \mid \abs{x} = n \right\}$$
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{Aufgabe}
 	
 	Sei $\mathcal{M}$ eine NTM (RV-Modell) mit Zeitkomplexitätsfunktion $T_\mathcal{M} : \N_0 \rightarrow \N$.

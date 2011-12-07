@@ -1,11 +1,17 @@
 \include{includes/common_start}
 \tutnr{7}
 
+\section{Wiederholung}
+\subsection{}
+
 \begin{frame}
 \frametitle{Allgemeines zu $\classNP$-Vollständigkeitsbeweisen}
 In der Regel ist es schwer zu zeigen, dass ein Problem $\mathcal{NP}$-schwer ist, aber leicht zu zeigen, dass ein Problem in $\mathcal{NP}$ liegt.\\[8pt]
 Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung für die Reduktion benötigt (Ausnahme: Satz von Cook), lohnt es sich einige kennen zu lernen.
 \end{frame}
+
+\section{SAT \& Co.}
+\subsection{}
 
 \begin{frame}
 \frametitle{SAT}
@@ -64,18 +70,22 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung
 \end{frame}
 
 \section{Komplementsprachen}
-\subsection{Komplementsprachen}
+\subsection{}
+
 \begin{frame}
 \frametitle{Komplementsprachen}
 \begin{block}{Definition}
 Zu einer Sprache $L \subseteq \Sigma^*$ definieren wir $co$-$L$ als das Komplement der Sprache, also
 $\mbox{co-}L := \Sigma^*\setminus L$.
 \end{block}
-Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "`$co$"'-Klasse (wie z.B. $co-\classP$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
+Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "`$co$"'-Klasse (wie z.B. $co$-$\classP$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
 Beispiele: $co$-$3SAT$: Die aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\
 $co$-$\classP = \classP$\\[8pt]
 Aufgabe: Beschreibe $co$-SUBSET SUM
 \end{frame}
+
+\section{Graphenprobleme}
+\subsection{}
 
 \begin{frame}
 \frametitle{Aufgabe}
@@ -139,6 +149,9 @@ Beweise die $\mathcal{NP}$-Vollständigkeit von IS. Gehe dabei wie folgt vor:
 	\begin{center}\includegraphics[scale=1.5]{images/tut7-graph}\end{center}
 \end{frame}
 
+\section{Mengenprobleme}
+\subsection{}
+
 \begin{frame}
 \frametitle{EXACT COVER}
 \begin{block}{Problem}
@@ -201,6 +214,9 @@ Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente von $S^*$ gleich $n
 %\end{block}
 %\end{frame}
 
+\section{Mehr Graphenprobleme}
+\subsection{}
+
 \begin{frame}
 \frametitle{Aufgabe}
 Ein Vertex-Cover eines Graphen $G=(V,E)$ ist eine Teilmenge $V'\subseteq V$, so
@@ -222,15 +238,22 @@ der Größe höchstens $k$ gibt.
 \begin{frame}
 	\frametitle{Lösungsskizze}
 	
-	Reduktion von INDEPENDENT SET:
+	\textbf{VERTEX COVER $\in \classNP$:} Für eine gegebene Menge $V'$ kann in Polyzeit überprüft werden, ob sie eine Teilmenge von $V$ ist und alle Kanten von $G$ zu mindestens einem Knoten aus $V'$ inzident sind.
+	
+	\pause \ducttape{.3cm}
+	
+	\textbf{VERTEX COVER \classNP{}-schwer:} Reduktion von INDEPENDENT SET:
 	
 	\begin{itemize}
 		\item Gegeben eine Instanz $(G = (V,E), K)$ von INDEPENDENT SET.
-		\item Konstruiere daraus eine Instanz $(G' = G, K' = \abs{V} - K$ von VERTEX COVER
-		\item Behauptung: $V' \subseteq V$ ist Independent Set der Größe $K$ $\Leftrightarrow$ $V \setminus V'$ ist Vertex Cover der Größe $\abs{V} - K$
-		\item Beweis: $V' \subseteq V$ ist Independent Set der Größe $K$ \\ $\Leftrightarrow$ Keine zwei Knoten aus $V'$ sind durch eine Kante verbunden \\ $\Leftrightarrow$ Jede Kante ist zu höchstens einem Knoten aus $V'$ inzident \\ $\Leftrightarrow$ Jede Kante ist zu mindestens einem Knoten aus $V \setminus V'$ inzident \\ $\Leftrightarrow$ $V \setminus V'$ ist ein Vertex Cover von $G$ $\qedhere$
+		\item Konstruiere daraus eine Instanz $(G' = G, K' = \abs{V} - K)$ von VERTEX COVER (geht offensichtlich in Polyzeit).
+		\pause	\item Behauptung: Es gibt ein Independent Set mit Größe $K$ in $G$ \\ $\Leftrightarrow$ Es gibt ein Vertex Cover der Größe $\abs{V} - K$ von $G$.
+		\pause \item Beweis: $V' \subseteq V$ ist Independent Set der Größe $K$ \\ $\Leftrightarrow$ Keine zwei Knoten aus $V'$ sind durch eine Kante verbunden \\ $\Leftrightarrow$ Jede Kante ist zu höchstens einem Knoten aus $V'$ inzident \\ $\Leftrightarrow$ Jede Kante ist zu mindestens einem Knoten aus $V \setminus V'$ inzident \\ $\Leftrightarrow$ $V \setminus V'$ ist ein Vertex Cover von $G$ $\qedhere$
 	\end{itemize}
 \end{frame}
+
+\section{Mehr Mengenprobleme}
+\subsection{}
 
 \begin{frame}
  \frametitle{KNAPSACK}
@@ -245,7 +268,7 @@ der Größe höchstens $k$ gibt.
  \end{itemize}
  \end{block}
  
-Frage: Existiert eine Teilmenge $M' \subseteq M$ mit $\sum_{a\in M'} w(a) \leq W$ und $\sum_{a\in  M'} c(a) \geq C$?
+\textbf{Frage:} Existiert eine Teilmenge $M' \subseteq M$ mit $$\sum_{a\in M'} w(a) \leq W \text{ und } \sum_{a\in  M'} c(a) \geq C\text{  ?}$$
 
 \pause
 
@@ -272,16 +295,18 @@ Ist $I$ eine Ja-Instanz?
 \end{frame}
 
 \begin{frame}
+\frametitle{Lösungsansätze}
 \begin{block}{Orakel}
   $M' = \{i_2$, $i_4\}$ ist eine gültige Lösung. $I$ ist somit eine Ja-Instanz.
  \end{block}
 \begin{block}{Exponentieller Ansatz}
  Teste alle $2^4 = 16$ mögliche Teilmengen $M' \subseteq M$, ob sie die Bedingung erfüllen. 
 \end{block}
-\begin{block}{Greedy-Ansatz - nicht immer optimal}
+\begin{block}{Greedy-Ansatz -- nicht immer optimal}
  Sortiere die Elemente $i \in M$ nach dem Verhältnis $c(i)/w(i)$. 
  Füge so lange Elemente mit dem besten Verhältnis aller $i \not\in M'$ zu $M'$ hinzu, solange $\sum_{i \in M'} w(i) \leq W$ mit dem hinzugefügten Element noch gilt.
- Informell: So viele, wie in den Rucksack hineinpassen.
+ 
+ Informell: Möglichst wertvolle Dinge einpacken, bis der Rucksack voll ist.
 \end{block}
 \pause
 \begin{block}{}
@@ -317,15 +342,15 @@ Gegeben sei folgende Instanz $I=(M, w, c, W, C)$ von KNAPSACK:
 Für welche $C$ ist $I$ eine Ja-Instanz?  
 \end{frame}
 
+\section{Schluss}
+\subsection{Ham}
+
 \begin{frame}
 \frametitle{Und viele mehr!}
 Es gibt (sehr) viele Probleme, von denen man weiß, dass sie $NP$-vollständig sind. Es gibt ein "`klassisches"' Paper von Richard Karp, in dem 21 Probleme vorgestellt werden, die großteils recht bekannt sind.\\
 Wer nicht genug bekommen kann, darf in "`Introduction to the Theory of Computation"' von Michael Sipser schauen, dort gibt es sehr viele.\\[10pt]
 Es kann durchaus nützlich sein zu wissen, dass ein Problem $\mathcal{NP}$-vollständig ist; dann kann man aufhören, nach einem effizienten Algorithmus zu suchen.
 \end{frame}
-
-\section{Schluss}
-\subsection{Ham}
 
 \begin{frame}
 	\frametitle{Bis zum nächsten Mal!}

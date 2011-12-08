@@ -7,7 +7,7 @@
 \begin{frame}
 \frametitle{Allgemeines zu $\classNP$-Vollständigkeitsbeweisen}
 In der Regel ist es schwer zu zeigen, dass ein Problem $\mathcal{NP}$-schwer ist, aber leicht zu zeigen, dass ein Problem in $\mathcal{NP}$ liegt.\\[8pt]
-Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung für die Reduktion benötigt (Ausnahme: Satz von Cook), lohnt es sich einige kennen zu lernen.
+Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Voraussetzung für die Reduktion benötigt (Ausnahme: Satz von Cook), lohnt es sich einige kennen zu lernen.
 \end{frame}
 
 \section{SAT \& Co.}
@@ -29,7 +29,7 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung
 \end{itemize}
 \end{frame}
 \begin{frame}
-\frametitle{3-SAT}
+\frametitle{3SAT}
 \begin{block}{Problem}
 \textbf{Gegeben:}
 \begin{itemize}
@@ -64,8 +64,8 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung
 	
 	Haben die folgenden SAT-Instanzen eine Lösung? Gib eine erfüllende Wahrheitsbelegung an oder zeige, dass keine existieren kann.
 \begin{enumerate}
- \item $(a \vee b \vee \neglit{c}) \wedge (b \vee c) \wedge  (\neglit{a} \vee \neglit{b} \vee \neglit{c})$
- \item $(\neglit{a} \vee b) \wedge (\neglit{b} \vee  a) \wedge (a \vee b \vee \neglit{c}) \wedge (\neglit{a} \vee c)  \wedge  (\neglit{a} \vee \neglit{b} \vee \neglit{c}) \wedge (\neglit{c} \vee \neglit{b}) \wedge (a \vee b \vee c)$
+ \item $\{a \vee b \vee \neglit{c}, b \vee c, \neglit{a} \vee \neglit{b} \vee \neglit{c}\}$
+ \item $\{\neglit{a} \vee b, \neglit{b} \vee  a, a \vee b \vee \neglit{c}, \neglit{a} \vee c, \neglit{a} \vee \neglit{b} \vee \neglit{c}, \neglit{c} \vee \neglit{b}, a \vee b \vee c\}$
 \end{enumerate}
 \end{frame}
 
@@ -75,13 +75,25 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Vorausetzung
 \begin{frame}
 \frametitle{Komplementsprachen}
 \begin{block}{Definition}
-Zu einer Sprache $L \subseteq \Sigma^*$ definieren wir $co$-$L$ als das Komplement der Sprache, also
-$\mbox{co-}L := \Sigma^*\setminus L$.
+Zu einer Sprache $L \subseteq \Sigma^*$ definieren wir $\co L$ als das Komplement der Sprache, also
+$\co L := \Sigma^*\setminus L$.
 \end{block}
-Für eine Klasse von Sprachen, wie $\mathcal{P}$, definieren wir die "`$co$"'-Klasse (wie z.B. $co$-$\classP$, als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
-Beispiele: $co$-$3SAT$: Die aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\
-$co$-$\classP = \classP$\\[8pt]
-Aufgabe: Beschreibe $co$-SUBSET SUM
+Für eine Klasse von Sprachen wie $\classP$ definieren wir die "`co"'-Klasse (wie z.B. $\co\classP$) als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
+\pause
+Beispiele: \co 3SAT: Die aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\[8pt]
+
+\pause
+Aufgabe: Beschreibe \co SUBSET SUM\\[8pt]
+
+\pause
+Aufgabe: Gelten folgende Behauptungen?
+\begin{itemize}
+    \item $\classP = \co\classP$ ?
+    \item $\classNP = \co\classNP$ ?
+    \invincible \pause
+    \item $\classNP \neq \co\classNP \Rightarrow \classP \neq \classNP$ ?
+    \vincible
+\end{itemize}
 \end{frame}
 
 \section{Graphenprobleme}

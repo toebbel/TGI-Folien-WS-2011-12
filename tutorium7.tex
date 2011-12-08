@@ -105,7 +105,7 @@ Betrachte das Problem INDEPENDENT SET (IS):
 
 \begin{itemize}
  \item Gegeben: Graph $G=(V, E)$, Parameter $K \leq |V|$
- \item Frage: Gibt es eine unabhängige Menge der Größe $K$ in $G$, d.h.~ eine Menge $V' \subseteq V$, mit $|V'| \geq K$, so dass $\{v, w\} \notin E$ für alle $v, w \in V'$? 
+ \item Frage: Gibt es eine unabhängige Menge der Größe $K$ in $G$, d.h.~ eine Menge $V' \subseteq V$, mit $|V'| \geq K$, sodass $\{v, w\} \notin E$ für alle $v, w \in V'$? 
 \end{itemize}
 
 \only<1> {
@@ -146,7 +146,7 @@ Beweise die $\mathcal{NP}$-Vollständigkeit von IS. Gehe dabei wie folgt vor:
 \frametitle{COLOR}
 \begin{block}{Problem}
 \textbf{Gegeben:} Graph $G = (V, E)$ und ein Parameter $K \in \mathbb{N}$\\
-\textbf{Frage:} Gibt es eine Knotenfärbung von $G$ mit höchstens $K$ Farben, so dass zwei adjazente Knoten verschiedene Farben besitzen?
+\textbf{Frage:} Gibt es eine Knotenfärbung von $G$ mit höchstens $K$ Farben, sodass zwei adjazente Knoten verschiedene Farben besitzen?
 \end{block}
 \begin{itemize}
 \item Bei festem $K$ nur $\mathcal{NP}$-vollständig für $K \geq 3$ (sonst in $\mathcal{P}$).
@@ -168,7 +168,7 @@ Beweise die $\mathcal{NP}$-Vollständigkeit von IS. Gehe dabei wie folgt vor:
 \frametitle{EXACT COVER}
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge $\mathcal{S}$ von Teilmengen einer Menge $X$\\
-\textbf{Frage:} Gibt es eine Teilmenge $\mathcal{S}^*$ von $\mathcal{S}$, so dass jedes Element aus $X$ in genau einem der $s \in \mathcal{S}^*$ enthalten ist?
+\textbf{Frage:} Gibt es eine Teilmenge $\mathcal{S}^*$ von $\mathcal{S}$, sodass jedes Element aus $X$ in genau einem der $s \in \mathcal{S}^*$ enthalten ist?
 \end{block}
 \end{frame}
 
@@ -202,7 +202,7 @@ Um zu garantieren, dass in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl 
  \item Eine Ganzzahl $n$.
 \end{itemize}
 \textbf{Frage:}
-Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente von $S^*$ gleich $n$ ist?
+Gibt es eine Teilmenge $S^*$, sodass die Summe der Elemente von $S^*$ gleich $n$ ist?
 \end{block}
 \end{frame}
 %% - PARTITION
@@ -210,7 +210,7 @@ Gibt es eine Teilmenge $S^*$, so dass die Summe der Elemente von $S^*$ gleich $n
 \frametitle{PARTITION}
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge von natürlichen Zahlen\\
-\textbf{Frage:} Kann man diese Zahlen in zwei Gruppen aufteilen, so dass die Summe der Zahlen in den beiden Gruppen jeweils gleich ist?
+\textbf{Frage:} Kann man diese Zahlen in zwei Gruppen aufteilen, sodass die Summe der Zahlen in den beiden Gruppen jeweils gleich ist?
 \end{block}
 \end{frame}
 

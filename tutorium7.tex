@@ -14,18 +14,20 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Voraussetzun
 \subsection{}
 
 \begin{frame}
-\frametitle{SAT}
+\frametitle{SAT (SATisfiability = Erfüllbarkeitsproblem)}
 \begin{block}{Problem}
-\textbf{Gegeben:}
+\textbf{Gegeben:} Formel in konjunktiver Normalform
 \begin{itemize}
  \item Menge $U$ von Variablen
  \item Menge $C$ von Klauseln (Disjunktionen) über $U$
-\end{itemize}
-\textbf{Frage:} Existiert eine (alle Klauseln) erfüllende Wahrheitsbelegung von $C$?
+\end{itemize} $$ \underbrace{(\stackrel{\text{Literale}}{\stackrel{\downarrow}{\vphantom{\neglit{a}}a} \vee \stackrel{\downarrow}{\vphantom{\neglit{b}}b} \vee \stackrel{\downarrow}{\neglit{c}}})}_\text{Klausel} \wedge \underbrace{(b \vee c)}_\text{Klausel} \wedge \underbrace{(\neglit{a} \vee \neglit{b} \vee \neglit{c})}_\text{Klausel}$$
+
+\textbf{Frage:} Existiert eine (alle Klauseln) erfüllende Variablenbelegung?
 \end{block}
-\begin{itemize}
+\pause \begin{itemize}
 \item \emph{Das} Standardproblem.
-\item Es gibt viele hochoptimierte "`SAT-Solver"'. Steht man in der Praxis vor einem $\mathcal{NP}$-Problem, kann es sich anbieten, die Transformation auf $SAT$ durchzuführen.
+\item "`Erstes"' $\classNP{}$-vollständiges Problem (Satz von Cook)
+\item Es gibt viele hochoptimierte "`SAT-Solver"'. Steht man in der Praxis vor einem $\mathcal{NP}$-Problem, kann eine Transformation auf $SAT$ sinnvoll sein.
 \end{itemize}
 \end{frame}
 \begin{frame}
@@ -34,12 +36,13 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Voraussetzun
 \textbf{Gegeben:}
 \begin{itemize}
  \item Menge $U$ von Variablen
- \item Menge $C$ von Klauseln über $U$, jede Klausel enthält genau \emph{drei} Literale
-\end{itemize}
+ \item Menge $C$ von Klauseln über $U$ \\ Jede Klausel enthält genau \emph{genau 3} Literale
+\end{itemize} $$C = \{ (x_1 \vee x_2 \vee x_3), (x_1 \vee \neglit{x_2} \vee \neglit{x_3}), (\neglit{x_1} \vee x_2 \vee x_3) \}$$
+
 \textbf{Frage:} Existiert eine erfüllende Wahrheitsbelegung von $C$?
 \end{block}
 \begin{itemize}
-\item Bietet sich bei Reduktion eher an als $SAT$, da übersichtlicher
+\item Bietet sich bei Reduktion eher an als SAT, da übersichtlicher
 \end{itemize}
 \end{frame}
 \begin{frame}
@@ -64,8 +67,8 @@ Da man üblicherweise ein $\mathcal{NP}$-vollständiges Problem als Voraussetzun
 	
 	Haben die folgenden SAT-Instanzen eine Lösung? Gib eine erfüllende Wahrheitsbelegung an oder zeige, dass keine existieren kann.
 \begin{enumerate}
- \item $\{a \vee b \vee \neglit{c}, b \vee c, \neglit{a} \vee \neglit{b} \vee \neglit{c}\}$
- \item $\{\neglit{a} \vee b, \neglit{b} \vee  a, a \vee b \vee \neglit{c}, \neglit{a} \vee c, \neglit{a} \vee \neglit{b} \vee \neglit{c}, \neglit{c} \vee \neglit{b}, a \vee b \vee c\}$
+ \item $\{(a \vee b \vee \neglit{c}), (b \vee c), (\neglit{a} \vee \neglit{b} \vee \neglit{c})\}$
+ \item $\{(\neglit{a} \vee b), (\neglit{b} \vee  a), (a \vee b \vee \neglit{c}), (\neglit{a} \vee c), (\neglit{a} \vee \neglit{b} \vee \neglit{c}), (\neglit{c} \vee \neglit{b}), (a \vee b \vee c)\}$
 \end{enumerate}
 \end{frame}
 
@@ -80,13 +83,13 @@ $\co L := \Sigma^*\setminus L$.
 \end{block}
 Für eine Klasse von Sprachen wie $\classP$ definieren wir die "`co"'-Klasse (wie z.B. $\co\classP$) als Menge der Komplemente (und nicht etwa als Komplement der Klasse -- warum?).\\[8pt]
 \pause
-Beispiele: \co 3SAT: Die aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\[8pt]
+\textbf{Beispiel:} \co 3SAT: Die aussagenlogischen Formeln mit 3 Variablen pro Klausel, die nicht erfüllbar sind.\\[8pt]
 
 \pause
-Aufgabe: Beschreibe \co SHORTEST-PATH\\[8pt]
+\textbf{Aufgabe:} Beschreibe \co CLIQUE.\\[8pt] % everybody loves CLIQUE
 
 \pause
-Aufgabe: Gelten folgende Behauptungen?
+\textbf{Aufgabe:} Gelten folgende Behauptungen?
 \begin{itemize}
     \item $\classP = \co\classP$ ?
     \item $\classNP = \co\classNP$ ?
@@ -104,8 +107,8 @@ Aufgabe: Gelten folgende Behauptungen?
 Betrachte das Problem INDEPENDENT SET (IS):
 
 \begin{itemize}
- \item Gegeben: Graph $G=(V, E)$, Parameter $K \leq |V|$
- \item Frage: Gibt es eine unabhängige Menge der Größe $K$ in $G$, d.h.~ eine Menge $V' \subseteq V$, mit $|V'| \geq K$, sodass $\{v, w\} \notin E$ für alle $v, w \in V'$? 
+ \item \textbf{Gegeben:} Graph $G=(V, E)$, Parameter $K \leq |V|$
+ \item \textbf{Frage:} Gibt es eine unabhängige Menge der Größe $K$ in $G$, d.~h.\  eine Menge $V' \subseteq V$ mit $|V'| \geq K$, sodass $\{v, w\} \notin E$ für alle $v, w \in V'$? 
 \end{itemize}
 
 \only<1> {
@@ -121,9 +124,9 @@ Finde in folgendem Graphen $G_1 = (V_1, E_1)$ eine unabhängige Menge maximaler 
 }
 
 \only<3> {
-	Zeichne $\overline{G_1}=(V_1, \overline{E_1})$, wobei $\overline{E_1}=\{\{v, w\} \mid v, w \in V_1, \{v,w\} \notin E_1\}$.
+	Zeichne $\neglit{G_1}=(V_1, \neglit{E_1})$, wobei $\neglit{E_1}=\menge{\{v, w\}}{v, w \in V_1, \{v,w\} \notin E_1}$.
 	
-        Bestimme eine Clique maximaler Größe in $\overline{G_1}$.
+        Bestimme eine Clique maximaler Größe in $\neglit{G_1}$.
         
         Was fällt dabei auf?
 }
@@ -133,7 +136,7 @@ Finde in folgendem Graphen $G_1 = (V_1, E_1)$ eine unabhängige Menge maximaler 
 Beweise die $\mathcal{NP}$-Vollständigkeit von IS. Gehe dabei wie folgt vor:
 \begin{enumerate}
  \item Zeige: IS $\in \mathcal{NP}$.
- \item Zeige: $V'$ Clique in $G \Longleftrightarrow$ $V'$ unabhängige Menge in $\overline{G}=(V, \overline{E})$, wobei $\overline{E}= \menge{\{v, w\}}{v, w \in V, \{v, w\} \notin E}$
+ \item Zeige: $V'$ Clique in $G \Longleftrightarrow$ $V'$ unabhängige Menge in $\neglit{G}=(V, \neglit{E})$, wobei $\neglit{E}= \menge{\{v, w\}}{v, w \in V, \{v, w\} \notin E}$
  \item Zeige, dass IS $\mathcal{NP}$-schwer ist.
 \end{enumerate}
 
@@ -210,7 +213,7 @@ Gibt es eine Teilmenge $S^*$, sodass die Summe der Elemente von $S^*$ gleich $n$
 \frametitle{PARTITION}
 \begin{block}{Problem}
 \textbf{Gegeben:} Eine Menge von natürlichen Zahlen\\
-\textbf{Frage:} Kann man diese Zahlen in zwei Gruppen aufteilen, sodass die Summe der Zahlen in den beiden Gruppen jeweils gleich ist?
+\textbf{Frage:} Kann man diese Zahlen in zwei Mengen aufteilen, sodass die Summe der Zahlen in den beiden Mengen gleich ist?
 \end{block}
 \end{frame}
 

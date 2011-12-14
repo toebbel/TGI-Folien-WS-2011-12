@@ -173,28 +173,35 @@ Beweise die $\mathcal{NP}$-Vollständigkeit von IS. Gehe dabei wie folgt vor:
 \textbf{Gegeben:} Eine Menge $\mathcal{S}$ von Teilmengen einer Menge $X$\\
 \textbf{Frage:} Gibt es eine Teilmenge $\mathcal{S}^*$ von $\mathcal{S}$, sodass jedes Element aus $X$ in genau einem der $s \in \mathcal{S}^*$ enthalten ist?
 \end{block}
+
+\pause \begin{block}{Beispiel}
+	$$ X = \{a, b, c, d, e, f, g, h \}$$
+	$$ \mathcal{S} = \{\{a, c, e\}, \{a, f, g\}, \{b, d\}, \{b, f, h\}, \{e, h, i\}, \{f, h, i\}, \{d, g, i\}\}$$
+	
+	\solution{$$ \mathcal{S}^* = \{\{a, c, e\}, \{b, f,  h\}, \{d, g, i\}\} $$}
+\end{block}
 \end{frame}
 
-\begin{frame}
-\frametitle{Sudoku}
-Sudoku lässt sich als EXACT-COVER Instanz formulieren!\\
-Definiere:\\
-Sei $V = \{1,2,\ldots,9\}$ die Menge der möglichen Lösungen für ein Kästchen.
-Sei $S = \{s_{11}, s_{12},\ldots,s_{19},s_{21},\ldots,s_{99}\}$ die Menge der Sudokukästchen.
-Seien weiterhin $r_i = \{s_{i1}, s_{i2}, \ldots s_{i9}\}$ eine Reihe und $R$ die Menge der Reihen.
-Analog sei $c_i = \{s_{1i}, s_{2i}, \ldots, s_{9i}\}$ eine Spalte und $C$ die Menge der Spalten.
-Seien nun noch $b_k$ die Kästchen, die zum Block $k$ gehören, und $B$ die Menge der Blöcke.
-%Hier sollte man alles mal an die Tafel schreiben, sonst ist das zu unübersichtlich ^^
-\end{frame}
-
-\begin{frame}
-\frametitle{Sudoku}
-Betrachte nun die folgende Menge: $U := R \times C \cup R \times V \cup C \times V \cup B \times V$, $U$ ist unsere Menge $X$ (aus der Formulierung des EXACT-COVER-Problems).\\
-Definiere: $S_{ijkl} := \{(r_i,c_j),(r_i,v_l),(c_j,v_l),(b_k,v_l)\} \subset U$.\\[8pt]
-Wird $S_{ijkl}$ in die Lösung aufgenommen, so kodiert dies, dass im Kästchen $s_{ij}$ im Block $b_k$ der Wert $v_l$ steht.\\
-Die Menge $M$ aller $S_{ijkl}$ ist unsere Menge an Teilmengen.\\
-Um zu garantieren, dass in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v_{l'}$ steht, kann man einfach die $S_{ijkl}$ mit $i = i'$ und $j = j'$ sowie $l \neq l'$ aus $M$ entfernen.
-\end{frame}
+%\begin{frame}
+%\frametitle{Sudoku}
+%Sudoku lässt sich als EXACT-COVER Instanz formulieren!\\
+%Definiere:\\
+%Sei $V = \{1,2,\ldots,9\}$ die Menge der möglichen Lösungen für ein Kästchen.
+%Sei $S = \{s_{11}, s_{12},\ldots,s_{19},s_{21},\ldots,s_{99}\}$ die Menge der Sudokukästchen.
+%Seien weiterhin $r_i = \{s_{i1}, s_{i2}, \ldots s_{i9}\}$ eine Reihe und $R$ die Menge der Reihen.
+%Analog sei $c_i = \{s_{1i}, s_{2i}, \ldots, s_{9i}\}$ eine Spalte und $C$ die Menge der Spalten.
+%Seien nun noch $b_k$ die Kästchen, die zum Block $k$ gehören, und $B$ die Menge der Blöcke.
+%%Hier sollte man alles mal an die Tafel schreiben, sonst ist das zu unübersichtlich ^^
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Sudoku}
+%Betrachte nun die folgende Menge: $U := R \times C \cup R \times V \cup C \times V \cup B \times V$, $U$ ist unsere Menge $X$ (aus der Formulierung des EXACT-COVER-Problems).\\
+%Definiere: $S_{ijkl} := \{(r_i,c_j),(r_i,v_l),(c_j,v_l),(b_k,v_l)\} \subset U$.\\[8pt]
+%Wird $S_{ijkl}$ in die Lösung aufgenommen, so kodiert dies, dass im Kästchen $s_{ij}$ im Block $b_k$ der Wert $v_l$ steht.\\
+%Die Menge $M$ aller $S_{ijkl}$ ist unsere Menge an Teilmengen.\\
+%Um zu garantieren, dass in einem bestimmten Feld $s_{i'j'}$ eine bestimmte Zahl $v_{l'}$ steht, kann man einfach die $S_{ijkl}$ mit $i = i'$ und $j = j'$ sowie $l \neq l'$ aus $M$ entfernen.
+%\end{frame}
 
 \begin{frame}
 \frametitle{SUBSET-SUM}
@@ -291,7 +298,7 @@ Was wären das zugehörige Optimalwertproblem und Optimierungsproblem?
 \end{frame}
 
 \begin{frame}
- \frametitle{KNAPSACK - Beispiel}
+ \frametitle{KNAPSACK -- Beispiel}
  Gegeben: Instanz $I$ von KNAPSACK mit $M = {i_1, i_2, i_3, i_4}$
   \begin{center}
 \begin{tabular}{l|l|l|l|l}

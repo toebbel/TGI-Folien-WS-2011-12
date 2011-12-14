@@ -43,30 +43,38 @@ Für eine Klasse von Sprachen wie $\classP$ definieren wir die "`co"'-Klasse (wi
 $\mathcal{NP}\text{-Intermediate } (\mathcal{NPI}) := \mathcal{NP} \setminus (\mathcal{NPC} \cup \mathcal{P})$
 \end{block}
 $$ $$ % Yes, I am fully aware of the uglyness involved here
-Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{NP}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:
+
+\begin{columns}%
+		\begin{column}{0.6 \textwidth}%
+			Da $\mathcal{NPI} \neq \emptyset \iff \mathcal{P} \neq \mathcal{NP}$, sind natürlich keine Probleme aus $\mathcal{NPI}$ bekannt, es gibt jedoch einige Kandidaten:
 \begin{itemize}
 	\item Graphisomorphie
 	\item Faktorisieren
 	\item Diskrete Logarithmen
+	
 \end{itemize}
 
 Aufgrund ihrer Eigenschaften sind diese Probleme in der Kryptographie alle von großer Bedeutung.
 
-
-\raggedleft \ducttape{-3cm} \includegraphics[scale=.33333]{images/dlog.png}
+		\end{column}%
+		\begin{column}{0.35 \textwidth}%
+	\ducttape{1cm} \includegraphics[scale=.3]{images/dlog.png}
+		\end{column}%
+	\end{columns}%
+	\vfill%
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Aufgabe}
-Betrachten Sie das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. Es ist zu entscheiden, ob es höchstens eine Belegung der Variablen gibt, so dass $A$ falsch wird.
+Betrachte das Problem NEAR TAUT: Gegeben sei ein Boolescher Ausdruck $A$. Es ist zu entscheiden, ob es höchstens eine Belegung der Variablen gibt, so dass $A$ falsch wird.
 \begin{enumerate}
  \item Formuliere das komplementäre Problem co-NEAR TAUT.
  \item Zeige, dass NEAR TAUT in co-$\mathcal{NP}$ liegt.
 \end{enumerate}
 \end{frame}
 
-\section{Pseudozeugs}
+\section{Pseudopolynomielle Algorithmen}
 \subsection{aublvgskndrlgfvrnsawf}
 %Pseudopolynomielle Algorithmen & Starke NP-Vollständigkeit
 \begin{frame}
@@ -90,7 +98,8 @@ Zeige, dass dieser Algorithmus pseudopolynomiell ist.
 (Gib dazu eine Schranke für die Laufzeit an, die polynomiell in der Länge der Eingabe und der größten vorkommenden Zahl ist).
 \end{frame}
 
-
+\section{Such- und Aufzählungsprobleme}
+\subsection{sdfsdofimlwegidrf}
 %Suchprobleme, Aufzählungsprobleme
 %NP-Schwere von Suchproblemen
 %Integer Programming
@@ -243,6 +252,9 @@ Eine Möglichkeit:
 	\end{enumerate}
 \end{frame}
 
+\section{Integer Programming}
+\subsection{asfasofiöogriödobkgffsawf}
+
 \subsection{Integer Programming}
 \begin{frame}
  \frametitle{INTEGER PROGRAMMING}
@@ -253,7 +265,7 @@ Eine Möglichkeit:
   \item $b = (b_i) \in \mathbb{Z}^m, c = (c_j) \in \mathbb{Z}^n$
   \item $B\in \mathbb{Z}$
  \end{itemize}
-\textbf{Frage: } Existieren $x_1, ..., x_n \in \mathbb{N}_0$, so dass $$\underbrace{\sum_{j=1}^n c_k \cdot x_j = B}_{\left\langle c, x\right\rangle = B}$$ und $$\underbrace{\sum_{j=1}^n a_{ij} \cdot x_j \leq b_i}_{A \cdot x \leq b } \text{ für } 1 \leq i \leq m ?$$
+\textbf{Frage: } Existieren $x_1, ..., x_n \in \mathbb{N}_0$, so dass gilt: $$\underbrace{\sum_{j=1}^n c_k \cdot x_j = B}_{\left\langle c, x\right\rangle = B}$$ $$\underbrace{\sum_{j=1}^n a_{ij} \cdot x_j \leq b_i}_{A \cdot x \leq b } \text{ für } 1 \leq i \leq m ?$$
  \end{block}
 \end{frame}
 
@@ -279,6 +291,9 @@ Gibt es ein Dominating Set von $G$, das höchstens $k$ Knoten enthält?  \microp
 \only<2>{\setcounter{enumi}{1}\item Formuliere DOMINATING SET als \emph{Integer Program}. }
 \end{enumerate}
 \end{frame}
+
+\section{Schluss}
+\subsection{assrögidlf}
 
 \begin{frame}
 	\frametitle{Bis zum nächsten Mal!}

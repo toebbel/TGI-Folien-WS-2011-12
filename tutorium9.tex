@@ -1,0 +1,146 @@
+\include{includes/common_start}
+\tutnr{9}
+
+\section{Approximationsalgorithmen}
+\subsection{Trololo}
+
+\begin{frame}
+	\frametitle{Motivation}
+	
+	\begin{itemize}
+		\item Manche Optimierungsprobleme sind \classNP{}-schwer \\ $\Rightarrow$ (wahrscheinlich) keine effiziente Lösung.
+		\item Wir wollen trotzdem eine schnelle Lösung! \\ (muss dafür nicht optimal sein) \\ $\Rightarrow$ Approximation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gütegarantien}
+	
+	\begin{itemize}
+		\item Vergleich der Wörst-Case-Lösung mit der optimalen Lösung
+		\item $\Pi$ Optimierungsproblem, $I$ Instanz von $\Pi$: \\ OPT($I$) ist der Wert der/einer optimalen Lösung.
+		\item $\mathcal{A}(I)$ ist der Wert der (Approximations-)Lösung, die Algorithmus $\mathcal{A}$ für $I$ liefert.
+	\end{itemize}
+	
+	\pause	
+	
+	\only<1-2>{
+	\begin{block}{Absolute Gütegarantie}
+		\begin{itemize}
+			\item $\abs{\opt{I} - \A{I}} \leq K$
+			\item Wünschenswerteste Gütegarantie
+			\item Für \classNP{}-vollständige Probleme gibt es oft keinen absoluten Approximationsalgorithmus.
+		\end{itemize}
+	\end{block}
+	}
+	
+	\only<3>{
+	\begin{block}{Relative Gütegarantie}
+		\begin{itemize}
+			\item $\mathcal{R}_\mathcal{A}(I) \leq K$ mit $K \geq 1$ und $$\mathcal{R}_\mathcal{A}(I) = \begin{cases} \frac{\A{I}}{\opt{I}} & \text{falls } \Pi \text{ Minimierungsproblem} \\ & \\ \frac{\opt{I}}{\A{I}} & \text{falls } \Pi \text{ Maximierungsproblem} \end{cases}$$
+			\item Falls $\mathcal{R}_\mathcal{A}(I) \leq x$ für alle $I$, heißt $\mathcal{A}$ $x$-approximativ
+		\end{itemize}
+	\end{block}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beispiel: Greedy-Algorithmus $\mathcal{A}$ für KNAPSACK}
+	
+	\begin{itemize}
+		\item Sortiere die Gegenstände nach "`Gewichtsdichten"' $p_i := \frac{c_i}{w_i}$
+		\item Nimm so viele Gegenstände mit möglichst großer Gewichtsdichte, bis der Rucksack voll ist.
+		\item Laufzeit in $\mathcal{O}(n \log{n})$
+	\end{itemize}
+	
+	\pause
+	
+	\begin{theorem}
+		$\mathcal{A}$ ist ein 2-Approximationsalgorithmus für KNAPSACK.
+	\end{theorem}
+	
+	\pause
+	
+	\begin{proof}
+		O.B.d.A. sei $w_1 \leq W$. Es gilt $\A{I} \geq c_1 \cdot \left\lfloor \frac{W}{w_1} \right\rfloor \text{für alle }I.$ \pause 
+		$$\alert{\opt{I}} \leq c_1 \cdot \frac{W}{w_1} \leq c_1 \cdot \left(  \left\lfloor \frac{W}{w_1} \right\rfloor + 1 \right) \leq 2 \cdot c_1 \cdot \left\lfloor \frac{W}{w_1} \right\rfloor \leq \alert{2 \cdot \A{I}}$$
+		
+		Also $\mathcal{R}_\mathcal{A}(I) \leq 2$.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gütegarantien revisited}
+	
+	\begin{itemize}
+		\item Bislang: Gütegarantie bezogen auf eine Instanz $I$
+		\item Jetzt: Gütegarantie eines Algorithmus $\mathcal{A}$ für alle Instanzen.
+	\end{itemize}
+	
+	$$\mathcal{R}_\mathcal{A}^\infty := \inf\menge{r}{\text{für fast alle } I \text { gilt } \mathcal{R}_\mathcal{A}(I) \leq r}$$
+	
+	\begin{itemize}
+		\item Beste allgemeingültige Gütegarantie von $\mathcal{A}$
+	\end{itemize}
+	
+	\pause
+	
+	\begin{theorem}
+		Falls $\classP{} \neq \classNP{}$, dann existiert kein relativer Approximationsalgorithmus $\mathcal{A}$ für COLOR mit $\mathcal{R}_\mathcal{A}^\infty \leq \frac{4}{3}$.
+	\end{theorem}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe}
+	
+	\only<1-4>{Gegeben ist ein ungerichteter Graph $G$. 
+Ein \textit{Matching} $M$ in $G$ ist eine Kantenmenge, so dass keine zwei Kanten in $M$ zum gleichen Knoten adjazent sind.
+Ein \emph{inklusionsmaximales Matching} ist ein Matching, das keine echte Teilmenge von einem anderen Matching ist.
+Ein \emph{maximales Matching} ist ein Matching von maximaler Kardinalität.}
+
+\pause
+
+\begin{itemize}
+ \only<1-2>{\item Gib in dem Graphen an der Tafel ein inklusionsmaximales und ein maximales Matching an.}
+ \only<3>{\item Gib einen Greedy-Approximationsalgorithmus an, der ein inklusionsmaximales Matching berechnet.}
+ \only<4>{\item Zeige, dass die Größe eines maximalen Matchings eine untere Schranke für die Größe jedes Vertex Covers ist.}
+ \only<5-7>{\item Betrachte ein inklusionsmaximales Matching $M$ in $G=(V,E)$. Sei
+ \[ T := \menge{v \in V}{\text{ mindestens eine Kante in $M$ ist adjazent zu $v$}} \]
+ Was kann man über den Subgraph sagen, der von den Knoten $V \setminus T$ induziert wird?}
+ \only<6-7>{\item Schließe aus dem letzten Teil, dass $2|M|$ die Größe eines Vertex Covers von $G$ ist.}
+ \only<7>{\item Benutze die letzten Teile, um zu zeigen, dass der Greedy-Approximationsalgorithmus, der ein inklusionsmaximales Matching berechnet, eine $2$-Approximation für ein maximales Matching ist.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aufgabe}
+	
+	Sei $G=(V,E)$ ein ungerichteter Graph mit eindeutigen Kantengewichten $c(u,v)$ für jede Kante $\{u,v\}$ in $E$.
+Für jeden Knoten $v \in V$, sei $\max(v)=\arg\max_{(u,v)\in E}\{c(u,v)\}$ die gewichtsmaximale inzidente Kante von $v$.
+Sei $S_G=\{\max(v) \mid v \in V\}$ und sei $T_G$ der gewichtsmaximale Spannbaum von $G$, das heißt der Spannbaum von maximalem Gesamtgewicht.
+Für jede Menge $E' \subseteq E$ definieren wir $c(E')=\sum_{(u,v)\in E'}c(u,v)$.
+\begin{enumerate}
+ \item Finde ein Beispiel mit mindestens 4 Knoten, so dass $S_G=T_G$.
+ \item Finde ein Beispiel mit mindestens 4 Knoten, so dass $S_G\not=T_G$.
+ \item Beweise, dass $S_G\subseteq T_G$ für jeden Graph $G$ gilt.
+ \item Beweise, dass $c(T_G)\leq 2c(S_G)$ für jeden Graphen $G$ gilt.
+ \item Gib einen 2-Approximationsalgorithmus zur Berechnung eines maximalen Spannbaums an.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Frohe Weihnachten!}
+	
+	\begin{figure}[H]
+		%\includegraphics[width= \textwidth]{images/399_traveling_salesman}
+		
+		%\textit{\scriptsize{What's the complexity class of the best linear programming cutting-plane techniques? I couldn't find it anywhere. Man, the Garfield guy doesn't have these problems $\ldots$}}
+		
+		\includegraphics[width= \textwidth]{images/838_incident.png}
+		
+		\textit{\scriptsize{He sees you when you're sleeping, he knows when you're awake, he's copied on \texttt{/var/spool/mail/root}, so be good for goodness' sake.}}
+		
+	\end{figure}
+\end{frame}
+
+\include{includes/common_end}

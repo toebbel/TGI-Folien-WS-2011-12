@@ -93,23 +93,45 @@
 \begin{frame}
 	\frametitle{Aufgabe}
 	
-	\only<1-4>{Gegeben ist ein ungerichteter Graph $G$. 
-Ein \textit{Matching} $M$ in $G$ ist eine Kantenmenge, so dass keine zwei Kanten in $M$ zum gleichen Knoten adjazent sind.
+	\only<1-6>{Gegeben ist ein ungerichteter Graph $G$. 
+Ein \textit{Matching} $M$ in $G$ ist eine Kantenmenge, so dass keine zwei Kanten in $M$ zum gleichen Knoten inzident sind.
 Ein \emph{inklusionsmaximales Matching} ist ein Matching, das keine echte Teilmenge von einem anderen Matching ist.
 Ein \emph{maximales Matching} ist ein Matching von maximaler Kardinalität.}
 
 \pause
 
+\invincible
 \begin{itemize}
  \only<1-2>{\item Gib in dem Graphen an der Tafel ein inklusionsmaximales und ein maximales Matching an.}
- \only<3>{\item Gib einen Greedy-Approximationsalgorithmus an, der ein inklusionsmaximales Matching berechnet.}
- \only<4>{\item Zeige, dass die Größe eines maximalen Matchings eine untere Schranke für die Größe jedes Vertex Covers ist.}
- \only<5-7>{\item Betrachte ein inklusionsmaximales Matching $M$ in $G=(V,E)$. Sei
+ \only<3-4>{
+    \item Gib einen Greedy-Approximationsalgorithmus an, der ein inklusionsmaximales Matching berechnet.
+
+    \only<4>{Idee: Erweitere $M$ sukkzessive um Kanten, die noch nicht zu einer Kante aus $M$ adjazent sind.}
+    }
+ \only<5-6,9-11>{
+    \item Zeige, dass die Größe eines maximalen Matchings eine untere Schranke für die Größe jedes Vertex Covers ist.
+    
+    \only<6>{Idee: Für jede gematchte Kante muss ein inzidenter Knoten im Vertex Cover liegen, diese inzidenten Knoten sind nach Def. paarweise verschieden}
+    }
+ \only<7-9>{
+    \item Betrachte ein inklusionsmaximales Matching $M$ in $G=(V,E)$. Sei
  \[ T := \menge{v \in V}{\text{ mindestens eine Kante in $M$ ist adjazent zu $v$}} \]
- Was kann man über den Subgraph sagen, der von den Knoten $V \setminus T$ induziert wird?}
- \only<6-7>{\item Schließe aus dem letzten Teil, dass $2|M|$ die Größe eines Vertex Covers von $G$ ist.}
- \only<7>{\item Benutze die letzten Teile, um zu zeigen, dass der Greedy-Approximationsalgorithmus, der ein inklusionsmaximales Matching berechnet, eine $2$-Approximation für ein maximales Matching ist.}
+    Was kann man über den Subgraph sagen, der von den Knoten $V \setminus T$ induziert wird?
+
+    \only<8-9>{Er ist kantenfrei!}
+    }
+ \only<9-11>{\item Schließe aus dem letzten Teil, dass $2|M|$ die Größe eines Vertex Covers von $G$ ist.}
+ \only<10-11>{
+    \item Benutze die letzten Teile, um zu zeigen, dass der Greedy-Approximationsalgorithmus, der ein inklusionsmaximales Matching berechnet, eine $1$-Approximation für ein maximales Matching ist.
+
+    \only<11>{
+        Berechne mit unserem Approximationsalgorithmus ein inklusionsmaximales Matching $M$. Sei $V$ das dazugehörige Vertex Cover und $M'$ ein maximales Matching. Dann gilt \micropause
+        $2\abs{M} = \abs{V} \geq \abs{M'}$ \micropause
+        $\Rightarrow R_\A{I} = \frac{\opt{I}}{\A{I}} = \frac{\abs{M'}}{\abs{M}} \leq 2$
+        }
+    }
 \end{itemize}
+\vincible
 \end{frame}
 
 \begin{frame}

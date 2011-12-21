@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+\usepackage{amsmath}
 \usepackage{ifthen}
+\usepackage{amssymb}
 \usepackage[top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 \usetikzlibrary{automata}
 \newboolean{sol}
@@ -30,6 +32,20 @@
 \ifthenelse{\boolean{sol}}{#2}{}
 }
 
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\classP}{\ensuremath{\mathcal{P}}}
+\newcommand{\classNP}{\ensuremath{\mathcal{NP}}}
+\newcommand{\co}{\ensuremath{\mathsf{co\text{-}}}}
+\newcommand{\pot}{\ensuremath{\mathcal{P}}}
+\newcommand{\abs}[1]{\ensuremath{\left\vert #1 \right\vert}}
+\newcommand{\menge}[2]{\ensuremath{\left\lbrace #1 \,\middle\vert\, #2 \right\rbrace}}
+\newcommand{\ducttape}[1]{\vspace{#1}}
+\newcommand{\neglit}[1]{\overline{#1\vphantom{x^a}}}
+\newcommand{\recipe}{\raisebox{-.3cm}{\includegraphics[scale=.15]{images/chefs-cap.png}}\hspace{0.2cm}}
+\newcommand{\opt}[1]{\ensuremath{\text{OPT}(#1)}}
+\newcommand{\A}[1]{\ensuremath{\mathcal{A}(#1)}}
+
 \begin{document}
 \ifthenelse{\boolean{ex}}{
 	\ifthenelse{\boolean{sol}}{
@@ -44,7 +60,8 @@
 		\title{Leeres Blatt}
 	}
 }
-\author{Simon Stroh und Moritz von Looz}
+\author{Simon Stroh und Moritz von Looz \\
+Fixes von Sebastian Ullrich}
 \maketitle
 \section{Endliche Automaten}
 \aufgaben{
@@ -70,8 +87,8 @@
 \begin{enumerate}
 \item Bilde einen äquivalenten, minimalen DEA.
 \item Was sind die Äquivalenzklassen für diesen Automaten bezüglich der Nerode-Relation?
-\item Bilde einen regulären Ausdruck der die gleiche Sprache akzeptiert wie der Automat.
-\item Folgt aus $L$ regulär das $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der Wörter in $L$, rückwärts)
+\item Bilde einen regulären Ausdruck, der die gleiche Sprache darstellt wie der Automat.
+\item Folgt aus $L$ regulär, dass $L^R$ regulär ist? (Dabei ist $L^R$ die Menge der Wörter in $L$ rückwärtsgeschrieben)
 \end{enumerate}
 }{%ab hier lösungen.
 \begin{enumerate}
@@ -164,16 +181,16 @@ $q_4'$:& \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_1, q_2, q_3$\} & \{$q_0, q_2$\} \\
 \item Nach 1. gibt es 3 Klassen. Finde also lediglich Repräsentanten. Etwa:
 \begin{enumerate}
 \item $[\varepsilon] = \{\varepsilon\}$
-\item $[0] = \{0,1\}$
-\item $[00] = \{0,1\}\{0,1\}^*0$
+\item $[0] = \{0,1\}(\{\varepsilon\} \cup \{0,1\}^*\{1\})$
+\item $[00] = \{0,1\}\{0,1\}^*\{0\}$
 \end{enumerate}
 \item $(0 \cup 1)(0 \cup 1)^*0$ erfüllt die Bedingung
-\item Ja, Beweis etwa über strukturelle Induktion. %TODO?
+\item Ja, Beweis etwa über strukturelle Induktion über den regulären Ausdruck.
 \end{enumerate}
 }
 \section{Pumping Lemma}
 \aufgaben{
-Zeige oder Wiederlege die Regulärität folgender Sprachen:
+Zeige oder widerlege die Regularität folgender Sprachen:
 \begin{enumerate}
 \item $\{a^ib^j | i \leq j\}$
 \item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
@@ -181,7 +198,7 @@ Zeige oder Wiederlege die Regulärität folgender Sprachen:
 \item $\{www | w \in \Sigma^* \}$
 \item $\{w | w\mbox{ enthält nicht genau zweimal }a\}$
 \item $\{w | w\mbox{ ist kein Palindrom }\}$
-\item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \mbox{ Sind binäre Integer und }x = y + z\}$
+\item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \mbox{ sind Binärzahlen und }x = y + z\}$
 \end{enumerate}
 }{
 \begin{enumerate}
@@ -201,24 +218,26 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \item Wieviele verschiedene Sprachen gibt es? Wie steht das im Verhältnis zu der Anzahl der Turingmaschinen? Kann man dadurch eine Aussage über die Existenz von nichtentscheidbaren Sprachen machen?
 \item Schreibe jeweils eine Turingmaschine, die die folgenden Sprachen erkennt:
 \begin{enumerate}
-\item $\{a^ib^i\}$
+\item $\menge{a^ib^i}{i \in \N_0}$
 \item $\{a^ib^j\ | i \leq j\}$
 \item $\{w | w\mbox{ enthält nicht die Zeichenkette } abc \mbox{ oder }cba\}$
 \item Sei $\Sigma = \{0,1,+,=\}$ und $L = \{x=y+z | x,y,z \}$
 \end{enumerate}
-\item Zeige, dass eine Sprache entscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache das lexikografisch nächste Wort ausgibt.
-\item Zeige, dass eine Sprache semientscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache, das nächste Wort der Sprache bezüglich einer festen Ordnung ausgibt.
-\item Formuliere das Problem der Entscheidung ob ein endlicher Automat und ein regulärer Ausdruck äquivalent sind als Sprache und zeige, dass diese Sprache entscheidbar ist.
+\item Zeige, dass eine Sprache entscheidbar ist gdw. eine Turingmaschine existiert, die bei Eingabe eines Wortes der Sprache das nächste Wort nach \textit{shortlex}-Ordnung (primär nach Länge, sekundär lexikographisch geordnet) ausgibt.
+\item Zeige, dass eine Sprache semientscheidbar ist gdw. eine Turingmaschine und eine Wohlordnung (Ordnung mit kleinstem Element) existieren, sodass die TM bei Eingabe eines Wortes der Sprache das nächste Wort der Sprache bezüglich dieser Ordnung ausgibt.
+\item Formuliere das Problem der Entscheidung, ob ein endlicher Automat und ein regulärer Ausdruck äquivalent sind, als Sprache und zeige, dass diese Sprache entscheidbar ist.
 \item Finde eine Lösung für folgendes PCP: $\{(ab,abab),(b,a),(aba,b),(aa,a)\}$
-\item Zeige, dass eine TM die auf den Teil des Bandes, auf dem die Eingabe, steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
+\item Zeige, dass eine TM, die auf den Teil des Bandes, auf dem die Eingabe, steht nicht schreiben kann, nur reguläre Sprachen erkennen kann.
 \end{enumerate}
 }{
 \begin{enumerate}
  \item Es gibt überabzählbar viele verschiedene Sprachen, aber nur abzählbar viele Turingmaschienen. Es muss also Sprachen geben die eine Turingmaschiene nicht entscheiden kann.
  \item Diese Aufgabe ist dem geneigten Leser überlassen.
- \item Konstruiere einen Entscheider: Dieser zählt alle Wörter in der Sprache in lexikographischer Reihenfolge auf. Findet er das Wort, akzeptiert er, sobald er ein Wort aufzählt, das länger ist als die Eingabe lehnt er ab.
- \item Aufzählbar $\Rightarrow$ Semientscheidbar: Konstruiere einen Entscheider wie bei 3., der aber nie ablehnt. Semientscheidbar $\Rightarrow$ Aufzählbar. Konstruiere TM die alle Wörter in der Sprache aufzählt, indem sie Semientscheider für alle Wörter simuliert. 
- \item Wende Verfahren aus der VL an um RA in Automaten umzuwandeln und Automaten zu minimieren.
+ \item ``$\Leftarrow$'': Konstruiere einen Entscheider: Dieser zählt alle Wörter in der Sprache in shortlex-Reihenfolge auf. Findet er das Wort, akzeptiert er. Sobald er ein Wort aufzählt, das länger ist als die Eingabe, lehnt er ab.
+ \item ``$\Leftarrow$'': Konstruiere einen Entscheider wie in 3., der aber niemals ablehnt.
+
+``$\Rightarrow$'': Konstruiere TM, die alle Wörter in der Sprache aufzählt, indem sie Semientscheider für alle Wörter simuliert (Cantor-Diagonalisierung). 
+ \item Wende Verfahren aus der VL an, um RA in Automaten umzuwandeln und Automaten zu minimieren.
  \item \[
 (ab)(ab)(aba)(b)(b)(aa)(aa)\]
 \[(abab)(abab)(b)(a)(a)(a)(a)
@@ -230,22 +249,23 @@ Damit ist ein Automat zu $\{a^ib^j | i \leq j\}$ leicht zu konstruieren.
 \aufgaben{
 \begin{enumerate}
 \item Folgt aus $A \propto B$ und $B$ regulär, dass A auch regulär ist? 
-\item Zeige: aus $A \propto co-A$ und $A$ semientscheidbar folgt, dass $A$ entscheidbar ist. Zeige auch: $A$ muss semientscheidbar sein durch Angabe einer Sprache $B$ mit $B \propto co-B$, aber $B$ nicht entscheidbar.
+\item Zeige: aus $co-A \propto A$ und $A$ semientscheidbar folgt, dass $A$ entscheidbar ist.
+%wut? Zeige auch: $A$ muss semientscheidbar sein durch Angabe einer Sprache $B$ mit $B \propto co-B$, aber $B$ nicht entscheidbar.
 \item Gibt es eine unentscheidbare Teilmenge von $1^*$?
-\item Zeige das $\mathcal{P}$ und $\mathcal{NP}$ jeweils unter Konkatenation und Vereinigung abgeschlossen sind. 
-\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Faktorisieren von Zahlen existiert.
-\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Finden der größten Clique in einem Graphen existiert
+\item Zeige, dass $\mathcal{P}$ und $\mathcal{NP}$ jeweils unter Konkatenation und Vereinigung abgeschlossen sind. 
+%\item Zeige, dass wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Faktorisieren von Zahlen existiert.
+\item Zeige, dass, wenn $\mathcal{P} = \mathcal{NP}$ gilt, ein Algorithmus mit polynomiell beschränkter Laufzeit zum Finden der größten Clique in einem Graphen existiert.
 \item Sei DOPPEL-SAT $= \{\Phi | \Phi\mbox{ hat mindestens zwei erfüllende Belegungen}\}$, zeige das DOPPEL-SAT $\in \mathcal{NPC}$
 \end{enumerate}
 }{
 \begin{enumerate}
-\item Nein, jede Sprache aus $P$ kann man in polyzeit Lösen.
-\item Ist $A$ Semientscheidbar, kann man über die Reduktion auch $co-A$ Semientscheiden. Damit kann man $A$ entscheiden. Die Angabe der Sprache ist dem geneigten Leser überlassen.
-\item Ja: Kodiere Gödelnummern unär, die nummern haltenden TMs sind unentscheidbar.
-\item \textbf{Vereinigung:} Jeweils mehrere Maschienen abwechselnd simulieren, wenn eine akzeptiert, akzeptieren. \textbf{Konkatenation:} Alle möglichen Aufteilungen gleichzeitig simulieren.
-\item Konstruiere NDTM die Faktorisiert durch Raten
+\item Nein, $A$ kann jede Sprache aus $\mathcal{P}$ sein.
+\item Ist $A$ semientscheidbar, kann man über die Reduktion auch $co-A$ semientscheiden. Damit kann man $A$ entscheiden. %Die Angabe der Sprache ist dem geneigten Leser überlassen.
+\item Ja, jede unärkodierte unentscheidbare Sprache
+\item \textbf{Vereinigung:} Jeweils mehrere Maschinen abwechselnd simulieren, wenn eine akzeptiert, akzeptieren. \textbf{Konkatenation:} Alle möglichen Aufteilungen gleichzeitig simulieren.
+%\item Konstruiere NDTM, die Faktorisiert durch Raten
 \item Binäre Suche mit NDTM (die in Polyzeit läuft)
-\item Konstruiere aus SAT Instanz äquivalente maDOPPEL-SAT Instanz durch ODER-Verknüpfen der Klausel mit einem neuen Literal.
+\item Konstruiere aus SAT-Instanz äquivalente DOPPEL-SAT-Instanz durch ODER-Verknüpfen der Klauseln mit einem neuen Literal.
 \end{enumerate}
 }
 \end{document}

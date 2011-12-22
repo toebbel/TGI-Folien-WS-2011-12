@@ -8,8 +8,10 @@
 	\frametitle{Motivation}
 	
 	\begin{itemize}
-		\item Manche Optimierungsprobleme sind \classNP{}-schwer \\ $\Rightarrow$ (wahrscheinlich) keine effiziente Lösung.
+		\item Manche Optimierungsprobleme sind \classNP{}-schwer \\ $\Rightarrow$ (wahrscheinlich) keine effiziente Lösung. \pause
 		\item Wir wollen trotzdem eine schnelle Lösung! \\ (muss dafür nicht optimal sein) \\ $\Rightarrow$ Approximation
+
+    \vspace{-1cm}\raggedleft{\includegraphics<2>[width=3cm]{images/challenge_accepted.png}}
 	\end{itemize}
 \end{frame}
 
@@ -24,17 +26,19 @@
 	
 	\pause	
 	
-	\only<1-2>{
+	\only<1-3>{
 	\begin{block}{Absolute Gütegarantie}
 		\begin{itemize}
 			\item $\abs{\opt{I} - \A{I}} \leq K$
-			\item Wünschenswerteste Gütegarantie
-			\item Für \classNP{}-vollständige Probleme gibt es oft keinen absoluten Approximationsalgorithmus.
+			\item Wünschenswerteste Gütegarantie \pause
+			\item Für \classNP{}-vollständige Probleme gibt es oft\\ keinen absoluten Approximationsalgorithmus.
+
+            \vspace{-1cm}\raggedleft{\includegraphics<3>[width=2cm]{images/okay.jpg}}
 		\end{itemize}
 	\end{block}
 	}
 	
-	\only<3>{
+	\only<4>{
 	\begin{block}{Relative Gütegarantie}
 		\begin{itemize}
 			\item $\mathcal{R}_\mathcal{A}(I) \leq K$ mit $K \geq 1$ und $$\mathcal{R}_\mathcal{A}(I) = \begin{cases} \frac{\A{I}}{\opt{I}} & \text{falls } \Pi \text{ Minimierungsproblem} \\ & \\ \frac{\opt{I}}{\A{I}} & \text{falls } \Pi \text{ Maximierungsproblem} \end{cases}$$

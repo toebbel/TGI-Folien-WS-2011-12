@@ -91,6 +91,31 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Approximationsschemata}
+	
+	\begin{itemize}
+		\item Ziel: \textbf{Beliebig genaue} Approximation an optimale Lösung.
+		\item Natürlich mit höherer Laufzeit.
+	\end{itemize}
+	
+	\pause
+	
+	\begin{block}{Polynomiales Approximationsschema (PAS) für ein Optimierungsproblem $\Pi$}
+		Familie von Algorithmen $\menge{A_\varepsilon}{\varepsilon > 0}$, sodass $A_\varepsilon$ ein $\varepsilon$-approximierender Algorithmus für $\Pi$ ist. \micropause
+		
+		Falls die Laufzeit von $A_\varepsilon$ polynomial von $\frac{1}{\varepsilon}$ abhängt, heißt das Approximationsschema \textbf{vollpolynomial}.
+	\end{block}
+	
+	\pause
+	
+	\begin{block}{Beispiel}
+		Skript S.\ 85/86: Ein $\varepsilon$-approximierender Algorithmus für KNAPSACK mit Laufzeit $\O{n^3 \cdot \frac{1}{\varepsilon}}$ \micropause
+		
+		$\Rightarrow \menge{A_\varepsilon}{\varepsilon > 0}$ ist ein FPAS für Knapsack.
+	\end{block}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Aufgabe}
 	
 	\only<1-6>{Gegeben ist ein ungerichteter Graph $G$. 
@@ -151,16 +176,12 @@ Für jede Menge $E' \subseteq E$ definieren wir $c(E')=\sum_{(u,v)\in E'}c(u,v)$
 \end{frame}
 
 \begin{frame}
-	\frametitle{Frohe Weihnachten!}
+	\frametitle{Bis zum nächsten Mal!}
 	
 	\begin{figure}[H]
-		%\includegraphics[width= \textwidth]{images/399_traveling_salesman}
+		\includegraphics[width= \textwidth]{images/399_traveling_salesman}
 		
-		%\textit{\scriptsize{What's the complexity class of the best linear programming cutting-plane techniques? I couldn't find it anywhere. Man, the Garfield guy doesn't have these problems $\ldots$}}
-		
-		\includegraphics[width= \textwidth]{images/838_incident.png}
-		
-		\textit{\scriptsize{He sees you when you're sleeping, he knows when you're awake, he's copied on \texttt{/var/spool/mail/root}, so be good for goodness' sake.}}
+		\textit{\scriptsize{What's the complexity class of the best linear programming cutting-plane techniques? I couldn't find it anywhere. Man, the Garfield guy doesn't have these problems $\ldots$}}
 		
 	\end{figure}
 \end{frame}

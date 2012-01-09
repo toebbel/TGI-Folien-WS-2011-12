@@ -1,7 +1,7 @@
 \include{includes/common_start}
 \tutnr{9}
 
-\section{Approximationsalgorithmen}
+\section{Langweilige Theorie}
 \subsection{Trololo}
 
 \begin{frame}
@@ -9,9 +9,9 @@
 	
 	\begin{itemize}
 		\item Manche Optimierungsprobleme sind \classNP{}-schwer \\ $\Rightarrow$ (wahrscheinlich) keine effiziente Lösung. \pause
-		\item Wir wollen trotzdem eine schnelle Lösung! \\ (muss dafür nicht optimal sein) \\ $\Rightarrow$ Approximation
+		\item Wir wollen trotzdem eine schnelle Lösung! \\ (muss dafür nicht optimal sein) \\ \pause $\Rightarrow$ Approximation
 
-    \vspace{-1cm}\raggedleft{\includegraphics<2>[width=3cm]{images/challenge_accepted.png}}
+    \vspace{-1cm}\raggedleft{\includegraphics<3>[width=3cm]{images/challenge_accepted.png}}
 	\end{itemize}
 \end{frame}
 
@@ -27,7 +27,7 @@
 	\pause	
 	
 	\only<1-3>{
-	\begin{block}{Absolute Gütegarantie}
+	\begin{block}{Absolute Gütegarantie (Differenzengarantie)}
 		\begin{itemize}
 			\item $\abs{\opt{I} - \A{I}} \leq K$ für alle $I \in D_\Pi$
 			\item Wünschenswerteste Gütegarantie \pause
@@ -81,7 +81,7 @@
 	
 	$$\mathcal{R}_\mathcal{A}^\infty := \inf\menge{r}{\exists N_0 > 0\, \forall I \in D_\Pi, \opt{I} \geq N_0: \mathcal{R}_\mathcal{A} \leq r}$$
 	
-		\item ``Beste allgemeingültige Gütegarantie von $\mathcal{A}$''
+		\item "`Beste allgemeingültige Gütegarantie von $\mathcal{A}$"'
 	\end{itemize}
 	
 	\pause
@@ -96,13 +96,13 @@
 	
 	\begin{itemize}
 		\item Ziel: \textbf{Beliebig genaue} Approximation an optimale Lösung.
-		\item Natürlich mit höherer Laufzeit.
+		\item Natürlich gilt: Bessere Approximation $\Rightarrow$ höhere Laufzeit.
 	\end{itemize}
 	
 	\pause
 	
 	\begin{block}{Polynomiales Approximationsschema (PAS) für ein Optimierungsproblem $\Pi$}
-		Familie von Algorithmen $\menge{A_\varepsilon}{\varepsilon > 0}$, sodass $A_\varepsilon$ ein $\varepsilon$-approximierender Algorithmus für $\Pi$ ist. \micropause
+		Familie von Algorithmen $\menge{A_\varepsilon}{\varepsilon > 0}$, sodass $A_\varepsilon$ ein $\varepsilon$-approximativer Algorithmus für $\Pi$ ist. \micropause
 		
 		Falls die Laufzeit von $A_\varepsilon$ polynomial von $\frac{1}{\varepsilon}$ abhängt, heißt das Approximationsschema \textbf{vollpolynomial}.
 	\end{block}
@@ -110,11 +110,14 @@
 	\pause
 	
 	\begin{block}{Beispiel}
-		Skript S.\ 85/86: Ein $\varepsilon$-approximierender Algorithmus für KNAPSACK mit Laufzeit $\O{n^3 \cdot \frac{1}{\varepsilon}}$ \micropause
+		Skript S.\ 85/86: Ein $\varepsilon$-approximativer Algorithmus für KNAPSACK mit Laufzeit $\O{n^3 \cdot \frac{1}{\varepsilon}}$ \micropause
 		
 		$\Rightarrow \menge{A_\varepsilon}{\varepsilon > 0}$ ist ein FPAS für Knapsack.
 	\end{block}
 \end{frame}
+
+\section{Tolle Praxis}
+\subsection{Blablabla}
 
 \begin{frame}
 	\frametitle{Aufgabe}
@@ -141,7 +144,7 @@ Ein \emph{maximales Matching} ist ein Matching von maximaler Kardinalität.}
     }
  \only<7-9>{
     \item Betrachte ein inklusionsmaximales Matching $M$ in $G=(V,E)$. Sei
- \[ T := \menge{v \in V}{\text{ mindestens eine Kante in $M$ ist adjazent zu $v$}} \]
+ \[ T := \menge{v \in V}{\text{ $v$ ist adjazent zu einer Kante in $M$}} \]
     Was kann man über den Subgraph sagen, der von den Knoten $V \setminus T$ induziert wird?
 
     \only<8-9>{Er ist kantenfrei!}
@@ -175,6 +178,9 @@ Für jede Menge $E' \subseteq E$ definieren wir $c(E')=\sum_{(u,v)\in E'}c(u,v)$
  \item Gib einen 1-Approximationsalgorithmus zur Berechnung eines maximalen Spannbaums an.
 \end{enumerate}
 \end{frame}
+
+\section{Schluss}
+\subsection{Rhabarber}
 
 \begin{frame}
 	\frametitle{Bis zum nächsten Mal!}

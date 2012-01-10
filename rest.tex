@@ -1,96 +1,5 @@
 \include{includes/common_start}
 
-\section{10. Tutoriumsvorschlag}
-\subsection{Chomsky-Hierarchie}
-\frame{
-\frametitle{Grammatiken}
-\begin{block}{Definition}
- Eine Grammatik ist ein Regelsystem, mit dem sich die Wörter einer Sprache erzeugen lassen. Sie besteht aus vier Komponenten:
- \begin{itemize}
-  \item ein endliches \textbf{Alphabet} $\Sigma$ (auch Terminale genannt)
-  \item eine endliche Menge $V$ mit $V \cap \Sigma = \emptyset$ von \textbf{Variablen} (auch Nichtterminale genannt)
-  \item einem \textbf{Startsymbol} $S \in V$
-  \item eine endliche Menge von \textbf{Ableitungsregeln} $R$ (auch Produktionen genannt).
-  Eine Ableitungsregel ist ein Paar ($l,r)$, wobei $l \in (V \cup \Sigma)^+$ und $r \in (V \cup \Sigma)^*$ ist.
-  Wir schreiben meist $l \rightarrow r$.
- \end{itemize}
-\end{block}
-}
-
-\frame{
-\frametitle{Beispiel}
-\begin{exampleblock}{Beispiel: Sprache der Palindrome}
-\begin{align*}
-V = &\{S\}\\
-\Sigma = &\{0,1\}\\
-R = &\{ S \rightarrow \varepsilon \mid 0 \mid 1,\\
-       &S \rightarrow 0S0 \mid 1S1 \} 
-\end{align*}
-\end{exampleblock}
-}
-
-\frame{
-\frametitle{Chomsky-Hierarchie}
-Wir definieren Klassen von Sprachen, die von Grammatiken mit bestimmten Einschränkungen erzeugt werden:
-\begin{itemize}
-\item CH-3 Regulär/Rechtslinear
-\item CH-2 Kontextfrei
-\item CH-1 Kontextsensitiv/Längenbeschränkt
-\item CH-0 Beliebig (rekursiv aufzählbar)
-\end{itemize}
-Es gilt: $$CH-3 \subset CH-2 \subset CH-1 \subset CH-0$$
-Frage: Welche Sprachen liegen nicht in CH-0 ?
-}
-
-\frame{
-\frametitle{CH-0}
-\begin{itemize}
-\item Sprachen, die von einer beliebigen Grammatik erzeugt werden.
-\item Genau die Sprachen die DTM \& NTM akzeptieren können
-\end{itemize}
-}
-
-\frame{
-\frametitle{CH-1}
-Kontextsensitive/längenbeschränkte Sprachen
-\begin{itemize}
-\item Sprachen, die von Grammatiken erzeugt werden, deren Ableitungen eine kürzere linke als rechte Seite haben. D.h. Produktionen machen das Wort immer länger.
-\item Genau die Sprachen, die von linear beschränken Turingmaschinen erkannt werden (Vorgriff?)
-\end{itemize}
-}
-
-\frame{
-\frametitle{CH-2}
-Kontextfreie Sprachen
-\begin{itemize}
-\item Grammatiken, deren Ableitungsregeln auf der linken Seite immer genau ein Nichtterminalsymbol haben.
-\item Genau die Sprachen, die von Kellerautomaten erkannt werden (Vorgriff)
-\end{itemize}
-}
-
-\frame{
-\frametitle{CH-3}
-\begin{itemize}
-\item Grammatiken, deren Ableitungsregeln ausschließlich die folgende Form haben:
-$$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder } v = aB \mbox{ mit } a \in \sum \mbox{,} B \in V$$
-\item Genau die regulären Sprachen
-\end{itemize}
-}
-
-\frame{
-\frametitle{Probleme}
-Es gibt einige interessante Probleme, mit deren Entscheidbarkeit, Komplexität bzw. Abgeschlossenheit wir uns noch befassen (jeweils für die Klassen)
-\begin{itemize}
-\item Das Wortproblem
-\item Vereinigung
-\item Schnitt
-\item Komplement
-\item Konkatenation
-\item Kleenscher Abschluss (*-Operator)
-\end{itemize}
-}
-
-
 \subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
@@ -151,7 +60,7 @@ Z &\rightarrow X\\
 \end{exampleblock}
 }
 
-\frame{
+\begin{frame}
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
 \setcounter{enumi}{1}
@@ -195,7 +104,7 @@ C &\rightarrow c\\
 \end{column}
 \end{columns}
 \end{exampleblock}
-}
+\end{frame}
 
 
 
@@ -377,17 +286,6 @@ C &\rightarrow c\\
 \end{align*}
 Ist das Wort $abcccc$ in der Sprache $\mathcal{L}(\textit{G})$?
 }
-
-\begin{frame}
-\begin{enumerate}
-\item Bestimme eine möglichst kurze Grammatik $G_R$ für reguläre Ausdrücke über dem Alphabet $\Sigma = \{0,1\}$ mit maximalem Chomsky-Typ.
-\item Bestimme einen Ableitungsbaum für das Wort $1^* \cup (01)^*$. 
-\item Ist die Grammatik eindeutig? Diskutiere, ob es eine eindeutige Grammatik für reguläre Ausdrücke geben kann, falls die angegebene Grammatik inhärent mehrdeutig ist.
-\item Normalisiere $G_R$ und 
-\item überprüfe die Zugehörigkeit des Ausdrucks $1^*\cup (01)^*$ zu $L(G_R)$ mit dem CYK-Algorithmus.
-\end{enumerate}
-\end{frame}
-
 \section{11. Tutoriumsvorschlag}
 % Pumping Lemma für Kontextfreie Sprachen
 \subsection{Pumping Lemma für kontextfreie Sprachen}

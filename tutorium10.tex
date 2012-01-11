@@ -45,6 +45,7 @@ Frage: Welche Sprachen liegen nicht in CH-0 ?
 
 \frame{
 \frametitle{CH-0}
+Rekursiv aufzählbare Sprachen
 \begin{itemize}
 \item Sprachen, die von einer beliebigen Grammatik erzeugt werden
 \item Genau die Sprachen, die DTM \& NTM akzeptieren können
@@ -87,10 +88,11 @@ Kontextfreie Sprachen
 
 \frame{
 \frametitle{CH-3}
+Reguläre Sprachen
 \begin{itemize}
 \item Grammatiken, deren Ableitungsregeln ausschließlich die folgende Form haben:
 $$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder } v = aB \mbox{ mit } a \in \Sigma \mbox{,} B \in V$$
-\item Genau die regulären Sprachen
+\item Genau die Sprachen, die von endlichen Automaten erkannt werden
 \end{itemize}
 ~\micropause
 \begin{block}{Beispiele}
@@ -111,17 +113,17 @@ $V = \{S, A\}$ und
 \begin{itemize}
   \item Welchen Typ in der Chomsky-Hierarchie hat $G$?
 
-  \item Welche Zeichenketten k\"onnen in vier Schritten abgeleitet werden?
+  \item Welche Zeichenketten aus $\Sigma^*$ k\"onnen in vier Schritten abgeleitet werden?
 
   \item Sei $\alpha = (b^*ab^*ab^*)^+$ ein regul\"arer Ausdruck.
-        Zeigen Sie: $L(\alpha) \subseteq L(G)$.
+        Zeige: $L(\alpha) \subseteq L(G)$.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Aufgabe: CH-1-Grammatiken}
-Konstruieren Sie eine Typ-1-Grammatik, welche die Sprache
+Konstruiere eine Typ-1-Grammatik, welche die Sprache
 
 \begin{quote}
   $L = \{a^n b^n c^n \, | \, n \geq 1\}$
@@ -130,21 +132,40 @@ Konstruieren Sie eine Typ-1-Grammatik, welche die Sprache
 erzeugt.
 
 
+\pause
+\begin{block}{Lösung}
+\begin{align*}
+&\Sigma = \{a, b, c\} \\
+&V = \{ S, \# \} \\
+&S \rightarrow aS\#c \mid abc \\
+&c\# \rightarrow \#c \\
+&b\# \rightarrow bb
+\end{align*}
+\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{Aufgabe: CH-2-Grammatiken}
-Geben Sie eine kontextfreie Grammatik an, die die Sprache
+Gib eine kontextfreie Grammatik an, die die Sprache
 \begin{quote}
   $L = \{w \in \Sigma^* \, | \, w \text{ enth\"alt mehr Nullen als Einsen}\}$  
 \end{quote}
 \"uber dem Alphabet $\Sigma = \{0, 1\}$ beschreibt.
+
+
+\pause
+\begin{block}{Lösung}
+\begin{align*}
+S &\rightarrow 0S1S' \mid 0S'1S \mid 1S0S' \mid 1S'0S \mid 0 \\
+S' &\rightarrow 0 \mid \varepsilon
+\end{align*}
+\end{block}
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Aufgabe: CH-3-Grammatiken}
-Geben Sie unter Anwendung des Verfahrens aus Satz 5.5 eine Grammatik an,
+Gib unter Anwendung des Verfahrens aus Satz 5.5 eine Grammatik an,
 welche genau die Sprache erzeugt, die folgender DEA akzeptiert:
 
 \begin{center}\includegraphics[scale=0.8]{./images/dea1.pdf}\end{center}
@@ -155,7 +176,7 @@ welche genau die Sprache erzeugt, die folgender DEA akzeptiert:
 \begin{enumerate}
 \item Bestimme eine möglichst kurze Grammatik $G_R$ für reguläre Ausdrücke über dem Alphabet $\Sigma = \{0,1\}$ mit maximalem Chomsky-Typ.
 \item Bestimme einen Ableitungsbaum für das Wort $1^* \cup (01)^*$. 
-\item Ist die Grammatik eindeutig? Diskutiere, ob es eine eindeutige Grammatik für reguläre Ausdrücke geben kann, falls die angegebene Grammatik inhärent mehrdeutig ist.
+\item Ist die Grammatik eindeutig? Diskutiere, ob es eine eindeutige Grammatik für reguläre Ausdrücke geben kann, falls die angegebene Grammatik mehrdeutig ist.
 \end{enumerate}
 \end{frame}
 

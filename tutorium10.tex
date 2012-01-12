@@ -79,7 +79,7 @@ Kontextfreie Sprachen
 ~\micropause
 \begin{block}{Beispiele}
 \begin{itemize}
-\item Lojban
+\item Viele natürlichen Sprachen
 \item Die Sprache der gültigen Klammerausdrücke
 \item Die Sprache der regulären Ausdrücke
 \end{itemize}
@@ -131,17 +131,23 @@ Konstruiere eine Typ-1-Grammatik, welche die Sprache
 
 erzeugt.
 
-
+\invincible
 \pause
 \begin{block}{Lösung}
+\ducttape{-1cm}
 \begin{align*}
 &\Sigma = \{a, b, c\} \\
-&V = \{ S, \# \} \\
-&S \rightarrow aS\#c \mid abc \\
-&c\# \rightarrow \#c \\
-&b\# \rightarrow bb
+&V = \{ S, S', \# , A, B, C \} \\
+&S \rightarrow S' \\
+&S' \rightarrow AS'\#C \mid ABC \\
+&C\# \rightarrow \#C \\
+&B\# \rightarrow BB \\
+&A \rightarrow a \\
+&B \rightarrow b \\
+&C \rightarrow c
 \end{align*}
 \end{block}
+\vincible
 \end{frame}
 
 \begin{frame}
@@ -152,14 +158,17 @@ Gib eine kontextfreie Grammatik an, die die Sprache
 \end{quote}
 \"uber dem Alphabet $\Sigma = \{0, 1\}$ beschreibt.
 
-
+\invincible
 \pause
 \begin{block}{Lösung}
 \begin{align*}
-S &\rightarrow 0S1S' \mid 0S'1S \mid 1S0S' \mid 1S'0S \mid 0 \\
-S' &\rightarrow 0 \mid \varepsilon
+&\Sigma = \{ 0, 1 \} \\
+&V = \{ S, \# \} \\
+&S \rightarrow \#0\# \\
+&\# \rightarrow 0\#1 \mid 1\#0 \mid \#\# \mid 0\# \mid \varepsilon
 \end{align*}
 \end{block}
+\vincible
 \end{frame}
 
 

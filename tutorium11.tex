@@ -62,16 +62,14 @@ Z &\rightarrow X\\
 \end{exampleblock}
 }
 
-\begin{frame}
+\frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
 \setcounter{enumi}{1}
-\item %Die Grammatik $\varepsilon$-frei machen, d. h. $\varepsilon$ darf nur bei $\mathcal{S} \rightarrow \varepsilon$ vorkommen.
-In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\varepsilon}$
-f"ur $V \in \mathcal{V}, V \not= \mathcal{S}$ entfernt. Dazu müssen diese Produktion aber
-vorher \emph{rekursiv} durch ihre "`Vorwegnahme"' mit den anderen Produktionen
-"`verschmolzen"' werden, es wird also für jede Produktion mit einem der obigen $V$
-auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
+\item
+Für Produktionen mit mehr als zwei
+Variablen rechts werden \textcolor{blue}{ \emph{neue} Nichterminale} eingeführt
+und dazu \textcolor{blue}{passende Produktionen} hinzugefügt.
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 2 von 4)}
@@ -79,8 +77,8 @@ auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hin
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY\\
-\textcolor{red}{X} &\rightarrow AXB \mid Z \mid \textcolor{red}{\varepsilon}\\
-\textcolor{red}{Y} &\rightarrow CCY \mid \textcolor{red}{\varepsilon}\\
+X &\rightarrow \textcolor{red}{AXB} \mid Z \mid \varepsilon \\
+Y &\rightarrow \textcolor{red}{CCY} \mid \varepsilon \\
 Z &\rightarrow X\\
 A &\rightarrow a\\
 B &\rightarrow b\\
@@ -95,55 +93,9 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\textcolor{blue}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\msout{\varepsilon}}\\
-\textcolor{blue}{X} &\rightarrow AXB \mid \textcolor{blue}{AB} \mid Z \\
-\textcolor{blue}{Y} &\rightarrow CCY \mid \textcolor{blue}{CC}\\
-Z &\rightarrow X\\
-A &\rightarrow a\\
-B &\rightarrow b\\
-C &\rightarrow c\\
-\end{align*}
-\end{column}
-\end{columns}
-\end{exampleblock}
-\end{frame}
-
-
-
-\frame{
-\frametitle{Umwandlung in Chomsky-Normalform}
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item
-Für Produktionen mit mehr als zwei
-Variablen rechts werden \textcolor{blue}{ \emph{neue} Nichterminale} eingeführt
-und dazu \textcolor{blue}{passende Produktionen} hinzugefügt.
-\end{enumerate}
-
-\begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 4)}
-\begin{columns}[c]
-\begin{column}{0.3\textwidth}
-\begin{align*}
-\mathcal{S} &\rightarrow XY \mid X \mid  Y \\
-X &\rightarrow \textcolor{red}{AXB} \mid AB \mid Z \\
-Y &\rightarrow \textcolor{red}{CCY} \mid CC\\
-Z &\rightarrow X\\
-A &\rightarrow a\\
-B &\rightarrow b\\
-C &\rightarrow c\\
-\end{align*}
-\end{column}
-%
-\
-\begin{column}{0.05\textwidth}
-$\Rightarrow$
-\end{column}
-%
-\begin{column}{0.3\textwidth}
-\begin{align*}
-\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
-X &\rightarrow \textcolor{blue}{FB} \mid AB \mid Z \\
-Y &\rightarrow \textcolor{blue}{GY} \mid CC\\
+\mathcal{S} &\rightarrow XY\\
+X &\rightarrow \textcolor{blue}{FB} \mid Z \mid \varepsilon \\
+Y &\rightarrow \textcolor{blue}{GY} \mid \varepsilon \\
 Z &\rightarrow X\\
 \textcolor{blue}{F} &\rightarrow \textcolor{blue}{AX}\\
 \textcolor{blue}{G} &\rightarrow \textcolor{blue}{CC}\\
@@ -155,6 +107,55 @@ C &\rightarrow c\\
 \end{columns}
 \end{exampleblock}
 }
+
+\begin{frame}
+\frametitle{Umwandlung in Chomsky-Normalform}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item %Die Grammatik $\varepsilon$-frei machen, d. h. $\varepsilon$ darf nur bei $\mathcal{S} \rightarrow \varepsilon$ vorkommen.
+In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\varepsilon}$
+f"ur $V \in \mathcal{V}, V \not= \mathcal{S}$ entfernt. Dazu müssen diese Produktion aber
+vorher \emph{rekursiv} durch ihre "`Vorwegnahme"' mit den anderen Produktionen
+"`verschmolzen"' werden, es wird also für jede Produktion mit einem der obigen $V$
+auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
+\end{enumerate}
+
+\begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 4)}
+\ducttape{-0.25cm}
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\mathcal{S} &\rightarrow XY\\
+\textcolor{red}{X} &\rightarrow FB \mid Z \mid \textcolor{red}{\varepsilon}\\
+\textcolor{red}{Y} &\rightarrow GY \mid \textcolor{red}{\varepsilon}\\
+Z &\rightarrow X\\
+F &\rightarrow AX\\
+G &\rightarrow CC\\
+A &\rightarrow a, B \rightarrow b, C \rightarrow c\\
+\end{align*}
+\end{column}
+%
+\
+\begin{column}{0.05\textwidth}
+$\Rightarrow$
+\end{column}
+%
+\begin{column}{0.3\textwidth}
+\begin{align*}
+\textcolor{red}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\msout{\varepsilon}}\\
+\textcolor{red}{X} &\rightarrow FB \mid Z \mid \textcolor{blue}{\msout{\varepsilon}}\\
+\textcolor{red}{Y} &\rightarrow GY \mid \textcolor{blue}{G}\\
+\textcolor{red}{Z} &\rightarrow X\mid \textcolor{blue}{\msout{\varepsilon}}\\
+F &\rightarrow AX \mid \textcolor{blue}{A}\\
+G &\rightarrow CC\\
+A &\rightarrow a, B \rightarrow b, C \rightarrow c\\
+\end{align*}
+\end{column}
+\end{columns}
+\end{exampleblock}
+\end{frame}
+
+
 
 \frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
@@ -170,14 +171,12 @@ für gefundene Zyklen werden alle Vorkommnisse aller Variablen des Zyklus durch 
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY \mid X \mid  Y\\
-\textcolor{red}{X} &\rightarrow FB \mid AB \mid \textcolor{red}{Z} \\
-Y &\rightarrow GY \mid CC\\
+\textcolor{red}{X} &\rightarrow FB \mid \textcolor{red}{Z} \\
+Y &\rightarrow GY \mid G \\
 \textcolor{red}{Z} &\rightarrow \textcolor{red}{X}\\
-F &\rightarrow AX\\
+F &\rightarrow AX \mid A\\
 G &\rightarrow CC\\
-A &\rightarrow a\\
-B &\rightarrow b\\
-C &\rightarrow c\\
+A &\rightarrow a, B \rightarrow b, C \rightarrow c\\
 \end{align*}
 \end{column}
 %
@@ -189,14 +188,12 @@ $\Rightarrow$
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY \mid X \mid  Y\\
-\textcolor{blue}{X} &\rightarrow \textcolor{blue}{FB} \mid AB \mid \msout{\textcolor{blue}{X}} \\
-Y &\rightarrow GY \mid CC\\
+\textcolor{blue}{X} &\rightarrow FB \mid \msout{\textcolor{blue}{X}} \\
+Y &\rightarrow GY \mid G\\
 \msout{\textcolor{blue}{X}} &\rightarrow \msout{\textcolor{blue}{X}}\\
 F &\rightarrow AX\\
 G &\rightarrow CC\\
-A &\rightarrow a\\
-B &\rightarrow b\\
-C &\rightarrow c\\
+A &\rightarrow a, B \rightarrow b, C \rightarrow c\\
 \end{align*}
 \end{column}
 \end{columns}
@@ -208,7 +205,7 @@ C &\rightarrow c\\
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item
-Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts eine einzelne Variable haben, durch "`Vorziehen"' der Regeln eliminiert. (Sollte die $\varepsilon$-Produktion fehlen, wird diese nun eingefügt.
+Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts eine einzelne Variable haben, durch "`Vorziehen"' der Regeln eliminiert. (Sollte die $\varepsilon$-Produktion fehlen, wird diese nun eingefügt).
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 4b von 4)}
@@ -216,8 +213,8 @@ Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts ei
 \begin{column}{0.3\textwidth}
 \begin{align*}
 \mathcal{S} &\rightarrow XY \mid \textcolor{red}{X} \mid  \textcolor{red}{Y}\\
-X &\rightarrow FB \mid AB \\
-Y &\rightarrow GY \mid CC\\
+X &\rightarrow FB\\
+Y &\rightarrow GY \mid \textcolor{red}{G}\\
 F &\rightarrow AX\\
 G &\rightarrow CC\\
 A &\rightarrow a\\
@@ -233,9 +230,10 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{AB} \mid \textcolor{blue}{GY} \mid \textcolor{blue}{CC}\\
-X &\rightarrow FB \mid AB \\
-Y &\rightarrow GY \mid CC\\
+\mathcal{S'} &\rightarrow \mathcal{S} \mid \varepsilon \\
+\mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{GY} \mid \textcolor{blue}{CC}\\
+X &\rightarrow FB \\
+Y &\rightarrow GY \mid \textcolor{blue}{CC} \\
 F &\rightarrow AX\\
 G &\rightarrow CC\\
 A &\rightarrow a\\

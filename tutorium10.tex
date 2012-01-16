@@ -32,6 +32,7 @@ R = &\{ S \rightarrow \varepsilon \mid 0 \mid 1,\\
 
 \frame{
 \frametitle{Chomsky-Hierarchie}
+Von Noam Chomsky definiert, um natürliche Sprachen formalisieren zu können. \\
 Wir definieren Klassen von Sprachen, die von Grammatiken mit bestimmten Einschränkungen erzeugt werden:
 \begin{itemize}
 \item CH-3 Regulär/Rechtslinear
@@ -49,7 +50,7 @@ Frage: Welche Sprachen liegen nicht in CH-0 ?
 Rekursiv aufzählbare Sprachen
 \begin{itemize}
 \item Sprachen, die von einer beliebigen Grammatik erzeugt werden
-\item Genau die Sprachen, die DTM \& NTM akzeptieren können
+\item Genau die Sprachen, die DTM \& NTM \emph{akzeptieren} können
 \end{itemize}
 
 }
@@ -61,11 +62,15 @@ Kontextsensitive/längenbeschränkte Sprachen
 \item Sprachen, die von Grammatiken erzeugt werden, deren Ableitungen eine linke Seite besitzen, die höchstens so lang ist wie ihre rechte Seite. D.h. Produktionen machen das Wort nie kürzer.\\
 $\Rightarrow$ entscheidbar
 \item (Genau die Sprachen, die von linear beschränken Turingmaschinen erkannt werden)
+\pause
+\item $\rightarrow$ vgl. Klasse $\mathcal{NTAPE}$(n)
 \end{itemize}
+\pause
 ~\micropause
 \begin{block}{Beispiel}
 \begin{itemize}
-\item Die Programmiersprache C (typedef)
+\item $\{ a^nb^nc^n \mid n \in \N \}$
+\item Syntaktisch korrektes C (typedef)
 \item Die Sprache der wohlgeformten Latex-Dokumente
 \end{itemize}
 \end{block}
@@ -81,6 +86,7 @@ Kontextfreie Sprachen
 ~\micropause
 \begin{block}{Beispiele}
 \begin{itemize}
+\item $\{ a^nb^n \mid n \in \N \}$
 \item Viele natürlichen Sprachen
 \item Die Sprache der gültigen Klammerausdrücke
 \item Die Sprache der regulären Ausdrücke
@@ -101,6 +107,8 @@ $$A\rightarrow v \mbox{ mit } A \in V \mbox{ und } v = \varepsilon \mbox{ oder }
 \begin{itemize}
 \item Alle endlichen Sprachen
 \item Tokens ($\rightarrow$ vgl. Compilerbau)
+\item Die Sprache der kontextfreien Grammatiken über festem Alphabet
+\item Perl Regexes \emph{nicht}
 \end{itemize}
 \end{block}
 }

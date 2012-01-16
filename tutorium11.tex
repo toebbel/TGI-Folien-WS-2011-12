@@ -5,16 +5,16 @@
 \subsection{Chomsky-Normalform}
 \frame{
 \frametitle{Chomsky-Normalform}
-CYK wird verwendet zur Lösung des Wortproblems für kontextfreie Sprachen (CH-2).
+Der Cocke-Younger-Kasami-Algorithmus (CYK) löst das Wortproblem für kontextfreie Sprachen (CH-2) in $\O{n^3}$.
 Um CYK anzuwenden, muss die gegebene Grammatik erst in Chomsky-Normalform gebracht werden. Das ist für jede CH-2-Grammatik möglich.
 \
 \begin{exampleblock}{Chomsky-Normalform}
-Eine CH-2-Grammatik \textit{G} $= \mathcal{(T,V,S,P) }$ ist in Chomsky-Normalform,  wenn jede Produktion aus $\mathcal{P}$ eine der folgenden Formen hat:
+Eine CH-2-Grammatik \textit{G} $= (\Sigma,\mathcal{V,S,R) }$ ist in Chomsky-Normalform,  wenn jede Produktion aus $\mathcal{R}$ eine der folgenden Formen hat:
 \begin{itemize}
 \item  $A \rightarrow BC$
 \item  $A \rightarrow a$
 \end{itemize}
-Wobei gilt $A,B,C\in\mathcal{V}$ und $a \in \mathcal{T}$.
+Wobei gilt $A,B,C\in\mathcal{V}$ und $a \in \Sigma$.
 Um das leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht mit neuem Startsymbol $S'$ ergänzen mit der Regel $$ S' \rightarrow S \mid \varepsilon $$
 \end{exampleblock}
 }
@@ -24,7 +24,7 @@ Um das leere Wort in der Sprache zu erlauben, lässt sich die Grammatik leicht m
 \frame{
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
-\item Für alle $\textcolor{red}{a} \in \mathcal{T}$ und für alle Produktionen, auf deren rechter Seite $\textcolor{red}{a}$ vorkommt 
+\item Für alle $\textcolor{red}{a} \in \Sigma$ und für alle Produktionen, auf deren rechter Seite $\textcolor{red}{a}$ vorkommt 
 (außer für $V  \rightarrow \textcolor{red}{a}$, mit $V \in\mathcal{V}$),
 wird jedes Vorkommen von $\textcolor{red}{a}$ durch ein \emph{neues} Nichtterminalsymbol $\textcolor{blue}{A}$ ersetzt
 %(und $A$ in die Variablenmenge aufgenommen)

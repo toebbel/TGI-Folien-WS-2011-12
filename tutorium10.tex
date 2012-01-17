@@ -200,6 +200,21 @@ welche genau die Sprache erzeugt, die folgender DEA akzeptiert:
 \item Bestimme einen Ableitungsbaum für das Wort $1^* \cup (01)^*$. 
 \item Ist die Grammatik eindeutig? Diskutiere, ob es eine eindeutige Grammatik für reguläre Ausdrücke geben kann, falls die angegebene Grammatik mehrdeutig ist.
 \end{enumerate}
+
+\invincible
+\pause
+\begin{block}{Lösung}
+\ducttape{-1cm}
+\begin{align*}
+&\Sigma = \{ 0, 1, \vphantom{0}^\ast, \cup, \epsilon, \emptyset, (, ) \} \\
+&V = \{ S, P, K \} \\
+\\
+&S \rightarrow P \cup S \mid P \\
+&P \rightarrow KP \mid K \\
+&K \rightarrow 0 \mid 1 \mid \epsilon \mid \emptyset \mid T^\ast \mid (S)
+\end{align*}
+\end{block}
+\vincible
 \end{frame}
 
 \frame{

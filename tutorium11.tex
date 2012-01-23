@@ -112,12 +112,9 @@ C &\rightarrow c\\
 \frametitle{Umwandlung in Chomsky-Normalform}
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item %Die Grammatik $\varepsilon$-frei machen, d. h. $\varepsilon$ darf nur bei $\mathcal{S} \rightarrow \varepsilon$ vorkommen.
-In diesem Schritt werden alle Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\varepsilon}$
-f"ur $V \in \mathcal{V}, V \not= \mathcal{S}$ entfernt. Dazu müssen diese Produktion aber
-vorher \emph{rekursiv} durch ihre "`Vorwegnahme"' mit den anderen Produktionen
-"`verschmolzen"' werden, es wird also für jede Produktion mit einem der obigen $V$
-auf der rechten Seite eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
+\item Entfernen von Produktionen der Form $\textcolor{red}{V} \rightarrow \textcolor{red}{\varepsilon}$
+f"ur $V \in \mathcal{V}$ \\ $\Rightarrow$ "`Vorwegnahme"' dieser Produktionen: Für jede Produktion mit einem der obigen $V$
+auf der rechten Seite wird eine \textcolor{blue}{neue Produktion} ohne dieses $V$ hinzugefügt.
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 3 von 4)}
@@ -142,7 +139,8 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\textcolor{red}{\mathcal{S}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\msout{\varepsilon}}\\
+\textcolor{blue}{\mathcal{S}} &\rightarrow \mathcal{S'} \mid \varepsilon \\
+\textcolor{red}{\mathcal{S'}} &\rightarrow XY \mid \textcolor{blue}{X} \mid  \textcolor{blue}{Y} \mid \textcolor{blue}{\msout{\varepsilon}}\\
 \textcolor{red}{X} &\rightarrow FB \mid Z \mid \textcolor{blue}{\msout{\varepsilon}}\\
 \textcolor{red}{Y} &\rightarrow GY \mid \textcolor{blue}{G}\\
 \textcolor{red}{Z} &\rightarrow X\mid \textcolor{blue}{\msout{\varepsilon}}\\
@@ -170,7 +168,8 @@ für gefundene Zyklen werden alle Vorkommnisse aller Variablen des Zyklus durch 
 \begin{columns}[c]
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
+\mathcal{S} &\rightarrow \mathcal{S'} \mid \varepsilon \\
+\mathcal{S'} &\rightarrow XY \mid X \mid  Y\\
 \textcolor{red}{X} &\rightarrow FB \mid \textcolor{red}{Z} \\
 Y &\rightarrow GY \mid G \\
 \textcolor{red}{Z} &\rightarrow \textcolor{red}{X}\\
@@ -187,7 +186,8 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S} &\rightarrow XY \mid X \mid  Y\\
+\mathcal{S} &\rightarrow \mathcal{S'} \mid \varepsilon \\
+\mathcal{S'} &\rightarrow XY \mid X \mid  Y\\
 \textcolor{blue}{X} &\rightarrow FB \mid \msout{\textcolor{blue}{X}} \\
 Y &\rightarrow GY \mid G\\
 \msout{\textcolor{blue}{X}} &\rightarrow \msout{\textcolor{blue}{X}}\\
@@ -205,13 +205,14 @@ A &\rightarrow a, B \rightarrow b, C \rightarrow c\\
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item
-Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts eine einzelne Variable haben, durch "`Vorziehen"' der Regeln eliminiert. (Sollte die $\varepsilon$-Produktion fehlen, wird diese nun eingefügt).
+Sind alle Zyklen beseitigt, werden im letzten Schritt alle Regeln, die rechts eine einzelne Variable haben, durch "`Vorziehen"' der Regeln eliminiert.
 \end{enumerate}
 
 \begin{exampleblock}{Umwandlungsbeispiel (Schritt 4b von 4)}
 \begin{columns}[c]
 \begin{column}{0.3\textwidth}
 \begin{align*}
+\mathcal{S} &\rightarrow \mathcal{S'} \mid \varepsilon \\
 \mathcal{S} &\rightarrow XY \mid \textcolor{red}{X} \mid  \textcolor{red}{Y}\\
 X &\rightarrow FB\\
 Y &\rightarrow GY \mid \textcolor{red}{G}\\
@@ -230,7 +231,7 @@ $\Rightarrow$
 %
 \begin{column}{0.3\textwidth}
 \begin{align*}
-\mathcal{S'} &\rightarrow \mathcal{S} \mid \varepsilon \\
+\mathcal{S} &\rightarrow \mathcal{S'} \mid \varepsilon \\
 \mathcal{S} &\rightarrow XY \mid \textcolor{blue}{FB} \mid \textcolor{blue}{GY} \mid \textcolor{blue}{CC}\\
 X &\rightarrow FB \\
 Y &\rightarrow GY \mid \textcolor{blue}{CC} \\

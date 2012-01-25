@@ -9,7 +9,7 @@
 	
 	\begin{itemize}
 		\item \textbf{Typ-0-Grammatiken / semientscheidbar:} Turingmaschinen
-		\item \textbf{Typ-1-Grammatiken / kontextsensitiv:} linear beschränkte Turingmaschinen
+		\item \textbf{Typ-1-Grammatiken / kontextsensitiv:} linear beschränkte Turingmaschinen (LBA)
 		\item \textbf{Typ-2-Grammatiken / kontextfrei:} \only<1>{?} \only<2>{Kellerautomaten!}
 		\item \textbf{Typ-3-Grammatiken / regulär:} Endliche Automaten
 	\end{itemize}
@@ -84,11 +84,11 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 	\frametitle{Motivation zur Greibach-Normalform}
 	
 	\begin{itemize}
-		\item Reguläre Grammatiken: $\textcolor{KITgreen}{A} \rightarrow \textcolor{KITblue}{a}$ oder $\textcolor{KITgreen}{A} \rightarrow \textcolor{KITblue}{a}\textcolor{KITred}{B}$
+		\item Reguläre Grammatiken: $\textcolor{KITgreen}{A} \rightarrow \textcolor{KITseablue}{a}$ oder $\textcolor{KITgreen}{A} \rightarrow \textcolor{KITseablue}{a}\textcolor{KITred}{B}$
 		\item Passendes Modell: Endliche Automaten
 		\begin{itemize}
 			\item \textcolor{KITgreen}{Sind in einem Zustand}
-			\item \textcolor{KITblue}{Lesen ein Symbol von der Eingabe}
+			\item \textcolor{KITseablue}{Lesen ein Symbol von der Eingabe}
 			\item \textcolor{KITred}{Wechseln in den nächsten Zustand}
 		\end{itemize}
 	\end{itemize}
@@ -96,19 +96,19 @@ $M = (Q, \Sigma, \Gamma, q_0, Z_0, \delta, F)$
 	\ducttape{0.5cm} \pause
 	
 	\begin{itemize}
-		\item Kontextfreie Grammatiken: \only<3>{$\textcolor{KITgreen}{A} \rightarrow \textcolor{KITblue}{a}\textcolor{KITred}{\alpha}$ mit $\alpha \in V^\ast$}
+		\item Kontextfreie Grammatiken: \only<3>{$\textcolor{KITgreen}{A} \rightarrow \textcolor{KITseablue}{a}\textcolor{KITred}{\alpha}$ mit $\alpha \in V^\ast$}
 		\item Passendes Modell: Kellerautomaten
 		\item Hier: Kellerautomat mit nur einem Zustand
 		\begin{itemize}
 			\item \textcolor{KITgreen}{Lesen ein Symbol vom Stack}
-			\item \textcolor{KITblue}{Lesen ein Symbol von der Eingabe}
+			\item \textcolor{KITseablue}{Lesen ein Symbol von der Eingabe}
 			\item \textcolor{KITred}{Schreiben beliebig viele Symbole auf den Stack}
 		\end{itemize}
 	\end{itemize}
 	
 	\ducttape{0.5cm}
 	
-	$\Rightarrow$ Greibach-Normalform!
+	\pause $\Rightarrow$ Greibach-Normalform!
 \end{frame}
 
 \begin{frame}

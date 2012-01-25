@@ -40,7 +40,7 @@ Ein (nichtdeterministischer) \textbf{Kellerautomat} (NPDA bzw PDA, Pushdown Auto
 \begin{frame}
 \frametitle{Zu Kellerautomaten}
 \begin{itemize}
-\item Akzeptieren, wenn \begin{itemize}
+\item Akzeptieren nach Eingabeende, wenn \begin{itemize}
 	\item der Stack leer ist \emph{oder}
 	\item der Automat in einen akzeptierenden Zustand kommt.
 \end{itemize}
@@ -138,28 +138,25 @@ Die Grammatik sei zunächst in Chomsky-Normalform.
 \end{frame}
 
 \begin{frame}
-\frametitle{Annahmen}
+\frametitle{Los geht's!}
 \begin{block}{Annahmen}
 \begin{itemize}
  \item Wir gehen davon aus, dass die Grammatik $G$ in Chomsky-Normalform ist, mit $V = \{A_1, \ldots, A_m \}$ und $\Sigma = \{a_1, \ldots, a_n\}$
  \item Folglich sind alle Regeln von der Form $A_i \rightarrow A_jA_k$ oder $A_i \rightarrow a_j$
 \end{itemize}
 \end{block}
-\end{frame}
-
-\begin{frame}
-\frametitle{Schritt 1}
-Es gebe die Nichtterminale $\{A_0, \ldots, A_N\}$
-\begin{enumerate}
-\item für alle $i$ in $1, \ldots, N$
-\begin{enumerate}
-\item für alle $j$ in $1, \ldots, i$
-\begin{enumerate}
-\item Simuliere alle Regeln für $A_j$ bei Produktionen der Form $A_i \rightarrow A_j\alpha$ mit $j < i$ auf der rechten Seite.
+\begin{block}{Schritt 1}
+\begin{itemize}
+\item für alle $i$ in $1, \ldots, m$
+\begin{itemize}
+\item für alle $j$ in $1, \ldots, i-1$
+\begin{itemize}
+\item Simuliere alle Regeln für $A_j$ bei Produktionen der Form $A_i \rightarrow A_j\alpha$.
 \item für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein (wie: siehe nächste Folie).
-\end{enumerate}
-\end{enumerate}
-\end{enumerate}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
@@ -167,7 +164,7 @@ Es gebe die Nichtterminale $\{A_0, \ldots, A_N\}$
 Für Regeln der Form 
 $$A \rightarrow A\alpha_1 \mid \ldots \mid A\alpha_r$$
 $$A \rightarrow \beta_1 \mid \ldots \mid \beta_s$$
-(wobei $\beta_i$ nicht mit $A$ beginnt) führe ein neues Nichtterminal $\beta$ ein. Ersetze nun die Regeln
+(wobei $\beta_i$ nicht mit $A$ beginnt) führe ein neues Nichtterminal $B$ ein. Ersetze nun die Regeln
 $$A \rightarrow A\alpha_1 \mid \ldots \mid A\alpha_r$$
 durch
 $$A \rightarrow \beta_1B \mid \ldots \mid \beta_sB$$
@@ -178,7 +175,7 @@ $$B \rightarrow \alpha_1B \mid \ldots \mid \alpha_rB$$
 \begin{frame}
  \frametitle{Schritt 2}
 Gehen nun die Produktionen absteigend nach $k$ sortiert durch und simuliere bei alle Regeln mit $A_k \rightarrow A_j\alpha$ die Produktionen für $A_j$ auf der rechten Seite.\\
-Da alle Regeln, die mit einem $A_i$ anfangen, der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
+Da alle Regeln mit einem $A_i$ als linker Seite der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
 \end{frame}
 
 \begin{frame}
@@ -297,10 +294,10 @@ Die ursprüngliche Grammatik hatte nur fünf Regeln.
  \frametitle{Tripelkonstruktion}
  \begin{itemize}
   \item Umkehrung der Konstruktionsrichtung
-  \item Aus einem PDA $\mathcal{A} = (Q, \Sigma, \Gamma, \delta, q_0, Z_0)$ wird eine Grammatik \textit(G) mit $L_{\mathcal{A}} = L(G)$ erzeugt.
+  \item Aus einem PDA $\mathcal{A} = (Q, \Sigma, \Gamma, \delta, q_0, Z_0)$, der durch leeren Stack akzeptiert, wird eine Grammatik $G$ mit $L_{\mathcal{A}} = L(G)$ erzeugt.
  \end{itemize} 
  \begin{itemize}
-  \item $V := \{[q, X, p]p, q \in Q, X \in \Gamma \} \cup S$
+  \item $V := \menge{[q, X, p]}{p, q \in Q, X \in \Gamma} \cup \{S\}$
   \item $R := $
   \begin{itemize}
    \item $S \rightarrow [q_0, Z_0, q]$ für alle $q \in Q$
@@ -317,12 +314,12 @@ Die ursprüngliche Grammatik hatte nur fünf Regeln.
 	\frametitle{Aufgabe}
 	
 	Über dem Alphabet $\Sigma=\{(,)\}$ ist die Sprache $L_{()}$  der korrekten
-Klammerausdrücke gegeben (s.~Hinweis). Ferner ist die Grammatik $G_{()}$ gegeben.
+Klammerausdrücke gegeben. Ferner ist die Grammatik $G_{()}$ gegeben.
 Dabei ist $G_{()} = (\{(,)\}, \{S\}, S, R)$ mit 
 $$R=\{S \rightarrow \epsilon|SS|(S)\}$$
 \only<1>{
 \begin{enumerate}
- \item Konstruiere einen Kellerautomaten, der die Sprache $L_{()}$ durch leeren Stack erkennt. Modifiziere diesen Kellerautomaten, so dass er $L_{()}$ durch akzeptierenden Endzustand erkennt.
+ \item Konstruiere einen Kellerautomaten, der die Sprache $L_{()}$ durch leeren Stack erkennt. Modifiziere diesen Kellerautomaten so, dass er $L_{()}$ durch akzeptierenden Endzustand erkennt.
  \item Dokumentiere eine akzeptierende Berechnung der Wortes $(()())$.
 \end{enumerate}
 }
@@ -341,23 +338,22 @@ $$R=\{S \rightarrow \epsilon|SS|(S)\}$$
 
 \begin{frame}
  \frametitle{Wiederholung Chomsky-Hierarchie}
- $u \in V^+$, $v \in (\Sigma \cup V)$, $A \in V$, $a \in \Sigma$.
-  Ausnahme: S kommt bei Chomsky-1-Grammatiken nicht auf rechten Seiten vor.
+ $u \in V^+$, $v \in (\Sigma \cup V)^\ast$, $A \in V$, $a \in \Sigma$.
+
+ Ausnahme: S kommt bei Chomsky-1-Grammatiken nicht auf rechten Seiten vor.
  \begin{table}
  \begin{center}
- \begin{tabular}{| l | l | p{1.4cm} | c | c | c | l |}
+ \begin{tabular}{| l | l | p{1.4cm} | c | c | c | c | l |}
  \hline
- & & & \multicolumn{3}{|c|}{Abgeschlossen} &\\
- Typ & Bezeichnung & Regeln & $\cup$ & $\cap$ & $\cdot$ & Modell\\ \hline
- 0 & semientscheidbar & alles & ja & ja & ja & TM \\ \hline
- 1 & kontextsensitiv & $u \rightarrow v$ $|u| \leq |v|$ & ja & ja & ja &  LBA \\ \hline
- 2 & kontextfrei & $A \rightarrow v$ & ja & nein & ja & Kellerautomat \\ \hline
- 3 & regulär & $A \rightarrow a$  $A \rightarrow aB$ & ja & ja & ja & endl. Automat \\ \hline
+ & & & \multicolumn{4}{|c|}{Abgeschlossen} &\\
+ Typ & Bezeichnung & Regeln & $\cup$ & $\cap$ & $\cdot$ & $L^\mathcal{C}$ & Modell\\ \hline
+   0 & \only<-1>{&&&&&&}\only<2->{semientscheidbar & beliebig & ja & ja & ja & nein & TM} \\ \hline
+   1 & \only<-2>{&&&&&&}\only<3->{kontextsensitiv & $u \rightarrow v$ $|u| \leq |v|$ & ja & ja & ja & ja & LBA} \\ \hline
+   2 & \only<-3>{&&&&&&}\only<4->{kontextfrei & $A \rightarrow v$ & ja & nein & ja & nein & PDA} \\ \hline
+   3 & \only<-4>{&&&&&&}\only<5->{regulär & $A \rightarrow a$  $A \rightarrow aB$ & ja & ja & ja & ja & NEA} \\ \hline
  \end{tabular}
  \end{center}
  \end{table}
-
-Welche dieser Sprachenklassen sind unter der Komplementbildung abgeschlossen?
 \end{frame}
 
 \begin{frame}

@@ -146,14 +146,17 @@ Die Grammatik sei zunächst in Chomsky-Normalform.
 \end{itemize}
 \end{block}
 \begin{block}{Schritt 1}
+
+Ziel: Alle Variablen haben am Beginn der rechten Seite keine Variablen mit gleicher oder niedrigerer Nummer.
+
 \begin{itemize}
-\item für alle $i$ in $1, \ldots, m$
+\item Für alle Variablen $V_i$
 \begin{itemize}
-\item für alle $j$ in $1, \ldots, i-1$
+\item Für alle Variablen $V_j$ mit $j<i$
 \begin{itemize}
 \item Simuliere alle Regeln für $A_j$ bei Produktionen der Form $A_i \rightarrow A_j\alpha$.
-\item für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein (wie: siehe nächste Folie).
 \end{itemize}
+\item Für Produktionen der Form $A_i \rightarrow A_i\alpha$ führe eine neue Variable ein \\ (wie: siehe nächste Folie).
 \end{itemize}
 \end{itemize}
 \end{block}
@@ -174,8 +177,10 @@ $$B \rightarrow \alpha_1B \mid \ldots \mid \alpha_rB$$
 
 \begin{frame}
  \frametitle{Schritt 2}
-Gehe nun die Produktionen absteigend nach $k$ sortiert durch und simuliere bei alle Regeln mit $A_k \rightarrow A_j\alpha$ die Produktionen für $A_j$ auf der rechten Seite.\\
-Da alle Regeln mit einem $A_i$ als linker Seite der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden, danach ist die Grammatik in Greibach-Normalform.
+Gehe nun die Produktionen absteigend nach $k$ sortiert durch und simuliere bei alle Regeln mit $A_k \rightarrow A_j\alpha$ die Produktionen für $A_j$ auf der rechten Seite. \micropause
+Da alle Regeln mit einem $A_i$ als linker Seite der Greibach-Normalform genügen, kann man dieses Verfahren nun bei den neuen Regeln für $B_1,\ldots$ auch anwenden.  \micropause
+
+Danach ist die Grammatik in Greibach-Normalform.
 \end{frame}
 
 \begin{frame}

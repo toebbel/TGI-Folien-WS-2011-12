@@ -99,7 +99,7 @@ Sind folgende Sprachen kontextfrei?
 \item $\menge{w\#t}{w\mbox{ ist Teilstring von }t \mbox{ und } w,t \in \{0,1\}^*}$
 \item $\menge{w}{w \in \{a,b\} \mbox{und $w$ enthält doppelt soviele $a$ wie $b$ }}$
 \item Das Komplement von $\{a^nb^n | n \geq 0\}$
-\item $\menge{a\#b}{a,b \in \{0,1\}^* \mbox{ und } x \neq y}$
+\item $\menge{a\#b}{a,b \in \{0,1\}^* \mbox{ und } a \neq b}$
 \end{enumerate}
 }{
 \begin{enumerate}
@@ -113,7 +113,9 @@ Sind folgende Sprachen kontextfrei?
 \section{Greibach-Normalform und Kellerautomaten}
 \aufgaben{
 \begin{enumerate}
-	\item Sei ein 2S-PDA definiert als Kellerautomat mit einem zusätzlichen zweiten Stack. In jedem Schritt wird ein Symbol von der Eingabe und von beiden Stacks gelesen und ein Symbol auf den ersten und den zweiten Stack geschrieben. \begin{enumerate}
+	\item Sei ein 2S-PDA definiert als Kellerautomat mit einem zusätzlichen zweiten Stack. In jedem Schritt wird ein Symbol oder Epsilon von der Eingabe gelesen, je eines von beiden Stacks gelesen und beliebig viele Symbole auf den ersten und den zweiten Stack geschrieben:
+        $$\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma^2 \rightarrow 2^{Q \times (\Gamma^*)^2}$$
+        \begin{enumerate}
 	\item Welche Klassen der Chomsky-Hierarchie erkennt ein 2S-PDA?
 	\item Ist ein nichtdeterministischer 2S-PDA immer noch mächtiger als ein  deterministischer 2S-PDA?
 \end{enumerate}	

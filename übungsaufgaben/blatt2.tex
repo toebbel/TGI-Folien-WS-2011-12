@@ -113,6 +113,13 @@ Sind folgende Sprachen kontextfrei?
 \section{Greibach-Normalform und Kellerautomaten}
 \aufgaben{
 \begin{enumerate}
+    \item Konstruiere einen PDA für die folgende Grammatik:
+\begin{align*}
+S&\rightarrow asA \mid B \\
+A&\rightarrow SS \mid a \\
+B&\rightarrow bB \mid SA \\
+\end{align*}
+
 	\item Sei ein 2S-PDA definiert als Kellerautomat mit einem zusätzlichen zweiten Stack. In jedem Schritt wird ein Symbol oder Epsilon von der Eingabe gelesen, je eines von beiden Stacks gelesen und beliebig viele Symbole auf den ersten und den zweiten Stack geschrieben:
         $$\delta : Q \times ( \Sigma \cup \{\varepsilon\}) \times \Gamma^2 \rightarrow 2^{Q \times (\Gamma^*)^2}$$
         \begin{enumerate}
@@ -122,6 +129,7 @@ Sind folgende Sprachen kontextfrei?
 \end{enumerate}
 }{
 \begin{enumerate}
+    \item Der verfassende Tutor behauptet, dass die GNF aus 15 Produktionen besteht.
 	\item Ein 2S-PDA ist äquivalent zu einer Turingmaschine: Das Lesen eines Symbols vom einen Stack und schreiben dieses Symbols auf den anderen Stack entspricht der Kopfbewegung einer Turingmaschine.
 	\begin{enumerate}
 		\item Genau die semientscheidbaren Sprachen, also CH-0.
